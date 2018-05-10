@@ -3,6 +3,2425 @@
 
 
     
+  <url>
+    <loc>http://liuzhixuan360.com/2018/05/09/JavaScript%E7%9A%84ES3,%20ES5,%20ES6%E5%AE%9E%E7%8E%B0%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2018-05-10T10:12:21.430Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript的ES3, ES5, ES6实现继承方式</title>
+        <pubTime>2018-05-09T15:53:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/05/08/%E4%B8%80%E5%BC%A0%E5%9B%BE%E8%AE%A9%E4%BD%A0%E7%90%86%E6%B8%85javascript%E4%B8%AD__proto__,%20prototype,%20%E4%BB%A5%E5%8F%8Aconstructor%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</loc>
+    <lastmod>2018-05-10T10:11:59.626Z</lastmod>
+    <data>
+        <display>
+        <title>一张图让你理清javascript中__proto__, prototype, 以及constructor之间的关系</title>
+        <pubTime>2018-05-08T14:31:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/04/23/2019%E5%B1%8A%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E6%98%A5%E6%8B%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/</loc>
+    <lastmod>2018-05-01T15:22:58.986Z</lastmod>
+    <data>
+        <display>
+        <title>2019届阿里巴巴春招前端面试经历</title>
+        <pubTime>2018-04-22T16:06:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/04/23/2019%E5%B1%8A%E8%85%BE%E8%AE%AF%E6%98%A5%E6%8B%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95,%20%E6%84%8F%E5%A4%96%E7%9A%84%E5%A4%8D%E6%B4%BB/</loc>
+    <lastmod>2018-05-01T15:21:57.070Z</lastmod>
+    <data>
+        <display>
+        <title>2019届腾讯春招前端面试, 意外的复活</title>
+        <pubTime>2018-04-22T16:06:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/03/21/2018%E8%85%BE%E8%AE%AF%E8%A7%86%E9%A2%91%E6%98%A5%E6%8B%9B%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E6%83%A8%E7%97%9B%E7%BB%8F%E5%8E%86/</loc>
+    <lastmod>2018-04-23T14:37:17.185Z</lastmod>
+    <data>
+        <display>
+        <title>2018腾讯视频春招提前批前端面试</title>
+        <pubTime>2018-03-21T13:08:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/04/21/WebSocket%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90,%20%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E7%9A%84%E9%95%BF%E4%B9%85%E8%BF%9E%E6%8E%A5/</loc>
+    <lastmod>2018-04-21T13:59:28.174Z</lastmod>
+    <data>
+        <display>
+        <title>WebSocket原理分析, 如何做到的长久连接</title>
+        <pubTime>2018-04-21T13:19:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/04/06/JavaScript%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84--%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F,%20%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F,%20%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/</loc>
+    <lastmod>2018-04-14T04:06:18.472Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript数据结构--快速排序, 冒泡排序, 二分查找</title>
+        <pubTime>2018-04-06T07:58:00.000Z</pubTime>
+        
+        <tag>数据结构</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据结构" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/04/11/JavaScript---%E7%AE%80%E8%BF%B0this%E7%9A%84%E5%87%A0%E7%A7%8D%E7%BB%91%E5%AE%9A%E5%BD%A2%E5%BC%8F/</loc>
+    <lastmod>2018-04-11T15:24:38.936Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript---简述this的几种绑定形式</title>
+        <pubTime>2018-04-11T15:24:00.000Z</pubTime>
+        
+        <tag>javaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javaScript" url="http://liuzhixuan360.com/categories/javaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/04/07/JavaScript---%E5%A4%9A%E7%A7%8D%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E6%96%B9%E6%B3%95%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2018-04-07T10:54:21.681Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript---多种数组去重方法总结</title>
+        <pubTime>2018-04-07T02:59:00.000Z</pubTime>
+        
+        <tag>javaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javaScript" url="http://liuzhixuan360.com/categories/javaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/10/27/javascript%E5%B0%81%E8%A3%85%E7%BB%A7%E6%89%BF%20%E5%92%8C%20%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4,this,%E5%B1%9E%E6%80%A7%E8%A1%A8%E7%A4%BA%E6%B3%95%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2018-04-07T03:00:43.222Z</lastmod>
+    <data>
+        <display>
+        <title>javascript封装继承和命名空间,this,属性表示法介绍</title>
+        <pubTime>2016-10-27T13:06:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/04/06/%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86---TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%BB%A5%E5%8F%8ASSL%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B/</loc>
+    <lastmod>2018-04-06T13:21:17.815Z</lastmod>
+    <data>
+        <display>
+        <title>必备知识---TCP三次握手和四次挥手以及SSL四次握手</title>
+        <pubTime>2018-04-06T13:15:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/04/05/HTTP%E4%B8%8EHTTPS%E7%9A%84%E5%8C%BA%E5%88%AB,%20%E4%BB%A5%E5%8F%8ASSL%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B%E8%BF%87%E7%A8%8B/</loc>
+    <lastmod>2018-04-05T08:06:47.626Z</lastmod>
+    <data>
+        <display>
+        <title>HTTP与HTTPS的区别, 以及SSL四次握手过程</title>
+        <pubTime>2018-04-05T08:04:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/03/22/web%E7%BC%93%E5%AD%98%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2018-03-26T05:39:07.364Z</lastmod>
+    <data>
+        <display>
+        <title>web缓存原理分析</title>
+        <pubTime>2018-03-22T06:29:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/01/31/react-native%20No%20bundle%20URL%20present%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
+    <lastmod>2018-03-26T05:35:39.892Z</lastmod>
+    <data>
+        <display>
+        <title>react-native No bundle URL present解决办法</title>
+        <pubTime>2018-01-31T03:36:00.000Z</pubTime>
+        
+        <tag>前端框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端框架" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/01/26/react-redux%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6connect%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</loc>
+    <lastmod>2018-01-26T14:22:19.672Z</lastmod>
+    <data>
+        <display>
+        <title>react-redux高阶组件connect方法使用介绍以及实现原理</title>
+        <pubTime>2018-01-26T12:38:00.000Z</pubTime>
+        
+        <tag>前端框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端框架" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/01/23/javascript---substr%E5%92%8Csubstring%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
+    <lastmod>2018-01-26T14:19:37.343Z</lastmod>
+    <data>
+        <display>
+        <title>javascript---substr和substring的区别</title>
+        <pubTime>2018-01-23T09:11:00.000Z</pubTime>
+        
+        <tag>javaScript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javaScript" url="http://liuzhixuan360.com/categories/javaScript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/01/16/ESLint%E7%8E%AF%E5%A2%83%E4%B8%8BReact%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8ref%E5%B1%9E%E6%80%A7/</loc>
+    <lastmod>2018-01-26T14:17:14.335Z</lastmod>
+    <data>
+        <display>
+        <title>ESLint环境下React如何使用ref属性</title>
+        <pubTime>2018-01-16T02:56:00.000Z</pubTime>
+        
+        <tag>前端框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端框架" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/01/23/JavaScript----%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%AF%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2018-01-26T14:16:45.219Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript----什么是纯函数</title>
+        <pubTime>2017-01-23T05:51:00.000Z</pubTime>
+        
+        <tag>前端框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端框架" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/01/18/Chrome%E6%97%A0%E6%B3%95%E8%B0%83%E7%94%A8preventDefault%E9%98%BB%E6%AD%A2touch%E4%BA%8B%E4%BB%B6%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
+    <lastmod>2018-01-26T14:14:29.033Z</lastmod>
+    <data>
+        <display>
+        <title>Chrome无法调用preventDefault阻止touch事件解决办法</title>
+        <pubTime>2017-01-18T08:58:00.000Z</pubTime>
+        
+        <tag>前端框架</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端框架" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/01/14/2018%E5%B9%B4%E5%88%9D%E5%AF%92%E5%81%87%E7%BD%91%E6%98%93%E6%9C%89%E9%81%93%E5%89%8D%E7%AB%AF%E5%AE%9E%E4%B9%A0%E9%9D%A2%E8%AF%95%E7%BB%8F%E5%8E%86/</loc>
+    <lastmod>2018-01-26T14:10:02.684Z</lastmod>
+    <data>
+        <display>
+        <title>2018年初寒假网易有道前端实习面试经历</title>
+        <pubTime>2018-01-14T13:32:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/12/23/%E8%BD%AF%E4%BB%B6%E6%9E%84%E9%80%A0%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90First%E5%92%8CFollow%E9%9B%86/</loc>
+    <lastmod>2018-01-11T15:19:27.837Z</lastmod>
+    <data>
+        <display>
+        <title>软件构造编译原理程序自动生成First和Follow集</title>
+        <pubTime>2017-12-23T14:54:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/12/10/JavaScript%E8%8A%82%E6%B5%81%E5%87%BD%E6%95%B0,%20%E9%98%B2%E6%AD%A2%E5%A4%A7%E9%87%8F%E5%87%BD%E6%95%B0%E8%A7%A6%E5%8F%91%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>
+    <lastmod>2017-12-10T08:02:18.150Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript节流函数, 防止大量函数触发解决办法</title>
+        <pubTime>2017-12-10T07:52:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/12/10/CSS%E5%AE%9E%E6%88%98--%E5%AE%9E%E7%8E%B0%E4%BE%A7%E8%BE%B9%E6%A0%8F%E6%BB%91%E8%BF%9B%E6%BB%91%E5%87%BA/</loc>
+    <lastmod>2017-12-10T08:01:22.895Z</lastmod>
+    <data>
+        <display>
+        <title>CSS实战--实现侧边栏滑进滑出</title>
+        <pubTime>2017-12-10T07:29:00.000Z</pubTime>
+        
+        <tag>css</tag>
+         
+         
+           
+             
+              <breadCrumb title="css" url="http://liuzhixuan360.com/categories/css/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/12/10/CSS%E5%AA%92%E4%BD%93%E6%9F%A5%E8%AF%A2%E5%92%8Cflex%E5%AE%9E%E7%8E%B0%E8%87%AA%E9%80%82%E5%BA%94%E5%A4%9A%E6%A0%8F%E5%B8%83%E5%B1%80/</loc>
+    <lastmod>2017-12-10T08:00:13.755Z</lastmod>
+    <data>
+        <display>
+        <title>CSS媒体查询和flex实现自适应多栏布局</title>
+        <pubTime>2017-12-10T06:08:00.000Z</pubTime>
+        
+        <tag>css</tag>
+         
+         
+           
+             
+              <breadCrumb title="css" url="http://liuzhixuan360.com/categories/css/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/12/10/CSS%E4%B8%83%E7%A7%8D%E5%B8%B8%E7%94%A8%E5%B1%85%E4%B8%AD%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2017-12-10T07:59:14.678Z</lastmod>
+    <data>
+        <display>
+        <title>CSS七种常用居中方式</title>
+        <pubTime>2017-12-10T03:40:00.000Z</pubTime>
+        
+        <tag>css</tag>
+         
+         
+           
+             
+              <breadCrumb title="css" url="http://liuzhixuan360.com/categories/css/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/12/02/multer+Ajax(es6%E7%89%88)%E5%AE%9E%E7%8E%B0%E5%85%8D%E8%B7%B3%E8%BD%AC%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87/</loc>
+    <lastmod>2017-12-10T07:58:11.574Z</lastmod>
+    <data>
+        <display>
+        <title>multer+Ajax(es6版)实现免跳转上传图片</title>
+        <pubTime>2017-12-02T14:11:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/12/02/Multipartform-data%20POST%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E8%AF%A6%E8%A7%A3/</loc>
+    <lastmod>2017-12-10T07:57:08.931Z</lastmod>
+    <data>
+        <display>
+        <title>Multipartform-data POST文件上传详解</title>
+        <pubTime>2017-12-02T13:28:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/11/30/%E7%A7%BB%E5%8A%A8WEB--%E4%BB%BF%E6%89%8B%E6%9C%BA%E5%8E%9F%E7%94%9F%E7%9B%B8%E5%86%8C(Vue%E7%89%88)/</loc>
+    <lastmod>2017-12-10T07:55:33.497Z</lastmod>
+    <data>
+        <display>
+        <title>移动WEB--仿手机原生相册(Vue版)</title>
+        <pubTime>2017-11-30T15:05:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/11/28/%E7%A7%BB%E5%8A%A8WEB%E5%BC%80%E5%8F%91---%E7%94%A8rem%E5%BC%80%E5%8F%91%E5%93%8D%E5%BA%94%E5%BC%8F%E8%AE%BE%E8%AE%A1/</loc>
+    <lastmod>2017-11-30T15:08:42.091Z</lastmod>
+    <data>
+        <display>
+        <title>移动WEB开发---用rem开发响应式设计</title>
+        <pubTime>2017-11-28T14:15:00.000Z</pubTime>
+        
+        <tag>HTML</tag>
+         
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/11/18/%E5%88%A9%E7%94%A8Performance%20API%E5%88%86%E6%9E%90%E7%BD%91%E7%AB%99%E6%80%A7%E8%83%BD/</loc>
+    <lastmod>2017-11-30T15:07:26.112Z</lastmod>
+    <data>
+        <display>
+        <title>利用Performance API分析网站性能</title>
+        <pubTime>2017-11-18T07:06:00.000Z</pubTime>
+        
+        <tag>HTML</tag>
+         
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/11/17/H5Server%20Sent%20Event%E6%9C%8D%E5%8A%A1%E7%AB%AF%E4%B8%BB%E5%8A%A8%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%9B%9E%E5%AE%A2%E6%88%B7%E7%AB%AF/</loc>
+    <lastmod>2017-11-17T13:56:22.310Z</lastmod>
+    <data>
+        <display>
+        <title>H5Server Sent Event服务端主动发送数据回客户端</title>
+        <pubTime>2017-11-17T13:44:00.000Z</pubTime>
+        
+        <tag>HTML</tag>
+         
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/11/17/H5PostMessages%E5%AE%9E%E7%8E%B0%E8%B7%A8%E9%A1%B5%E9%9D%A2%E9%80%9A%E4%BF%A1/</loc>
+    <lastmod>2017-11-17T13:55:14.768Z</lastmod>
+    <data>
+        <display>
+        <title>H5PostMessages实现跨页面通信</title>
+        <pubTime>2017-11-17T12:58:00.000Z</pubTime>
+        
+        <tag>HTML</tag>
+         
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/11/17/H5%E5%AE%9E%E7%8E%B0%E6%89%8B%E6%9C%BA%E6%91%87%E4%B8%80%E6%91%87/</loc>
+    <lastmod>2017-11-17T13:54:09.370Z</lastmod>
+    <data>
+        <display>
+        <title>H5实现手机摇一摇</title>
+        <pubTime>2017-11-17T11:06:00.000Z</pubTime>
+        
+        <tag>HTML</tag>
+         
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/11/14/H5%E5%AE%9E%E7%8E%B0%E8%B0%83%E7%94%A8%E6%9C%AC%E5%9C%B0%E6%91%84%E5%83%8F%E5%A4%B4%E5%AE%9E%E7%8E%B0%E5%AE%9E%E6%97%B6%E8%A7%86%E9%A2%91%E4%BB%A5%E5%8F%8A%E6%8B%8D%E7%85%A7%E5%8A%9F%E8%83%BD/</loc>
+    <lastmod>2017-11-17T13:53:03.044Z</lastmod>
+    <data>
+        <display>
+        <title>H5实现调用本地摄像头实现实时视频以及拍照功能</title>
+        <pubTime>2017-11-14T15:34:00.000Z</pubTime>
+        
+        <tag>HTML</tag>
+         
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/11/07/javascript---%E4%B8%BAajax%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%BF%9B%E5%BA%A6%E6%9D%A1%E6%8C%87%E7%A4%BA%E5%99%A8/</loc>
+    <lastmod>2017-11-17T13:50:48.521Z</lastmod>
+    <data>
+        <display>
+        <title>javascript---为ajax创建一个进度条指示器</title>
+        <pubTime>2017-11-07T14:25:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/11/07/JavaScript---ajax%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E8%AE%BE%E7%BD%AErequestHeader/</loc>
+    <lastmod>2017-11-17T13:49:38.672Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript---ajax为什么要设置requestHeader</title>
+        <pubTime>2017-11-07T14:14:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/10/29/react+webpack+es6%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2017-11-17T13:49:09.267Z</lastmod>
+    <data>
+        <display>
+        <title>react+webpack+es6详细配置教程</title>
+        <pubTime>2017-10-29T15:33:00.000Z</pubTime>
+        
+        <tag>前端自动化构建工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端自动化构建工具" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/12/JavaScript---Object.defineProperty()%E4%B8%8E%E4%B8%A4%E7%A7%8D%E5%B1%9E%E6%80%A7%E6%8F%8F%E8%BF%B0%E7%AC%A6%E7%AE%80%E4%BB%8B-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%8F%96%E6%8F%8F%E8%BF%B0%E7%AC%A6/</loc>
+    <lastmod>2017-11-17T13:48:44.580Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript---Object.defineProperty()与两种属性描述符简介-数据存取描述符</title>
+        <pubTime>2017-09-12T14:01:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/06/14/gulp-uglify%E6%8F%92%E4%BB%B6%E6%9C%80%E6%96%B0pump%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2017-11-17T13:46:55.946Z</lastmod>
+    <data>
+        <display>
+        <title>gulp-uglify插件最新pump使用教程</title>
+        <pubTime>2017-06-14T15:28:00.000Z</pubTime>
+        
+        <tag>前端自动化构建工具</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端自动化构建工具" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/10/10/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA%E4%B9%8B%E5%87%BD%E6%95%B0%E4%BE%9D%E8%B5%96/</loc>
+    <lastmod>2017-10-10T15:09:34.274Z</lastmod>
+    <data>
+        <display>
+        <title>关系数据库设计理论之函数依赖</title>
+        <pubTime>2017-10-10T15:04:00.000Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/25/mysql%E5%B8%B8%E7%94%A8%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E4%BB%A5%E5%8F%8A%E4%BE%8B%E5%AD%90/</loc>
+    <lastmod>2017-10-10T15:08:21.069Z</lastmod>
+    <data>
+        <display>
+        <title>mysql常用基础命令以及例子</title>
+        <pubTime>2017-09-25T14:58:00.000Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/24/mysql%20Community%20Server%205.7%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E4%BB%A5%E5%8F%8A%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2017-10-10T15:07:09.080Z</lastmod>
+    <data>
+        <display>
+        <title>mysql Community Server 5.7安装教程以及常见错误</title>
+        <pubTime>2017-09-24T10:45:00.000Z</pubTime>
+        
+        <tag>数据库</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据库" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/09/JavaScript---%E9%98%B2%E6%AD%A2%E9%80%92%E5%BD%92%E6%A0%88%E6%BA%A2%E5%87%BA%E9%94%99%E8%AF%AF/</loc>
+    <lastmod>2017-09-22T13:11:32.146Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript---防止递归栈溢出错误</title>
+        <pubTime>2017-09-09T15:27:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/08/JavaScript---Beacons%E5%9B%BE%E7%89%87%E4%BF%A1%E6%A0%87%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE/</loc>
+    <lastmod>2017-09-22T13:10:20.715Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript---Beacons图片信标发送数据</title>
+        <pubTime>2017-09-08T12:53:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/08/JavaScript---Web%20Worker%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2017-09-22T13:09:12.502Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript---Web Worker使用教程</title>
+        <pubTime>2017-09-08T08:33:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/08/Javascript%E4%BD%BF%E7%94%A8%E5%AE%9A%E6%97%B6%E5%99%A8%E6%9D%A5%E5%A4%84%E7%90%86%E6%95%B0%E7%BB%84%E5%92%8C%E5%88%86%E5%89%B2%E4%BB%BB%E5%8A%A1%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5/</loc>
+    <lastmod>2017-09-22T13:06:50.388Z</lastmod>
+    <data>
+        <display>
+        <title>Javascript使用定时器来处理数组和分割任务实现异步</title>
+        <pubTime>2017-09-08T07:50:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/06/Javascript--%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86,%20%E5%9B%9E%E6%BA%AF/</loc>
+    <lastmod>2017-09-22T13:05:24.547Z</lastmod>
+    <data>
+        <display>
+        <title>Javascript--正则表达式工作原理, 回溯</title>
+        <pubTime>2017-09-06T15:23:00.000Z</pubTime>
+        
+        <tag>javascript</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/09/16/HTML%20form%20%E6%A0%87%E7%AD%BE+CSS%E9%80%89%E6%8B%A9%E5%99%A8%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2017-09-07T14:03:02.554Z</lastmod>
+    <data>
+        <display>
+        <title>HTML< form >标签+CSS选择器介绍</title>
+        <pubTime>2016-09-16T08:55:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/09/22/CSS%E5%B1%9E%E6%80%A7+%E7%9B%92%E6%A8%A1%E5%9E%8B%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2017-09-07T14:02:48.975Z</lastmod>
+    <data>
+        <display>
+        <title>CSS属性+盒模型知识点整理</title>
+        <pubTime>2016-09-22T03:51:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="CSS" url="http://liuzhixuan360.com/categories/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/09/23/CSS%E4%B8%A4%E4%B8%AA%E7%BB%8F%E5%85%B8BUG+%E5%B1%82%E6%A8%A1%E5%9E%8B+%E6%B5%AE%E5%8A%A8%E5%85%83%E7%B4%A0+%E4%BC%AA%E5%85%83%E7%B4%A0+%E9%98%BF%E9%87%8C%E5%BC%80%E5%8F%91%E5%B0%8F%E5%B8%B8%E8%AF%86/</loc>
+    <lastmod>2017-09-07T14:02:28.786Z</lastmod>
+    <data>
+        <display>
+        <title>CSS两个经典BUG+层模型+浮动元素+伪元素+阿里开发小常识</title>
+        <pubTime>2016-09-23T12:59:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="CSS" url="http://liuzhixuan360.com/categories/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/10/08/C++%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E6%A0%87%E5%87%86%E5%BA%93%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2017-09-07T14:02:19.062Z</lastmod>
+    <data>
+        <display>
+        <title>C++栈和队列标准库函数</title>
+        <pubTime>2016-10-08T11:18:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据结构" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/10/16/JavaScript%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95+%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</loc>
+    <lastmod>2017-09-07T14:02:13.969Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript基本语法+类型转换</title>
+        <pubTime>2016-10-16T08:19:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/10/24/javascript%E5%87%BD%E6%95%B0+%E9%97%AD%E5%8C%85+%E7%AB%8B%E5%8D%B3%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2017-09-07T14:02:07.245Z</lastmod>
+    <data>
+        <display>
+        <title>javascript函数+闭包+立即执行函数</title>
+        <pubTime>2016-10-24T10:25:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/10/24/javascript%E9%A2%84%E7%BC%96%E8%AF%91+%E4%BE%8B%E9%A2%98%E5%88%86%E6%9E%90/</loc>
+    <lastmod>2017-09-07T14:02:02.286Z</lastmod>
+    <data>
+        <display>
+        <title>javascript预编译+例题分析</title>
+        <pubTime>2016-10-24T13:31:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/10/16/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F,%20%E4%B8%AD%E5%BA%8F,%20%E5%90%8E%E5%BA%8F%E9%9D%9E%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2017-09-07T14:01:56.723Z</lastmod>
+    <data>
+        <display>
+        <title>二叉树的前序, 中序, 后序非递归算法</title>
+        <pubTime>2016-10-16T14:55:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据结构" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/10/25/javascript%E5%AF%B9%E8%B1%A1+%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E5%8E%9F%E7%90%86+%E5%8C%85%E8%A3%85%E7%B1%BB/</loc>
+    <lastmod>2017-09-07T14:01:52.118Z</lastmod>
+    <data>
+        <display>
+        <title>javascript对象+构造函数内部原理+包装类</title>
+        <pubTime>2016-10-25T14:24:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/10/26/javascript%E5%8E%9F%E5%9E%8B+callapply/</loc>
+    <lastmod>2017-09-07T14:01:46.945Z</lastmod>
+    <data>
+        <display>
+        <title>javascript原型+callapply</title>
+        <pubTime>2016-10-26T12:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/10/27/javascript%E5%B0%81%E8%A3%85%E5%88%A4%E6%96%AD%E5%85%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%96%B9%E6%B3%95,%20toString%E6%96%B9%E6%B3%95,%20%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%9E%9A%E4%B8%BE(in,%20instanceof,%20hasOwnProperty%E7%9A%84%E7%94%A8%E6%B3%95),%20arguments%E7%B1%BB%E6%95%B0%E7%BB%84%E5%B1%9E%E6%80%A7/</loc>
+    <lastmod>2017-09-07T14:01:39.836Z</lastmod>
+    <data>
+        <display>
+        <title>javascript封装判断全数据类型方法, toString方法, 对象的枚举(in, instanceof, hasOwnProperty的用法), arguments类数组属性</title>
+        <pubTime>2016-10-27T15:01:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/11/09/js+html%E8%BF%B7%E5%AE%AB%E5%BF%83%E5%BE%97/</loc>
+    <lastmod>2017-09-07T14:01:34.445Z</lastmod>
+    <data>
+        <display>
+        <title>js+html迷宫心得</title>
+        <pubTime>2016-11-09T11:06:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/11/10/java%E8%BE%93%E5%85%A5%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2017-09-07T14:01:22.945Z</lastmod>
+    <data>
+        <display>
+        <title>java输入数据方法</title>
+        <pubTime>2016-11-10T13:26:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="java" url="http://liuzhixuan360.com/categories/java/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/11/09/javascript%E6%B7%B1%E5%BA%A6%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E4%BB%A3%E7%A0%81%E8%AF%A6%E8%A7%A3;%20%E6%95%B0%E7%BB%84,%E7%B1%BB%E6%95%B0%E7%BB%84,try-catch%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2017-09-07T14:01:19.105Z</lastmod>
+    <data>
+        <display>
+        <title>javascript深度拷贝和数组去重代码详解; 数组,类数组,try-catch方法介绍</title>
+        <pubTime>2016-11-09T14:52:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/11/13/javascript%E7%9A%84DOM%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2017-09-07T14:01:15.292Z</lastmod>
+    <data>
+        <display>
+        <title>javascript的DOM增删改查基本操作</title>
+        <pubTime>2016-11-13T07:24:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/11/16/js%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2017-09-07T14:01:10.759Z</lastmod>
+    <data>
+        <display>
+        <title>js轮播图教程</title>
+        <pubTime>2016-11-16T11:39:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/05/javascript%E5%AE%9A%E6%97%B6%E5%99%A8+DOM%E6%9F%A5%E7%9C%8B%E8%A7%86%E5%8F%A3%E4%BB%A5%E5%8F%8A%E5%85%83%E7%B4%A0%E5%B0%BA%E5%AF%B8%E5%92%8C%E4%BD%8D%E7%BD%AE/</loc>
+    <lastmod>2017-09-07T14:01:06.344Z</lastmod>
+    <data>
+        <display>
+        <title>javascript定时器+DOM查看视口以及元素尺寸和位置</title>
+        <pubTime>2016-12-05T13:12:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/06/javascript%E8%84%9A%E6%9C%AC%E5%8C%96CSS%E7%B3%BB%E5%88%97%E5%92%8C%E5%B0%81%E8%A3%85%E5%85%BC%E5%AE%B9%E6%96%B9%E6%B3%95%E7%9A%84getStyle(obj,%20prop)%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2017-09-07T14:01:02.102Z</lastmod>
+    <data>
+        <display>
+        <title>javascript脚本化CSS系列和封装兼容方法的getStyle(obj, prop)方法</title>
+        <pubTime>2016-12-06T12:25:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/07/javascript%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1,%20%E6%8D%95%E8%8E%B7%E4%BB%8B%E7%BB%8D,%20%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%E7%BB%8F%E5%85%B8%E4%BE%8B%E5%AD%90/</loc>
+    <lastmod>2017-09-07T14:00:57.714Z</lastmod>
+    <data>
+        <display>
+        <title>javascript事件详解和事件冒泡, 捕获介绍, 事件委托经典例子</title>
+        <pubTime>2016-12-07T12:21:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/08/javascript%E4%BA%8B%E4%BB%B6,%20%E8%A7%A3%E5%86%B3mousedown%E5%92%8Cclick%E5%86%B2%E7%AA%81%E4%BA%8B%E4%BB%B6,%20%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6,%20%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6,%20%E6%96%87%E6%9C%AC%E4%BA%8B%E4%BB%B6%E7%94%A8%E6%B3%95%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2017-09-07T14:00:53.186Z</lastmod>
+    <data>
+        <display>
+        <title>javascript事件, 解决mousedown和click冲突事件, 鼠标事件, 键盘事件, 文本事件用法简介</title>
+        <pubTime>2016-12-08T03:44:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/08/javascript%E5%B0%8F%E9%A1%B9%E7%9B%AE---%E6%8B%96%E6%8B%BD%E5%B0%8F%E6%96%B9%E5%9D%97---%20js%E8%8F%9C%E5%8D%95%E6%A0%8F/</loc>
+    <lastmod>2017-09-07T14:00:48.967Z</lastmod>
+    <data>
+        <display>
+        <title>javascript小项目---拖拽小方块--- js菜单栏</title>
+        <pubTime>2016-12-08T03:58:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84--%E5%93%88%E5%BC%97%E6%9B%BC%E7%BC%96%E7%A0%81%E5%99%A8/</loc>
+    <lastmod>2017-09-07T14:00:42.780Z</lastmod>
+    <data>
+        <display>
+        <title>数据结构--哈弗曼编码器</title>
+        <pubTime>2016-12-08T04:32:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据结构" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/17/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B9%8B---%E6%B1%82%E6%9C%80%E5%A4%A7%E5%AD%97%E6%AE%B5%E5%92%8C,%20%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6o(n)%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2017-09-07T14:00:39.229Z</lastmod>
+    <data>
+        <display>
+        <title>数据结构之---求最大字段和, 时间复杂度o(n)算法</title>
+        <pubTime>2016-12-17T12:33:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据结构" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/22/javascript%E8%BF%90%E5%8A%A8%E9%A1%B9%E7%9B%AE1-----%E5%B0%81%E8%A3%85%E4%BB%BB%E6%84%8F%E5%85%83%E7%B4%A0%E8%BF%90%E5%8A%A8%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2017-09-07T14:00:34.670Z</lastmod>
+    <data>
+        <display>
+        <title>javascript运动项目1-----封装任意元素运动函数</title>
+        <pubTime>2016-12-22T08:02:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84------%E6%89%8B%E5%86%99%E5%BF%AB%E6%8E%92/</loc>
+    <lastmod>2017-09-07T14:00:29.700Z</lastmod>
+    <data>
+        <display>
+        <title>数据结构------手写快排</title>
+        <pubTime>2016-12-27T08:56:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据结构" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/31/%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BDjs%20%E5%92%8C%20js%E6%97%B6%E9%97%B4%E7%BA%BF%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2017-09-07T14:00:25.559Z</lastmod>
+    <data>
+        <display>
+        <title>异步加载js 和 js时间线介绍</title>
+        <pubTime>2016-12-31T08:34:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/01/01/js%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F----RegExp,%20%E4%BB%A3%E7%A0%81%E8%AF%B4%E6%98%8E%E7%AE%80%E5%8D%95%E6%98%93%E6%87%82/</loc>
+    <lastmod>2017-09-07T14:00:21.053Z</lastmod>
+    <data>
+        <display>
+        <title>js正则表达式----RegExp, 代码说明简单易懂</title>
+        <pubTime>2016-12-31T16:15:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/01/09/%E6%9C%80%E5%85%A8%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86,%20%E6%95%99%E4%BD%A0%E5%A6%82%E4%BD%95%E7%94%A8HEXO%E6%90%AD%E5%BB%BA%E5%8D%81%E5%88%86cool%E7%9A%84%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99/</loc>
+    <lastmod>2017-09-07T14:00:15.522Z</lastmod>
+    <data>
+        <display>
+        <title>最全资料整理, 教你如何用HEXO搭建十分cool的属于自己的网站</title>
+        <pubTime>2017-01-09T12:30:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="其他" url="http://liuzhixuan360.com/categories/%E5%85%B6%E4%BB%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2016/12/22/javascript%E8%BF%90%E5%8A%A8%E9%A1%B9%E7%9B%AE2------%E6%8B%96%E6%8B%BD%E5%BC%B9%E5%B0%84%E8%BF%90%E5%8A%A8,%20%E9%85%B7%E7%82%AB!%E7%AE%80%E5%8D%95!/</loc>
+    <lastmod>2017-09-07T14:00:13.309Z</lastmod>
+    <data>
+        <display>
+        <title>javascript运动项目2------拖拽弹射运动, 酷炫!简单!</title>
+        <pubTime>2016-12-22T13:18:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/01/18/%E5%8E%9F%E7%94%9F%E7%BA%AFjs%E5%AE%8C%E7%BE%8E%E7%BC%93%E5%86%B2%E8%BF%90%E5%8A%A8%E8%BD%AE%E6%92%AD%E5%9B%BE/</loc>
+    <lastmod>2017-09-07T14:00:05.053Z</lastmod>
+    <data>
+        <display>
+        <title>原生纯js完美缓冲运动轮播图</title>
+        <pubTime>2017-01-18T15:28:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/02/20/javascript---BOM/</loc>
+    <lastmod>2017-09-07T13:59:53.429Z</lastmod>
+    <data>
+        <display>
+        <title>javascript---BOM</title>
+        <pubTime>2017-02-20T09:27:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/02/20/javascript-Doctype,%20img%E5%9B%BE%E7%89%87%E9%A2%84%E5%8A%A0%E8%BD%BD,%20js%E6%96%87%E6%A1%A3%E7%A2%8E%E7%89%87/</loc>
+    <lastmod>2017-09-07T13:59:46.648Z</lastmod>
+    <data>
+        <display>
+        <title>javascript-Doctype, img图片预加载, js文档碎片</title>
+        <pubTime>2017-02-20T08:06:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/02/22/Ajax%E7%94%A8%E6%B3%95%E8%AF%A6%E7%BB%86%E8%A7%A3%E6%9E%90,%20%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0%E9%A1%B5%E9%9D%A2,%20%E4%BB%A5%E5%8F%8A'post'%E5%92%8C'get'%E8%AF%B7%E6%B1%82%E5%B1%9E%E6%80%A7%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2017-09-07T13:59:35.249Z</lastmod>
+    <data>
+        <display>
+        <title>Ajax用法详细解析, 实现异步更新页面, 以及'post'和'get'请求属性介绍</title>
+        <pubTime>2017-02-22T08:06:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/02/23/%E6%B5%85%E8%B0%88URL%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2017-09-07T13:59:28.199Z</lastmod>
+    <data>
+        <display>
+        <title>浅谈URL知识</title>
+        <pubTime>2017-02-23T08:53:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Internet网络知识" url="http://liuzhixuan360.com/categories/Internet%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/03/03/web%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%861/</loc>
+    <lastmod>2017-09-07T13:59:23.169Z</lastmod>
+    <data>
+        <display>
+        <title>web网络知识1</title>
+        <pubTime>2017-03-03T11:10:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Internet网络知识" url="http://liuzhixuan360.com/categories/Internet%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/03/03/%E5%88%A9%E7%94%A8Jsonp%E5%81%9A%E7%99%BE%E5%BA%A6%E6%90%9C%E7%B4%A2%E6%A1%86/</loc>
+    <lastmod>2017-09-07T13:59:16.771Z</lastmod>
+    <data>
+        <display>
+        <title>利用Jsonp做网络搜索框</title>
+        <pubTime>2017-03-03T11:37:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Internet网络知识" url="http://liuzhixuan360.com/categories/Internet%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/03/19/%E7%BA%AFCSS3%E5%AE%9E%E7%8E%B0%E4%BC%98%E9%85%B7%E8%BD%AE%E6%92%AD%E5%9B%BE/</loc>
+    <lastmod>2017-09-07T13:59:11.015Z</lastmod>
+    <data>
+        <display>
+        <title>纯CSS3实现优酷轮播图</title>
+        <pubTime>2017-03-19T10:33:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="CSS" url="http://liuzhixuan360.com/categories/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/03/20/%E4%BA%8C%E6%A0%8F%E5%B8%83%E5%B1%80%E4%B8%80%E6%A0%8F%E8%87%AA%E9%80%82%E5%BA%94%E5%92%8C%E4%B8%89%E6%A0%8F%E5%B8%83%E5%B1%80%E4%B8%AD%E9%97%B4%E8%87%AA%E9%80%82%E5%BA%94/</loc>
+    <lastmod>2017-09-07T13:59:04.934Z</lastmod>
+    <data>
+        <display>
+        <title>二栏布局一栏自适应和三栏布局中间自适应</title>
+        <pubTime>2017-03-20T14:33:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="CSS" url="http://liuzhixuan360.com/categories/CSS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/03/03/%E5%89%8D%E7%AB%AFCookie%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2017-09-07T13:58:58.299Z</lastmod>
+    <data>
+        <display>
+        <title>前端Cookie基本使用方法</title>
+        <pubTime>2017-03-03T12:33:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Internet网络知识" url="http://liuzhixuan360.com/categories/Internet%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/03/30/javascript%E4%B9%8BforEach%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86/</loc>
+    <lastmod>2017-09-07T13:58:49.111Z</lastmod>
+    <data>
+        <display>
+        <title>javascript之forEach循环遍历</title>
+        <pubTime>2017-03-30T14:51:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/04/06/%E5%9F%BA%E4%BA%8EH5canvas%E5%88%AE%E5%88%AE%E4%B9%90%E7%95%8C%E9%9D%A2/</loc>
+    <lastmod>2017-09-07T13:58:43.948Z</lastmod>
+    <data>
+        <display>
+        <title>基于H5canvas刮刮乐界面</title>
+        <pubTime>2017-04-06T10:41:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/04/06/%E5%9F%BA%E4%BA%8EH5canvas%E5%92%8Cjs%E7%9A%84%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2017-09-07T13:58:36.219Z</lastmod>
+    <data>
+        <display>
+        <title>基于H5canvas和js的高斯模糊处理</title>
+        <pubTime>2017-04-06T11:01:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/04/08/%E5%88%A9%E7%94%A8H5SVG%E5%AE%9E%E7%8E%B0%E7%BA%BF%E6%80%A7%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C/</loc>
+    <lastmod>2017-09-07T13:58:27.146Z</lastmod>
+    <data>
+        <display>
+        <title>利用H5SVG实现线性动画效果</title>
+        <pubTime>2017-04-08T09:33:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/04/09/H5%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8BWeb%20Workers/</loc>
+    <lastmod>2017-09-07T13:58:20.453Z</lastmod>
+    <data>
+        <display>
+        <title>H5之多线程Web Workers</title>
+        <pubTime>2017-04-09T08:47:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/04/09/H5%E4%B9%8BlocalStorage%20%E5%92%8C%20sessionStorageWEB%E5%AD%98%E5%82%A8/</loc>
+    <lastmod>2017-09-07T13:58:15.616Z</lastmod>
+    <data>
+        <display>
+        <title>H5之localStorage 和 sessionStorageWEB存储</title>
+        <pubTime>2017-04-09T09:29:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/04/16/H5%E4%B9%8B%E8%A7%86%E9%A2%91video%E9%9F%B3%E9%A2%91audio/</loc>
+    <lastmod>2017-09-07T13:58:10.045Z</lastmod>
+    <data>
+        <display>
+        <title>H5之视频video音频audio</title>
+        <pubTime>2017-04-16T02:45:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/04/18/C++%E5%BC%95%E7%94%A8%E5%92%8C%E6%8C%87%E9%92%88%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
+    <lastmod>2017-09-07T13:58:03.688Z</lastmod>
+    <data>
+        <display>
+        <title>C++引用和指针的区别</title>
+        <pubTime>2017-04-18T14:13:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="C++" url="http://liuzhixuan360.com/categories/C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/02/HTML5%20%E6%8B%96%E6%94%BEDrag%20%E5%92%8C%20drop%E7%94%A8%E6%B3%95%E4%BB%A5%E5%8F%8A%E4%BA%8B%E4%BB%B6%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2017-09-07T13:57:58.036Z</lastmod>
+    <data>
+        <display>
+        <title>HTML5 拖放Drag 和 drop用法以及事件介绍</title>
+        <pubTime>2017-05-02T12:34:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/02/HTML%20DOM%20addEventListener()%E7%AC%AC%E4%B8%89%E4%B8%AA%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2017-09-07T13:57:49.748Z</lastmod>
+    <data>
+        <display>
+        <title>HTML DOM addEventListener()第三个参数介绍</title>
+        <pubTime>2017-05-02T13:06:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/02/HTML5%20FileReader%E5%88%86%E5%B8%83%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6%E4%BB%A5%E5%8F%8A%E5%85%B6%E6%96%B9%E6%B3%95%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2017-09-07T13:57:43.873Z</lastmod>
+    <data>
+        <display>
+        <title>HTML5 FileReader分布读取文件以及其方法简介</title>
+        <pubTime>2017-05-02T14:58:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="HTML" url="http://liuzhixuan360.com/categories/HTML/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/05/CC++%E6%A8%A1%E6%8B%9F%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2017-09-07T13:57:37.400Z</lastmod>
+    <data>
+        <display>
+        <title>C/C++模拟操作系统文件操作</title>
+        <pubTime>2017-05-05T14:32:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="C++" url="http://liuzhixuan360.com/categories/C/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/05/CC++%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E6%A8%A1%E6%8B%9F%E8%BF%B7%E5%AE%AB%E6%B1%82%E8%A7%A3%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2017-09-07T13:57:32.618Z</lastmod>
+    <data>
+        <display>
+        <title>CC++广度优先搜索模拟迷宫求解问题</title>
+        <pubTime>2017-05-05T14:43:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="C++" url="http://liuzhixuan360.com/categories/C/"/>
+          
+             
+              <breadCrumb title="数据结构" url="http://liuzhixuan360.com/categories/C/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/06/webpack%E8%B6%85%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE,%20%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B(%E5%9B%BE%E6%96%87)/</loc>
+    <lastmod>2017-09-07T13:57:22.128Z</lastmod>
+    <data>
+        <display>
+        <title>webpack超详细配置, 使用教程(图文)</title>
+        <pubTime>2017-05-06T11:22:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="前端自动化构建工具" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/18/JavaScript%E5%9D%97%E7%BA%A7%E4%BD%9C%E7%94%A8%E5%9F%9F,%20let,%20const%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2017-09-07T13:57:00.147Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript块级作用域, let, const介绍</title>
+        <pubTime>2017-05-18T09:29:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/20/JavaScript%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC(%E4%BB%A3%E7%A0%81%E8%AF%B4%E6%98%8EES6%E6%95%B0%E7%BB%84,%20%E5%AF%B9%E8%B1%A1,%20%E5%87%BD%E6%95%B0%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC)/</loc>
+    <lastmod>2017-09-07T13:56:55.118Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript解构赋值(代码说明ES6数组, 对象, 函数的解构赋值)</title>
+        <pubTime>2017-05-20T13:04:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/20/JavaScript%E6%95%B0%E7%BB%84%E6%8B%93%E5%B1%95(js%E6%95%B0%E7%BB%84form,%20of,%20copyWithin,%20find,%20fill,%20includes%E6%96%B9%E6%B3%95%E4%BB%8B%E7%BB%8D)/</loc>
+    <lastmod>2017-09-07T13:56:50.068Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript数组拓展(js数组form, of, copyWithin, find, fill, includes方法介绍)</title>
+        <pubTime>2017-05-20T14:23:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/20/JavaScript%20for%20of%E5%BE%AA%E7%8E%AF/</loc>
+    <lastmod>2017-09-07T13:56:44.610Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript for of循环</title>
+        <pubTime>2017-05-20T14:33:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/21/JavaScript%E5%AF%B9%E8%B1%A1%E6%89%A9%E5%B1%95(Object.is(),%20assign(),%20%E5%AF%B9%E8%B1%A1%E9%81%8D%E5%8E%86keys,%20es6%E5%8E%9F%E5%9E%8B%E4%BB%8B%E7%BB%8D)/</loc>
+    <lastmod>2017-09-07T13:56:38.501Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript对象扩展(Object.is(), assign(), 对象遍历keys, es6原型介绍)</title>
+        <pubTime>2017-05-21T08:05:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/21/JavaScript%20...%E8%BF%90%E7%AE%97%E7%AC%A6(%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6)%E4%BB%A5%E5%8F%8Arest%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2017-09-07T13:56:33.810Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript ...运算符(扩展运算符)以及rest运算符介绍</title>
+        <pubTime>2017-05-21T08:37:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/21/Javascript%20%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2017-09-07T13:56:29.489Z</lastmod>
+    <data>
+        <display>
+        <title>Javascript 箭头函数</title>
+        <pubTime>2017-05-21T10:44:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/21/JavaScript%20Class%E4%BB%8B%E7%BB%8D%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95(%E4%BB%A3%E7%A0%81%E8%AF%B4%E6%98%8E)/</loc>
+    <lastmod>2017-09-07T13:56:24.471Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript Class介绍以及使用方法(代码说明)</title>
+        <pubTime>2017-05-21T11:55:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/21/JavaScript%E6%94%B9%E5%8F%98this%E6%8C%87%E5%90%91%E7%9A%843%E7%A7%8D%E6%96%B9%E6%B3%95(%E4%BB%A3%E7%A0%81%E8%AF%B4%E6%98%8E)/</loc>
+    <lastmod>2017-09-07T13:56:09.754Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript改变this指向的3种方法(代码说明)</title>
+        <pubTime>2017-05-21T10:55:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/05/31/JavaScript%E4%B9%8BSet%E5%92%8CMap%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2017-09-07T13:56:04.097Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript之Set和Map数据结构</title>
+        <pubTime>2017-05-31T04:19:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/06/07/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%A6%82%E4%BD%95%E5%8A%A8%E6%80%81%E5%A2%9E%E5%88%A0class%E7%B1%BB%E5%90%8D/</loc>
+    <lastmod>2017-09-07T13:55:56.895Z</lastmod>
+    <data>
+        <display>
+        <title>微信小程序如何动态增删class类名</title>
+        <pubTime>2017-06-07T06:36:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="微信小程序" url="http://liuzhixuan360.com/categories/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/06/11/JavaScript--Generator%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2017-09-07T13:55:50.411Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript--Generator函数</title>
+        <pubTime>2017-06-11T07:19:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/06/13/%E5%89%8D%E7%AB%AF%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7gulp%E8%B6%85%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE,%20%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B(%E5%9B%BE%E6%96%87)/</loc>
+    <lastmod>2017-09-07T13:55:44.435Z</lastmod>
+    <data>
+        <display>
+        <title>前端构建工具gulp超详细配置, 使用教程(图文)</title>
+        <pubTime>2017-06-13T03:29:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="前端自动化构建工具" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/06/16/javascript%E6%89%AB%E9%9B%B7Web-Sweep/</loc>
+    <lastmod>2017-09-07T13:55:31.351Z</lastmod>
+    <data>
+        <display>
+        <title>javascript扫雷Web-Sweep</title>
+        <pubTime>2017-06-16T01:30:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/06/16/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8git%E5%91%BD%E4%BB%A4%E5%B0%86%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0GitHub%E4%B8%8A/</loc>
+    <lastmod>2017-09-07T13:55:23.315Z</lastmod>
+    <data>
+        <display>
+        <title>如何使用git命令将项目部署到GitHub上</title>
+        <pubTime>2017-06-16T02:21:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="前端自动化构建工具" url="http://liuzhixuan360.com/categories/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/06/20/module.exports%20%E5%92%8C%20exports%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
+    <lastmod>2017-09-07T13:55:13.922Z</lastmod>
+    <data>
+        <display>
+        <title>module.exports 和 exports的区别</title>
+        <pubTime>2017-06-20T15:19:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/06/21/node.js%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2017-09-07T13:55:08.475Z</lastmod>
+    <data>
+        <display>
+        <title>node.js文件操作</title>
+        <pubTime>2017-06-20T16:01:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="node" url="http://liuzhixuan360.com/categories/node/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/07/15/javascript(%E5%85%BC%E5%AE%B9)%E9%81%8D%E5%8E%86%E5%85%83%E7%B4%A0%E7%9A%84%E7%89%B9%E6%80%A7/</loc>
+    <lastmod>2017-09-07T13:54:54.181Z</lastmod>
+    <data>
+        <display>
+        <title>javascript(兼容)遍历元素的特性</title>
+        <pubTime>2017-07-15T07:21:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/07/15/DOM%E4%B8%ADNodeList&NamedNodeMap&HTMLCollection%E7%AE%80%E4%BB%8B/</loc>
+    <lastmod>2017-09-07T13:54:47.188Z</lastmod>
+    <data>
+        <display>
+        <title>DOM中NodeList&NamedNodeMap&HTMLCollection简介</title>
+        <pubTime>2017-07-15T07:51:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/07/27/JavaScript%E4%B8%ADevent%E5%AF%B9%E8%B1%A1%E4%B8%ADcurrentTarget%E5%92%8Ctarget%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
+    <lastmod>2017-09-07T13:54:38.976Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript中event对象中currentTarget和target的区别</title>
+        <pubTime>2017-07-27T14:47:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/08/29/%E9%AB%98%E6%80%A7%E8%83%BDJavaScript---%E5%8A%A0%E8%BD%BD%E5%92%8C%E6%89%A7%E8%A1%8C/</loc>
+    <lastmod>2017-09-07T13:53:45.014Z</lastmod>
+    <data>
+        <display>
+        <title>高性能JavaScript---加载和执行</title>
+        <pubTime>2017-08-29T15:37:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/08/31/%E9%AB%98%E6%80%A7%E8%83%BDJavaScript---%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE,%20%E9%97%AD%E5%8C%85,%20%E5%8E%9F%E5%9E%8B,%20%E5%8E%9F%E5%9E%8B%E9%93%BE/</loc>
+    <lastmod>2017-09-07T13:53:37.210Z</lastmod>
+    <data>
+        <display>
+        <title>高性能JavaScript---作用域链, 闭包, 原型, 原型链</title>
+        <pubTime>2017-08-31T15:21:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/05/JavaScript--call(%20)apply(%20)%E7%94%A8%E6%B3%95/</loc>
+    <lastmod>2017-09-07T13:52:59.506Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript--call( )apply( )用法</title>
+        <pubTime>2017-09-05T15:38:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/02/JavaScript%E5%85%B3%E4%BA%8E%E8%A1%A8%E5%8D%95%E8%84%9A%E6%9C%AC%E7%9A%84%E4%B8%80%E4%BA%9B%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/</loc>
+    <lastmod>2017-09-07T13:47:32.087Z</lastmod>
+    <data>
+        <display>
+        <title>JavaScript关于表单脚本的一些实用技巧</title>
+        <pubTime>2017-09-02T06:28:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/06/%E9%AB%98%E6%80%A7%E8%83%BDJavaScript--%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0(+)%E5%92%8C%E5%8A%A0%E7%AD%89(+=)%E6%93%8D%E4%BD%9C%E7%AC%A6%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2017-09-07T13:45:24.009Z</lastmod>
+    <data>
+        <display>
+        <title>高性能JavaScript--字符串加(+)和加等(+=)操作符优化方法</title>
+        <pubTime>2017-09-05T16:00:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/04/%E8%BE%BE%E5%A4%AB%E8%AE%BE%E5%A4%87(Duff%60s%20Device)%E5%87%8F%E5%B0%91%E8%BF%AD%E4%BB%A3%E6%AC%A1%E6%95%B0/</loc>
+    <lastmod>2017-09-07T13:41:53.988Z</lastmod>
+    <data>
+        <display>
+        <title>达夫设备(Duff`s Device)减少迭代次数</title>
+        <pubTime>2017-09-04T15:22:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="javascript" url="http://liuzhixuan360.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/04/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80---%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%80%E4%BB%8B%E5%92%8C%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B08%E7%A7%8D%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%8F%8A%E4%BE%8B%E9%A2%98/</loc>
+    <lastmod>2017-09-07T13:39:48.917Z</lastmod>
+    <data>
+        <display>
+        <title>数据库基础---关系数据库简介和关系代数8种运算方法及例题</title>
+        <pubTime>2017-09-04T13:46:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据库" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/09/01/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80---%E4%B8%89%E7%A7%8D%E6%8A%BD%E8%B1%A1%E4%B8%A4%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%8B%AC%E7%AB%8B%E6%80%A7/</loc>
+    <lastmod>2017-09-07T13:35:19.387Z</lastmod>
+    <data>
+        <display>
+        <title>数据库基础---三种抽象两种数据独立性</title>
+        <pubTime>2017-09-01T08:55:00.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据库" url="http://liuzhixuan360.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2017/08/28/%E4%BA%BA%E7%B1%BB%E7%AE%80%E5%8F%B2--%E7%BB%8F%E5%85%B8%E8%AF%AD%E5%8F%A5%E6%91%98%E5%BD%95/</loc>
+    <lastmod>2017-08-30T00:50:47.384Z</lastmod>
+    <data>
+        <display>
+        <title>人类简史--经典语句摘录</title>
+        <pubTime>2017-08-28T13:33:00.000Z</pubTime>
+        
+        <tag>哲理</tag>
+         
+         
+           
+             
+              <breadCrumb title="人生哲理" url="http://liuzhixuan360.com/categories/%E4%BA%BA%E7%94%9F%E5%93%B2%E7%90%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
     
     
     

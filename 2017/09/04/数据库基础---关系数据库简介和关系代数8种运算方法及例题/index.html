@@ -1,0 +1,918 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="翾的blog" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="关系数据库关系数据模型关系是一个数学概念。当把关系的概念引入到数据库系统作为数据模型的数据结构时，既有所限定和也有所扩充。  关系的数学定义例：  课程={离散,C语言…..}，学生={张三,李四…..} 笛卡儿积(cartesian product)：设D1、…、Dn是n个域。D1、…、Dn上的笛卡尔乘积定义为集合D1×…×Dn ={ (d1 , …, dn ) | di ∈Di，1≤i≤n }">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库基础---关系数据库简介和关系代数8种运算方法及例题">
+<meta property="og:url" content="http://liuzhixuan360.com/2017/09/04/数据库基础---关系数据库简介和关系代数8种运算方法及例题/index.html">
+<meta property="og:site_name" content="刘翾`s Blog">
+<meta property="og:description" content="关系数据库关系数据模型关系是一个数学概念。当把关系的概念引入到数据库系统作为数据模型的数据结构时，既有所限定和也有所扩充。  关系的数学定义例：  课程={离散,C语言…..}，学生={张三,李四…..} 笛卡儿积(cartesian product)：设D1、…、Dn是n个域。D1、…、Dn上的笛卡尔乘积定义为集合D1×…×Dn ={ (d1 , …, dn ) | di ∈Di，1≤i≤n }">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901180147428?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901180709683?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901180913244?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901181156176?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901181534232?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901181755445?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170901182103115?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904204055641?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904204234816?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904204415826?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904204617176?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904205049228?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904205213874?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904205320884?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904205532684?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904210402460?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904210825259?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904212425148?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904213214930?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170904214201510?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-09-07T13:39:48.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库基础---关系数据库简介和关系代数8种运算方法及例题">
+<meta name="twitter:description" content="关系数据库关系数据模型关系是一个数学概念。当把关系的概念引入到数据库系统作为数据模型的数据结构时，既有所限定和也有所扩充。  关系的数学定义例：  课程={离散,C语言…..}，学生={张三,李四…..} 笛卡儿积(cartesian product)：设D1、…、Dn是n个域。D1、…、Dn上的笛卡尔乘积定义为集合D1×…×Dn ={ (d1 , …, dn ) | di ∈Di，1≤i≤n }">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170901180147428?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuzhixuan360.com/2017/09/04/数据库基础---关系数据库简介和关系代数8种运算方法及例题/"/>
+
+
+
+
+
+  <title>数据库基础---关系数据库简介和关系代数8种运算方法及例题 | 刘翾`s Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘翾`s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">刘翾</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2017/09/04/数据库基础---关系数据库简介和关系代数8种运算方法及例题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘翾">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/face.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘翾`s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据库基础---关系数据库简介和关系代数8种运算方法及例题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-04T21:46:00+08:00">
+                2017-09-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/09/04/数据库基础---关系数据库简介和关系代数8种运算方法及例题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h1><h2 id="关系数据模型"><a href="#关系数据模型" class="headerlink" title="关系数据模型"></a>关系数据模型</h2><p>关系是一个数学概念。<br>当把关系的概念引入到数据库系统作为数据模型的数据结构时，既有所限定和也有所扩充。 </p>
+<h3 id="关系的数学定义"><a href="#关系的数学定义" class="headerlink" title="关系的数学定义"></a>关系的数学定义</h3><p><strong>例：</strong> </p>
+<pre><code>课程={离散,C语言…..}，学生={张三,李四…..}
+</code></pre><p>笛卡儿积(cartesian product)：设D1、…、Dn是n个域。D1、…、Dn上的笛卡尔乘积定义为集合<br>D1×…×Dn ={ (d1 , …, dn ) | di ∈Di，1≤i≤n }。</p>
+<p>解：</p>
+<pre><code>D1={离散,C语言…}，D2={张三,李四…}
+D1×D2={(离散,张三),(离散,李四),……
+       (C语言,张三),(C语言,李四),……
+       …….}
+</code></pre><p><strong>关系(relation)：笛卡尔乘积D1×…×Dn的任意一个子集合称为一个定义在域D1、…、Dn上的关系。</strong></p>
+<a id="more"></a>
+<h3 id="对数学定义的限定和扩充"><a href="#对数学定义的限定和扩充" class="headerlink" title="对数学定义的限定和扩充"></a>对数学定义的限定和扩充</h3><p><strong>限定：</strong>无限关系在数据库系统中是无意义的。因此限定关系数据模型中的关系必须是有限集合。</p>
+<p>数学上，(离散,张三)≠(张三,离散)<br><strong>扩充：</strong>通过为关系的每个域附加一个属性名的方法取消关系元组的有序性<br>数据库上：(离散,张三)=(张三,离散)</p>
+<h3 id="基本关系具有以下六条性质："><a href="#基本关系具有以下六条性质：" class="headerlink" title="基本关系具有以下六条性质："></a>基本关系具有以下六条性质：</h3><ul>
+<li>列是同质的，即每一列中的分量是同一类型的数据；</li>
+<li>不同的列可出自同一个域，称其中的每一列为一个属性，不同的属性必须给不同的属性名；</li>
+<li>列的顺序可任意交换；</li>
+<li>任意两个元组不能完全相同；</li>
+<li>行的顺序可任意交换；</li>
+<li>分量必须取原子值，即每一个分量都必须是不可分的数据项。</li>
+</ul>
+<hr>
+<h3 id="完整性约束规则"><a href="#完整性约束规则" class="headerlink" title="完整性约束规则"></a>完整性约束规则</h3><h4 id="几个基本概念"><a href="#几个基本概念" class="headerlink" title="几个基本概念"></a>几个基本概念</h4><ul>
+<li><p>候选键：给定关系模式R(U)，K属于U，如果<br>  (1) R(U)的任何关系实例中的任意两个元组在属性集合K上的值都不相同－－－－唯一性<br>  (2) K的任何真子集都不满足条件(1)－－－－极小性</p>
+<pre><code>称K是候选键。
+</code></pre><p><strong>例：</strong><code>Student(姓名, 学生编号, 年级, 专业, 系)</code><br>显然，学生编号是候选键。<br>如果姓名不重复，姓名也是候选键。</p>
+</li>
+<li><p>主键：一个关系模式可能具有多个候选键。<br>当一个关系中具有多个候选键时，我们选择一个作为该关系模式的主键。<br>候选键中的属性称为键(主)属性，其他属性称为非键(主)属性</p>
+</li>
+<li><p>外部键：设X是关系模式R(U)的一个属性集合。如果X是另一个关系模式R’(U’)的主键，则称X是R(U)关于R’(U’)的外部键。<br>例：外部键<br><img src="http://img.blog.csdn.net/20170901180147428?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+</li>
+</ul>
+<p><strong>关联完整性约束说明，任何关系的一个元组只能通过外部键与另一个关系中存在的元组相关联.</strong></p>
+<hr>
+<h3 id="关系运算"><a href="#关系运算" class="headerlink" title="关系运算"></a>关系运算</h3><ul>
+<li>基于代数的定义：<strong>关系代数</strong><br><img src="http://img.blog.csdn.net/20170901180709683?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></li>
+<li>基于逻辑的定义：<strong>关系演算</strong><br>由于使用变量的不同，关系演算又分为元组关系演算和域关系演算。 </li>
+</ul>
+<h4 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h4><p>例: 两个关系实例<br><img src="http://img.blog.csdn.net/20170901180913244?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>(1.) 并运算</strong></p>
+<p>设R和S是n元关系，而且两者各对应属性的数据类型也相同。R和S的并操作定义为 R∪S = { t | t∈R∨t∈S }。<br>白话:  R和S关系合一起, 相同的不写</p>
+<p><img src="http://img.blog.csdn.net/20170901181156176?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>(2.) 差操作</strong></p>
+<p>设R和S是n元关系，而且两者各对应属性的数据类型也相同。R和S的差定义为 R-S ={ t | t∈R∧tS}。<br>白话: 因为是R-S, 找R在S关系中没有的</p>
+<p><img src="http://img.blog.csdn.net/20170901181534232?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>(3.) 笛卡尔乘积</strong></p>
+<p>设R是n元关系，S是m元关系，R和S的的笛卡尔积定义为<br>R×S={(r1,…,rn,s1,…,sm)|(r1,…, rn )∈R∧(s1, …,sm )∈S}。<br>白话: 和普通的笛卡尔乘机差不多, 自己看看, 规律很好找.</p>
+<p><img src="http://img.blog.csdn.net/20170901181755445?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>(4. ) 投影操作</strong></p>
+<p>设R是一个n元关系，R的投影操作定义为<br>∏i1,i2,…,im(R) = {(ri1, …,rim)|(r1 ,…,ri1,…,rim,…,rn)∈R}。<br>白话: 看横行, 如果有两个横行相同, 只写一个. 因此若是S关系投影操作的话, 也就是有b和a</p>
+<p><img src="http://img.blog.csdn.net/20170901182103115?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>(5. ) 选择操作</strong></p>
+<p>设R是一个n元关系，F是一个形如riθc的公式，其中θ∈{=，≠，&gt;，&lt;，≤，≥}，R的选择操作定义为F(R)={(r1,…,ri ,…,rn )|(r1,…,ri ,…,rn )∈R∧riθc }。<br>白话: 把符合条件的拿出来</p>
+<p><img src="http://img.blog.csdn.net/20170904204055641?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>(6. ) 交操作</strong></p>
+<p>设R和S是n元关系，而且两者各对应属性的数据类型也相同。R和S的交操作定义为 R  S = { t | t∈R∧t∈S }= R-(R-S)。<br>白话: 相同的拿出来</p>
+<p><img src="http://img.blog.csdn.net/20170904204234816?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>(7. ) 连接操作</strong></p>
+<p>设R是n元关系，S是m元关系，A是R的属性，B是S的属性，A和B的值域具有相同的数据类型，θ∈{=,  ≠, &gt;, &lt;, ≤, ≥}。R和S的连接操作定义为<br><img src="http://img.blog.csdn.net/20170904204415826?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br>其中，r[A]表示元组r在属性A上的值，s[B]表示元组s在属性B上的值。我们称A和B是连接属性。 </p>
+<p>白话: 两个关系先做笛卡尔积运算, 然后再根据条件进行比对. 留下符合条件的<br>例子: </p>
+<p><img src="http://img.blog.csdn.net/20170904204617176?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>(7. 1) 几个特殊的连接操作</strong></p>
+<p>①自然连接 设Att(R)和Att(S)分别是R和S的属性集合。连接条件为R.B=S.B，连接的结果关系的属性集合为Att(R)∪(Att(S)-{B})，即B在结果关系中只出现一次。称这样的连接操作为自然连接操作，</p>
+<p>白话: 找相同的然后拼在一起, 例如B属性, 看看下面的例子;</p>
+<p><img src="http://img.blog.csdn.net/20170904205049228?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>②复合连接 类似于自然连接，只是连接结果不包含连接属性。 </p>
+<p><img src="http://img.blog.csdn.net/20170904205213874?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>③半连接 </p>
+<p><img src="http://img.blog.csdn.net/20170904205320884?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>白话: 下面的例子由于是R半链接S, 则因此拿R去和S所比较</p>
+<p><img src="http://img.blog.csdn.net/20170904205532684?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p><strong>(8. ) 商操作</strong></p>
+<p>设R和S是两个关系，Z是R的属性集合，X是S的属性集合，XZ，Y=Z-X。R除以S的商定义为R÷S={t|t∏Y(R)且sS, tsR}，其中，ts表示由t和s的各属性值构成的一个R关系元组。 </p>
+<p>白话: 看下面的例子, 因为C, D是关系S中的两个属性, 因此在R集合对除了C, D的属性, 即A, B两属性进行投影, 得到<strong><em>a, b;   b, c;  e, d;</em></strong>这三组, 然后用这个结果与关系S进行笛卡尔积运算, 发现<strong><em>b c c d</em></strong>这组在关系R中没有, 其余<strong><em>a, b;  e, d;</em></strong> 做的运算在R中存在. 因此最后结果为<strong><em>a, b; e, d;</em></strong></p>
+<p><img src="http://img.blog.csdn.net/20170904210402460?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<hr>
+<h2 id="关系代数运算例题"><a href="#关系代数运算例题" class="headerlink" title="关系代数运算例题"></a>关系代数运算例题</h2><p>一个COMPANY数据库</p>
+<p><img src="http://img.blog.csdn.net/20170904210825259?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>下面介绍了一些需要用到的属性解释</p>
+<pre><code>NAME--员工名字
+SSN--员工编号
+SUPERSSN--上司编号
+DNO--部门编号
+
+DNUMBER--部门编号
+MGRSSN--负责人编号
+
+PNAME--项目名称
+PNUMBER--项目编号
+
+ESSN--员工编号
+PNO--项目编号
+</code></pre><p>问1: 参加了p2项目的员工号(由于符号不太好打, 我手写的)</p>
+<p><img src="http://img.blog.csdn.net/20170904212425148?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>语言解释: 在WORKS_ON表中选择PNO=P2的元组, 再对员工号即ESSN进行投影.</p>
+<p>问2. 在“研发部”工作的所有工作人员名字</p>
+<p><img src="http://img.blog.csdn.net/20170904213214930?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>语言解释: 1. EMPLOYEE表与DEPARTMENT表在部门编号相等的条件下, 进行连接, 然后再新表中选择DNAME=”研发部”, 最后对NAME进行投影.<br>2 . 先在DEPARTMENT中选择”研发部”, 然后与EMPLOYEE进行连接, 然后投影</p>
+<p>问3. 没有参加项目p1的工作人员名字</p>
+<p><img src="http://img.blog.csdn.net/20170904214201510?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>语言解释: 在WORKS_ON中选择P1项目, 与EMPLOYEE进行连接, 然后对NAME进行投影得到参加p1工作人员的名字, 最后用所有的名字减去它.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>越来越多的平台（微信公众平台，新浪微博，简书，百度打赏等）支持打赏功能，付费阅读时代越来越近，特此增加了打赏功能，支持微信打赏和支付宝打赏。坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010813_1496.png" alt="刘翾 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010819_6378.png" alt="刘翾 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/02/JavaScript关于表单脚本的一些实用技巧/" rel="next" title="JavaScript关于表单脚本的一些实用技巧">
+                <i class="fa fa-chevron-left"></i> JavaScript关于表单脚本的一些实用技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/04/达夫设备(Duff`s Device)减少迭代次数/" rel="prev" title="达夫设备(Duff`s Device)减少迭代次数">
+                达夫设备(Duff`s Device)减少迭代次数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/face.jpg"
+               alt="刘翾" />
+          <p class="site-author-name" itemprop="name">刘翾</p>
+           
+              <p class="site-description motion-element" itemprop="description">如果有一天我们淹没在人潮里，那是因为没有努力活得丰盛。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关系数据库"><span class="nav-number">1.</span> <span class="nav-text">关系数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关系数据模型"><span class="nav-number">1.1.</span> <span class="nav-text">关系数据模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关系的数学定义"><span class="nav-number">1.1.1.</span> <span class="nav-text">关系的数学定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对数学定义的限定和扩充"><span class="nav-number">1.1.2.</span> <span class="nav-text">对数学定义的限定和扩充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本关系具有以下六条性质："><span class="nav-number">1.1.3.</span> <span class="nav-text">基本关系具有以下六条性质：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整性约束规则"><span class="nav-number">1.1.4.</span> <span class="nav-text">完整性约束规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#几个基本概念"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">几个基本概念</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系运算"><span class="nav-number">1.1.5.</span> <span class="nav-text">关系运算</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关系代数"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">关系代数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系代数运算例题"><span class="nav-number">1.2.</span> <span class="nav-text">关系代数运算例题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘翾</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "19900f3c34a444f28a6aaba95b80bcee",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

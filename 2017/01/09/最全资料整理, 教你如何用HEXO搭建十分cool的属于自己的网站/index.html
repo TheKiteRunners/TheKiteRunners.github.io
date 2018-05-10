@@ -1,0 +1,811 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="翾的blog" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="…足足部署了4天, bug层出不穷啊, 各种改, 现附上自己博客地址和效果图.我的网站—-liuzhixuan360.com效果图:网站优化还没做, 可能加载时间稍微长一点.正文下面我简单概述一下, 这个博客搭建的过程以及原理.在大体上博客的整体搭建总共可以分3个部分.一. HEXO框架的本地设置以及搭建二. 将网站部署到Github Pages, 以实现数据的承载.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最全资料整理, 教你如何用HEXO搭建十分cool的属于自己的网站">
+<meta property="og:url" content="http://liuzhixuan360.com/2017/01/09/最全资料整理, 教你如何用HEXO搭建十分cool的属于自己的网站/index.html">
+<meta property="og:site_name" content="刘翾`s Blog">
+<meta property="og:description" content="…足足部署了4天, bug层出不穷啊, 各种改, 现附上自己博客地址和效果图.我的网站—-liuzhixuan360.com效果图:网站优化还没做, 可能加载时间稍微长一点.正文下面我简单概述一下, 这个博客搭建的过程以及原理.在大体上博客的整体搭建总共可以分3个部分.一. HEXO框架的本地设置以及搭建二. 将网站部署到Github Pages, 以实现数据的承载.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170109201145845?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-09-07T14:00:15.522Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="最全资料整理, 教你如何用HEXO搭建十分cool的属于自己的网站">
+<meta name="twitter:description" content="…足足部署了4天, bug层出不穷啊, 各种改, 现附上自己博客地址和效果图.我的网站—-liuzhixuan360.com效果图:网站优化还没做, 可能加载时间稍微长一点.正文下面我简单概述一下, 这个博客搭建的过程以及原理.在大体上博客的整体搭建总共可以分3个部分.一. HEXO框架的本地设置以及搭建二. 将网站部署到Github Pages, 以实现数据的承载.">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170109201145845?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuzhixuan360.com/2017/01/09/最全资料整理, 教你如何用HEXO搭建十分cool的属于自己的网站/"/>
+
+
+
+
+
+  <title>最全资料整理, 教你如何用HEXO搭建十分cool的属于自己的网站 | 刘翾`s Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘翾`s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">刘翾</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2017/01/09/最全资料整理, 教你如何用HEXO搭建十分cool的属于自己的网站/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘翾">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/face.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘翾`s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">最全资料整理, 教你如何用HEXO搭建十分cool的属于自己的网站</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-09T20:30:00+08:00">
+                2017-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/其他/" itemprop="url" rel="index">
+                    <span itemprop="name">其他</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/01/09/最全资料整理, 教你如何用HEXO搭建十分cool的属于自己的网站/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>…足足部署了4天, bug层出不穷啊, 各种改, 现附上自己博客地址和效果图.我的网站—-liuzhixuan360.com<br>效果图:<br>网站优化还没做, 可能加载时间稍微长一点.正文下面我简单概述一下, 这个博客搭建的过程以及原理.<br>在大体上博客的整体搭建总共可以分3个部分.<br>一. HEXO框架的本地设置以及搭建<br>二. 将网站部署到Github Pages, 以实现数据的承载.<br><a id="more"></a></p>
+<h4 id="…足足部署了4天-bug层出不穷啊-各种改-现附上自己博客地址和效果图"><a href="#…足足部署了4天-bug层出不穷啊-各种改-现附上自己博客地址和效果图" class="headerlink" title="…足足部署了4天, bug层出不穷啊, 各种改, 现附上自己博客地址和效果图."></a>…足足部署了4天, bug层出不穷啊, 各种改, 现附上自己博客地址和效果图.</h4><p><a href="liuzhixuan360.com">我的网站</a>—-liuzhixuan360.com<br>效果图:<br><img src="http://img.blog.csdn.net/20170109201145845?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<h4 id="网站优化还没做-可能加载时间稍微长一点"><a href="#网站优化还没做-可能加载时间稍微长一点" class="headerlink" title="网站优化还没做, 可能加载时间稍微长一点."></a>网站优化还没做, 可能加载时间稍微长一点.</h4><hr>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>下面我简单概述一下, 这个博客搭建的过程以及原理.<br>在大体上博客的整体搭建总共可以分3个部分.<br>一. HEXO框架的本地设置以及搭建<br>二. 将网站部署到Github Pages, 以实现数据的承载.<br>三. 购买域名并与绑定</p>
+<p>接下来我把博客搭建的查阅网站以及博客附给大家, 可以按照我一下链接的顺序, 顺次查阅并实践.</p>
+<ol>
+<li><a href="http://lowrank.science/Hexo-Github/" target="_blank" rel="noopener">知行合一 | 用 Hexo 搭建博客 | Grok</a>(提醒大家, 在部署的时候最好一直使用当前博客创建路径进行部署, 例如我的博客本地路径为: D:\blog\TheKiteRunners.github.io. 那么在输入任何命令时我都会先将位置定在这里.  或者在安装完git后, 手动点击图标切换到该文件夹, 然后点击右键git bash here)<br><br><br>我想大家在这篇博客中肯定会出错很多地方, 下面我把一些可能出错问题以及解决方案附上<br>问题1:<br>第一步<code>npm install -g hexo-cli</code> 下载时卡住了怎么办?<br>答:    有两种解决办法:<br>(1.) 在<strong>每次</strong>下载时切换镜像: 输入下面命令<code>npm config set registry &quot;https://registry.npm.taobao.org&quot;</code><br>(2.)(推荐)直接将淘宝镜像安装下来`<br>npm install -g cnpm –registry=<a href="https://registry.npm.taobao.org" target="_blank" rel="noopener">https://registry.npm.taobao.org</a></li>
+</ol>
+<p>问题2:使用localhost:4000访问本地blog一直无响应<br>答:  可能是当前本地端口被占用了, 可以更换当前端口地址, git中输入<code>$ hexo server -p 5000</code> , 然后输入localhost:5000, 再试一试. (我当时犯了一个特别愚蠢的问题….. 当我hexo server之后, 它提示我要按crtl+c…..我就按了没看到后面的to stop……小伙伴们在host server之后就直接测试localhost:4000….测试完之后再crtl+c)</p>
+<p>2 . 相信大家要是看到这里估计hexo框架已经搭建完成了, 想要去拿一篇博客测试测试, 可是小白们注意, hexo框架内置的是markdown编辑器, 不会的小伙伴们可以到这个博客里学习: <a href="http://blog.csdn.net/chwshuang/article/details/52350551" target="_blank" rel="noopener">Hexo在Github中搭建博客系统(5)Markdown语法 - 大大的微笑的专栏 - 博客频道 - CSDN.NET</a></p>
+<p>3 . 到了这一步是不是什么都弄好了就差一个好看主题了呢, 我用的是Next主题, 下面的Next开发文档说的很详细我就不仔细叙述了.<br><a href="theme-next.iissnan.com/theme-settings.html">主题配置 - NexT 使用文档</a></p>
+<p><strong>以上我只是将主要的搭建问题以及问题附上, 若还有其他问题可以在下方评论</strong></p>
+<p><strong><em>网站优化, 以及配置持续更新, 有任何新的内容都会通过这里给大家分享出来</em></strong></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>越来越多的平台（微信公众平台，新浪微博，简书，百度打赏等）支持打赏功能，付费阅读时代越来越近，特此增加了打赏功能，支持微信打赏和支付宝打赏。坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010813_1496.png" alt="刘翾 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010819_6378.png" alt="刘翾 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/01/js正则表达式----RegExp, 代码说明简单易懂/" rel="next" title="js正则表达式----RegExp, 代码说明简单易懂">
+                <i class="fa fa-chevron-left"></i> js正则表达式----RegExp, 代码说明简单易懂
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/18/Chrome无法调用preventDefault阻止touch事件解决办法/" rel="prev" title="Chrome无法调用preventDefault阻止touch事件解决办法">
+                Chrome无法调用preventDefault阻止touch事件解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/face.jpg"
+               alt="刘翾" />
+          <p class="site-author-name" itemprop="name">刘翾</p>
+           
+              <p class="site-description motion-element" itemprop="description">如果有一天我们淹没在人潮里，那是因为没有努力活得丰盛。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#…足足部署了4天-bug层出不穷啊-各种改-现附上自己博客地址和效果图"><span class="nav-number">1.</span> <span class="nav-text">…足足部署了4天, bug层出不穷啊, 各种改, 现附上自己博客地址和效果图.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#网站优化还没做-可能加载时间稍微长一点"><span class="nav-number">2.</span> <span class="nav-text">网站优化还没做, 可能加载时间稍微长一点.</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number"></span> <span class="nav-text">正文</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘翾</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "19900f3c34a444f28a6aaba95b80bcee",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

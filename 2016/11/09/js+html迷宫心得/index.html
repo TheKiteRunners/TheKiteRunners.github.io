@@ -1,0 +1,852 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="翾的blog" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="心得与体会document.createElement()是在对象中创建一个对象，要与appendChild() 或 insertBefore()方法联合使用。其中，appendChild() 方法在节点的子节点列表末添加新的子节点setAttribute()方法添加指定的属性，并为其赋指定的值。如果这个指定的属性已存在，则仅设置/更改值。&amp;lt; table &amp;gt; 标签定义 HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js+html迷宫心得">
+<meta property="og:url" content="http://liuzhixuan360.com/2016/11/09/js+html迷宫心得/index.html">
+<meta property="og:site_name" content="刘翾`s Blog">
+<meta property="og:description" content="心得与体会document.createElement()是在对象中创建一个对象，要与appendChild() 或 insertBefore()方法联合使用。其中，appendChild() 方法在节点的子节点列表末添加新的子节点setAttribute()方法添加指定的属性，并为其赋指定的值。如果这个指定的属性已存在，则仅设置/更改值。&amp;lt; table &amp;gt; 标签定义 HTML">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-07T14:01:34.445Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js+html迷宫心得">
+<meta name="twitter:description" content="心得与体会document.createElement()是在对象中创建一个对象，要与appendChild() 或 insertBefore()方法联合使用。其中，appendChild() 方法在节点的子节点列表末添加新的子节点setAttribute()方法添加指定的属性，并为其赋指定的值。如果这个指定的属性已存在，则仅设置/更改值。&amp;lt; table &amp;gt; 标签定义 HTML">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuzhixuan360.com/2016/11/09/js+html迷宫心得/"/>
+
+
+
+
+
+  <title>js+html迷宫心得 | 刘翾`s Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘翾`s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">刘翾</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2016/11/09/js+html迷宫心得/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘翾">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/face.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘翾`s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">js+html迷宫心得</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-09T19:06:00+08:00">
+                2016-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2016/11/09/js+html迷宫心得/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>心得与体会<br>document.createElement()是在对象中创建一个对象，要与<strong>appendChild()</strong> 或 <strong>insertBefore()</strong>方法联合使用。其中，appendChild() 方法在节点的子节点列表末添加新的子节点setAttribute()方法添加指定的属性，并为其赋指定的值。<br>如果这个指定的属性已存在，则仅设置/更改值。&lt; table &gt; 标签定义 HTML</p>
+<a id="more"></a>
+<h2 id="心得与体会"><a href="#心得与体会" class="headerlink" title="心得与体会"></a>心得与体会</h2><ol>
+<li><p><strong>document.createElement()</strong></p>
+<pre><code>是在对象中创建一个对象，要与**appendChild()** 或 **insertBefore()**方法联合使用。其中，appendChild() 方法在节点的子节点列表末添加新的子节点
+</code></pre></li>
+<li><p><strong>setAttribute()</strong></p>
+<pre><code>方法添加指定的属性，并为其赋指定的值。
+如果这个指定的属性已存在，则仅设置/更改值。
+</code></pre></li>
+<li><p><strong>&lt; table &gt;</strong> 标签定义 HTML 表格。</p>
+<pre><code>简单的 HTML 表格由 table 元素以及一个或多个 tr、th 或 td 元素组成。
+tr 元素定义表格行，th 元素定义表头，td 元素定义表格单元
+</code></pre></li>
+<li><p><strong>&lt; center &gt;</strong> 标签对其包围的文本进行水平居中处理。<br>注:            </p>
+<pre><code>HTML 4.01 与 HTML 5 之间的差异
+在 HTML 5 中，不支持该标签。请使用 CSS 代替。
+</code></pre></li>
+<li><p><strong>insertRow()</strong> 方法用于在表格中的指定位置插入一个新行。</p>
+<p> <strong>返回值</strong></p>
+<pre><code>返回一个 TableRow，表示新插入的行。
+</code></pre><p> <strong>说明</strong></p>
+<pre><code>该方法创建一个新的 TableRow 对象，表示一个新的 &lt;tr&gt; 标记，并把它插入表中的指定位置。
+新行将被插入 index 所在行之前。若 index 等于表中的行数，则新行将被附加到表的末尾。
+如果表是空的，则新行将被插入到一个新的 &lt;tbody&gt; 段，该段自身会被插入表中。
+</code></pre><p> <strong>抛出</strong></p>
+<pre><code>若参数 index 小于 0 或大于等于表中的行数，该方法将抛出代码为 INDEX_SIZE_ERR 的 DOMException 异常。
+</code></pre></li>
+<li><p><strong>insertCell()</strong> 方法用于在 HTML 表的一行的指定位置插入一个空的 &lt; td &gt; 元素。<br><strong>语法</strong></p>
+<pre><code>tablerowObject.insertCell(index)
+</code></pre><p><strong>返回值</strong></p>
+<pre><code>一个 TableCell 对象，表示新创建并被插入的 &lt; td &gt; 元素。
+</code></pre><p><strong>说明</strong></p>
+<pre><code>该方法将创建一个新的 &lt; td &gt; 元素，把它插入行中指定的位置。新单元格将被插入当前位于 index 指定位置的表元之前。如果 index 等于行中的单元格数，则新单元格被附加在行的末尾。
+请注意，该方法只能插入 &lt; td &gt; 数据表元。若需要给行添加头表元，必须用 Document.createElement() 方法和 Node.insertBefore() 方法（或相关的方法）创建并插入一个 &lt; th &gt; 元素。
+</code></pre><p><strong>抛出</strong></p>
+<pre><code>若参数 index 小于 0 或大于等于行中的的表元数，该方法将抛出代码为 INDEX_SIZE_ERR 的 DOMException 异常。
+</code></pre></li>
+<li><p><strong>index</strong> 属性可返回下拉列表中选项的索引位置。<br><strong>语法</strong></p>
+<pre><code>optionObject.index
+</code></pre></li>
+<li><p><strong>floor()</strong> 方法可对一个数进行下舍入。<br><strong>语法</strong></p>
+<pre><code>Math.floor(x)
+</code></pre><p><strong>参数    描述</strong></p>
+<pre><code>x    必需。任意数值或表达式。
+</code></pre><p><strong>返回值</strong></p>
+<pre><code>小于等于 x，且与 x 最接近的整数。
+</code></pre><p><strong>说明</strong></p>
+<pre><code>floor() 方法执行的是向下取整计算，它返回的是小于或等于函数参数，并且与之最接近的整数。
+</code></pre></li>
+<li><p><strong>event.keyCode</strong>键码值</p>
+</li>
+<li>创建带有 4 个选项的选择列表：<br>&lt; select &gt;<br>&lt; option value =”volvo” &gt;Volvo&lt; /option &gt;<br>&lt; option value =”saab”&gt;Saab&lt; /option &gt;<br>&lt; option value=”opel”&gt;Opel&lt; /option &gt;<br>&lt; option value=”audi”&gt;Audi&lt; /option &gt;<br>&lt; /select &gt;</li>
+</ol>
+<hr>
+<h2 id="下面附上源代码"><a href="#下面附上源代码" class="headerlink" title="下面附上源代码"></a>下面附上源代码</h2><p><strong>javascript部分</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @author Administrator</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> locx = <span class="number">0</span>;   <span class="comment">//当前行坐标</span></span><br><span class="line"><span class="keyword">var</span> locy = <span class="number">0</span>;   <span class="comment">//当前列坐标</span></span><br><span class="line"><span class="keyword">var</span> zuobiaoarr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>);   <span class="comment">//坐标数组</span></span><br><span class="line"><span class="keyword">var</span> tobearr = <span class="keyword">new</span> <span class="built_in">Array</span>();       <span class="comment">//等待数组</span></span><br><span class="line"><span class="keyword">var</span> migongrow = <span class="number">1</span>;               <span class="comment">//迷宫行数</span></span><br><span class="line"><span class="keyword">var</span> migongcol = <span class="number">1</span>;               <span class="comment">//迷宫列数</span></span><br><span class="line"><span class="keyword">var</span> roadwidth = <span class="number">10</span>;              <span class="comment">//道路宽度</span></span><br><span class="line"><span class="keyword">var</span> wallwidth = <span class="number">2</span>;               <span class="comment">//墙厚度 </span></span><br><span class="line"><span class="keyword">var</span> personwidth = <span class="number">5</span>;             <span class="comment">//行走方块厚度 </span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 坐标类</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">zuobiao</span>(<span class="params">x,y,f</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.x=x;</span><br><span class="line">  <span class="keyword">this</span>.y=y;</span><br><span class="line">  <span class="keyword">this</span>.visited=f;  <span class="comment">/* 0 not visit  1 tobevisit  2 visit*/</span></span><br><span class="line">  <span class="keyword">this</span>.wall = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>); <span class="comment">//wall left-&gt;top-&gt;right-&gt;bottom  0:closed  1:open</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*  功能： 创建迷宫对象</span></span><br><span class="line"><span class="comment">*  @param  r: 迷宫行数</span></span><br><span class="line"><span class="comment">*     c: 迷宫列数</span></span><br><span class="line"><span class="comment">*     s: 入口行数</span></span><br><span class="line"><span class="comment">*     e: 出口行数</span></span><br><span class="line"><span class="comment">*     road: 道路宽度</span></span><br><span class="line"><span class="comment">*     wall: 墙体宽度</span></span><br><span class="line"><span class="comment">*     psn:  行者宽度</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MiGong</span>(<span class="params">r,c,s,e,road,wall,psn</span>)</span>&#123;</span><br><span class="line">  migongrow = r;<span class="comment">//迷宫行数</span></span><br><span class="line">  migongcol = c;<span class="comment">//迷宫列数</span></span><br><span class="line">  roadwidth = road;<span class="comment">//道路宽度</span></span><br><span class="line">  wallwidth = wall;<span class="comment">//墙体宽度</span></span><br><span class="line">  personwidth = psn;<span class="comment">//行者宽度</span></span><br><span class="line">  zuobiaoarr = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> migong = <span class="built_in">document</span>.createElement(<span class="string">"table"</span>);</span><br><span class="line">  migong.setAttribute(<span class="string">"border"</span>,<span class="number">0</span>);</span><br><span class="line">  migong.setAttribute(<span class="string">"cellPadding"</span>,<span class="number">0</span>);</span><br><span class="line">  migong.setAttribute(<span class="string">"cellSpacing"</span>,<span class="number">0</span>);</span><br><span class="line">  migong.setAttribute(<span class="string">"id"</span>,<span class="string">"migong"</span>);</span><br><span class="line">  <span class="built_in">document</span>.getElementsByTagName(<span class="string">"center"</span>)[<span class="number">0</span>].appendChild(migong);</span><br><span class="line">  <span class="comment">//在center标签后面加入一个migong对象</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; migongrow*<span class="number">2</span>+<span class="number">1</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">var</span> r = migong.insertRow(<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; migongcol*<span class="number">2</span>+<span class="number">1</span>; j++)&#123;</span><br><span class="line">      <span class="keyword">var</span> cell = r.insertCell(<span class="number">-1</span>);</span><br><span class="line">      <span class="keyword">if</span>(i % <span class="number">2</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(j % <span class="number">2</span>)</span><br><span class="line">          cell.style.cssText=<span class="string">"height:"</span> + roadwidth + <span class="string">"px;width:"</span> + wallwidth + <span class="string">"px;background-color:#eeeeee"</span>;<span class="comment">//灰色</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">          cell.style.cssText=<span class="string">"height:"</span> + roadwidth + <span class="string">"px;width:"</span> + wallwidth + <span class="string">"px;background-color:#333333"</span>;<span class="comment">//黑色</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(j % <span class="number">2</span>)</span><br><span class="line">          cell.style.cssText=<span class="string">"height:"</span> + wallwidth + <span class="string">"px;width:"</span> + roadwidth + <span class="string">"px;background-color:#333333"</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">          cell.style.cssText=<span class="string">"height:"</span> + wallwidth + <span class="string">"px;width:"</span> + wallwidth + <span class="string">"px;background-color:#333333"</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//初始化坐标</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= migongrow; i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> j = <span class="number">1</span>; j &lt;= migongcol; j++)&#123;</span><br><span class="line">      <span class="keyword">var</span> len = zuobiaoarr.length;</span><br><span class="line">      zuobiaoarr[len] = <span class="keyword">new</span> zuobiao(i,j,<span class="number">0</span>);</span><br><span class="line">      zuobiaoarr[len].index = (i<span class="number">-1</span>) * migongcol + j;</span><br><span class="line">      <span class="comment">//zuobiaoarr[len].index = (i-1) * migongrow + j;</span></span><br><span class="line">      <span class="comment">//顶层设置不可开</span></span><br><span class="line">      <span class="keyword">if</span>(i == <span class="number">1</span>)</span><br><span class="line">      zuobiaoarr[len].wall[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">      <span class="comment">//底层设置不可开 </span></span><br><span class="line">      <span class="keyword">if</span>(i == migongrow)</span><br><span class="line">      zuobiaoarr[len].wall[<span class="number">3</span>]=<span class="number">1</span>;</span><br><span class="line">      <span class="comment">//左边设置不可开</span></span><br><span class="line">      <span class="keyword">if</span>(j == <span class="number">1</span>)</span><br><span class="line">      zuobiaoarr[len].wall[<span class="number">0</span>]=<span class="number">1</span>; </span><br><span class="line">      <span class="comment">//右边设置不可开 </span></span><br><span class="line">      <span class="keyword">if</span>(j == migongcol)</span><br><span class="line">      zuobiaoarr[len].wall[<span class="number">2</span>]=<span class="number">1</span>;  </span><br><span class="line">    &#125;</span><br><span class="line">  CreateMG(s,<span class="number">1</span>,e,migongcol);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 功能: 把节点加入等待队列</span></span><br><span class="line"><span class="comment">* @param  zuo: 要加入的节点</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">AddTobe</span>(<span class="params">zuo</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!zuo) <span class="keyword">return</span>;</span><br><span class="line">  zuo.visited = <span class="number">1</span>;</span><br><span class="line">  tobearr[tobearr.length] = zuo;<span class="comment">//等待数组的长度为zuo</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 功能: 取出等待队列最后一个节点</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">var</span>  RemoveTobe = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> zuo = tobearr[tobearr.length<span class="number">-1</span>];</span><br><span class="line">  <span class="keyword">if</span>(tobearr.length &gt; <span class="number">0</span>)</span><br><span class="line">    tobearr.length -= <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> zuo;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 功能： 打墙</span></span><br><span class="line"><span class="comment"> * @param : zuo  当前位置节点</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hole</span>(<span class="params">zuo</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> tobehole = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">  <span class="keyword">var</span> x = zuo.x;</span><br><span class="line">  <span class="keyword">var</span> y = zuo.y;</span><br><span class="line">  zuo.flag=<span class="number">2</span>;</span><br><span class="line">  <span class="keyword">var</span> aflag = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">var</span> len = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(zuo.visited == <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  zuo.visited = <span class="number">2</span>;</span><br><span class="line">  <span class="comment">//选择可打墙</span></span><br><span class="line">  <span class="keyword">var</span> ztmp = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)&#123;</span><br><span class="line">    <span class="keyword">switch</span>(i)&#123;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">        ztmp = zuobiaoarr[zuo.index<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(ztmp &amp;&amp; !ztmp.visited)</span><br><span class="line">          ztmp.wall[<span class="number">2</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">        ztmp = zuobiaoarr[zuo.index-migongcol];</span><br><span class="line">        <span class="keyword">if</span>(ztmp  &amp;&amp; !ztmp.visited )</span><br><span class="line">          ztmp.wall[<span class="number">3</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">        ztmp = zuobiaoarr[zuo.index+<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span>(ztmp  &amp;&amp; !ztmp.visited)</span><br><span class="line">          ztmp.wall[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">        ztmp = zuobiaoarr[zuo.index+migongcol];</span><br><span class="line">        <span class="keyword">if</span>(ztmp  &amp;&amp; !ztmp.visited)</span><br><span class="line">          ztmp.wall[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(ztmp &amp;&amp; !zuo.wall[i] &amp;&amp; !ztmp.visited)&#123;</span><br><span class="line">      len = aflag.length;</span><br><span class="line">      zuo.wall[i] = <span class="number">1</span>;</span><br><span class="line">      aflag[len] = ztmp;</span><br><span class="line">      MakeHole(i,zuo);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  len = aflag.length;</span><br><span class="line">  <span class="keyword">var</span> xx = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span>(len &gt; <span class="number">0</span>)&#123;</span><br><span class="line">  xx = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*<span class="number">10</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">    AddTobe(aflag[xx%len]);</span><br><span class="line">    xx++;</span><br><span class="line">  &#125;</span><br><span class="line">  xx = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*len);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 功能： 开墙 </span></span><br><span class="line"><span class="comment"> * @param : xx 哪一面    0 left  1 top  2 right  3 bottom</span></span><br><span class="line"><span class="comment"> *          zuo 需要打墙的坐标</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">MakeHole</span>(<span class="params">xx,zuo</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> tbl = <span class="built_in">document</span>.getElementById(<span class="string">"migong"</span>);</span><br><span class="line">  <span class="keyword">switch</span> (xx) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span>: <span class="comment">//left</span></span><br><span class="line">      tbl.rows[zuo.x * <span class="number">2</span> - <span class="number">1</span>].cells[(zuo.y - <span class="number">1</span>) * <span class="number">2</span>].style.backgroundColor = <span class="string">"#eeeeee"</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span>: <span class="comment">//top</span></span><br><span class="line">      tbl.rows[(zuo.x - <span class="number">1</span>) * <span class="number">2</span>].cells[zuo.y * <span class="number">2</span> - <span class="number">1</span>].style.backgroundColor = <span class="string">"#eeeeee"</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span>: <span class="comment">//right</span></span><br><span class="line">      tbl.rows[zuo.x * <span class="number">2</span> - <span class="number">1</span>].cells[zuo.y * <span class="number">2</span>].style.backgroundColor = <span class="string">"#eeeeee"</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span>: <span class="comment">//bottom</span></span><br><span class="line">      tbl.rows[zuo.x * <span class="number">2</span>].cells[zuo.y * <span class="number">2</span> - <span class="number">1</span>].style.backgroundColor = <span class="string">"#eeeeee"</span>;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*  功能：创建迷宫</span></span><br><span class="line"><span class="comment">*  @param  startx: 开始位置x坐标, 入口的行数</span></span><br><span class="line"><span class="comment">*     starty: 开始位置y坐标</span></span><br><span class="line"><span class="comment">*     endx  : 结束位置x坐标, 入口的列数</span></span><br><span class="line"><span class="comment">*     endy  : 结束位置y坐标</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CreateMG</span>(<span class="params">startx,starty,endx,endy</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> xx = startx;<span class="comment">//开始的横竖坐标</span></span><br><span class="line">  <span class="keyword">var</span> yy = starty;</span><br><span class="line">  locx = endx;<span class="comment">//结束的横竖坐标</span></span><br><span class="line">  locy = endy;</span><br><span class="line">  <span class="keyword">var</span> zuo = zuobiaoarr[(startx<span class="number">-1</span>) * migongcol + starty];</span><br><span class="line">  zuo.visited = <span class="number">2</span>;</span><br><span class="line"> </span><br><span class="line">  MakeHole(<span class="number">0</span>,zuo);</span><br><span class="line">  MakeHole(<span class="number">2</span>,zuobiaoarr[(endx<span class="number">-1</span>) * migongcol + endy]);</span><br><span class="line">  AddTobe(zuo);</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> node = RemoveTobe();</span><br><span class="line">    <span class="keyword">if</span>(!node) <span class="keyword">break</span>;</span><br><span class="line">    hole(node);</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="keyword">var</span> tbl = <span class="built_in">document</span>.getElementById(<span class="string">"migong"</span>);</span><br><span class="line"> <span class="keyword">var</span> obj = tbl.rows[endx*<span class="number">2</span><span class="number">-1</span>].cells[endy*<span class="number">2</span><span class="number">-1</span>];</span><br><span class="line"> <span class="keyword">var</span> xx = getAbsLoc(obj);</span><br><span class="line"> <span class="keyword">var</span> left = xx[<span class="number">0</span>]+(roadwidth-personwidth)/<span class="number">2</span>;</span><br><span class="line"> <span class="keyword">var</span> top = xx[<span class="number">1</span>]+(roadwidth-personwidth)/<span class="number">2</span>;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//创建行走方块</span></span><br><span class="line"> <span class="keyword">var</span> oper = <span class="built_in">document</span>.createElement(<span class="string">"div"</span>);</span><br><span class="line"> oper.style.cssText=<span class="string">"lineheight:"</span> + personwidth + <span class="string">"px;width:"</span> + personwidth + <span class="string">"px;height:"</span> + personwidth + <span class="string">"px;background:#ff2222;position:absolute;left:"</span>+ left + <span class="string">"px;top:"</span> + top + <span class="string">"px"</span>;</span><br><span class="line"> oper.setAttribute(<span class="string">"id"</span>,<span class="string">"migperson"</span>);</span><br><span class="line"> <span class="built_in">document</span>.body.appendChild(oper);</span><br><span class="line"> tbl.rows[startx*<span class="number">2</span><span class="number">-1</span>].cells[starty*<span class="number">2</span><span class="number">-1</span>].style.backgroundColor=<span class="string">"#ffcc22"</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* 功能: 按键事件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="built_in">document</span>.onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> oper = <span class="built_in">document</span>.getElementById(<span class="string">"migperson"</span>);</span><br><span class="line">  <span class="keyword">switch</span>(event.keyCode)&#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">37</span>:</span><br><span class="line">   <span class="keyword">if</span> (locy &gt; <span class="number">1</span> &amp;&amp; zuobiaoarr[(locx<span class="number">-1</span>) * migongcol + locy].wall[<span class="number">0</span>]) &#123;</span><br><span class="line">    oper.style.left = <span class="built_in">parseInt</span>(oper.style.left) - (roadwidth+wallwidth);</span><br><span class="line">    locy -= <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">39</span>:</span><br><span class="line">   <span class="keyword">if</span> (locy &lt; migongcol &amp;&amp; zuobiaoarr[(locx - <span class="number">1</span>) * migongcol + locy].wall[<span class="number">2</span>]) &#123;</span><br><span class="line">    oper.style.left = <span class="built_in">parseInt</span>(oper.style.left) + (roadwidth+wallwidth);</span><br><span class="line">    locy += <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">38</span>:</span><br><span class="line">   <span class="keyword">if</span> (locx &gt; <span class="number">1</span> &amp;&amp; zuobiaoarr[(locx - <span class="number">1</span>) * migongcol + locy].wall[<span class="number">1</span>]) &#123;</span><br><span class="line">    oper.style.top = <span class="built_in">parseInt</span>(oper.style.top) - (roadwidth+wallwidth);</span><br><span class="line">    locx -= <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">40</span>:</span><br><span class="line">   <span class="keyword">if</span> (locx &lt; migongrow &amp;&amp; zuobiaoarr[(locx - <span class="number">1</span>) * migongcol + locy].wall[<span class="number">3</span>]) &#123;</span><br><span class="line">    oper.style.top = <span class="built_in">parseInt</span>(oper.style.top) + (roadwidth+wallwidth);</span><br><span class="line">    locx += <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">break</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*  功能: 获取绝对位置</span></span><br><span class="line"><span class="comment">*  @param  obj: 待获取地址的对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getAbsLoc</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> xx = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">2</span>);</span><br><span class="line">  xx[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">  xx[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">while</span>(obj)&#123;</span><br><span class="line">    xx[<span class="number">0</span>] += obj.offsetLeft;</span><br><span class="line">    xx[<span class="number">1</span>] += obj.offsetTop;</span><br><span class="line">    obj = obj.offsetParent;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> xx;</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string">**html部分**</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>html</span><br><span class="line"> &lt;html&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line">  &lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=utf-8"</span>&gt;</span><br><span class="line">  &lt;title&gt;迷宫示例&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line">  &lt;center&gt;</span><br><span class="line">  迷宫行数：&lt;select id=<span class="string">"rowselect"</span> onChange=<span class="string">"changerow(this)"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span>&amp;nbsp;</span><br><span class="line">  迷宫列数: <span class="xml"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"colselect"</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span> &amp;nbsp;</span><br><span class="line">  入口行：&lt;select id=<span class="string">"startrow"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span>&amp;nbsp;</span><br><span class="line">  出口行：&lt;select id=<span class="string">"endrow"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span>&amp;nbsp;</span><br><span class="line">  道路宽: <span class="xml"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"roadwidth"</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span>&amp;nbsp;</span><br><span class="line">  墙宽: <span class="xml"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"wallwidth"</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span>&amp;nbsp;</span><br><span class="line">  行者宽: <span class="xml"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"personwidth"</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span>&amp;nbsp;    </span><br><span class="line">  &lt;input type=<span class="string">"button"</span> value=<span class="string">"生成迷宫"</span> onClick=<span class="string">"createMg()"</span>&gt;</span><br><span class="line">  &lt;p&gt;<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">  &lt;<span class="regexp">/center&gt;</span></span><br><span class="line"><span class="regexp"> &lt;/</span>body&gt;</span><br><span class="line"> &lt;script src=<span class="string">"migong.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"> &lt;script&gt;</span><br><span class="line">  <span class="keyword">var</span> rowsel = <span class="built_in">document</span>.getElementById(<span class="string">"rowselect"</span>);</span><br><span class="line">  <span class="keyword">var</span> colsel = <span class="built_in">document</span>.getElementById(<span class="string">"colselect"</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">5</span>;i&lt;=<span class="number">50</span>;i++)&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="built_in">document</span>.createElement(<span class="string">"option"</span>);</span><br><span class="line">    o.value = i;</span><br><span class="line">    o.text = i;</span><br><span class="line">    o1 = <span class="built_in">document</span>.createElement(<span class="string">"option"</span>);</span><br><span class="line">    o1.value = i;</span><br><span class="line">    o1.text = i;</span><br><span class="line">   </span><br><span class="line">    rowsel.options.add(o);</span><br><span class="line">    colsel.options.add(o1);</span><br><span class="line">   </span><br><span class="line">  &#125;</span><br><span class="line">  changerow(rowsel);</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">changerow</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> strow = <span class="built_in">document</span>.getElementById(<span class="string">"startrow"</span>);</span><br><span class="line">    <span class="keyword">var</span> enrow = <span class="built_in">document</span>.getElementById(<span class="string">"endrow"</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = strow.options.length<span class="number">-1</span>; i &gt;= <span class="number">0</span> ; i--) &#123;</span><br><span class="line">      strow.options.remove(i);</span><br><span class="line">      enrow.options.remove(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= obj.value; i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> o = <span class="built_in">document</span>.createElement(<span class="string">"option"</span>);</span><br><span class="line">      o.value = i;</span><br><span class="line">      o.text = i;</span><br><span class="line">      o1 = <span class="built_in">document</span>.createElement(<span class="string">"option"</span>);</span><br><span class="line">      o1.value = i;</span><br><span class="line">      o1.text = i;</span><br><span class="line">      strow.options.add(o);</span><br><span class="line">      enrow.options.add(o1);</span><br><span class="line">    &#125;</span><br><span class="line">    enrow.selectedIndex = obj.value<span class="number">-1</span>;</span><br><span class="line">  &#125; </span><br><span class="line">  <span class="comment">//初始化道路宽度</span></span><br><span class="line">  <span class="keyword">var</span> sroad = <span class="built_in">document</span>.getElementById(<span class="string">"roadwidth"</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">10</span>;i&lt;=<span class="number">20</span>;)&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="built_in">document</span>.createElement(<span class="string">"option"</span>);</span><br><span class="line">    o.value = i;</span><br><span class="line">    o.text = i;</span><br><span class="line">    i += <span class="number">2</span>;</span><br><span class="line">    sroad.options.add(o);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//初始化墙壁宽度</span></span><br><span class="line">  <span class="keyword">var</span> swall = <span class="built_in">document</span>.getElementById(<span class="string">"wallwidth"</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;=<span class="number">5</span>;i++)&#123;</span><br><span class="line">   <span class="keyword">var</span> o = <span class="built_in">document</span>.createElement(<span class="string">"option"</span>);</span><br><span class="line">   o.value = i;</span><br><span class="line">   o.text = i;</span><br><span class="line">   swall.options.add(o);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//初始化行者宽度</span></span><br><span class="line">  <span class="keyword">var</span> sperson = <span class="built_in">document</span>.getElementById(<span class="string">"personwidth"</span>);</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">5</span>;i&lt;=<span class="number">10</span>;i++)&#123;</span><br><span class="line">   <span class="keyword">var</span> o = <span class="built_in">document</span>.createElement(<span class="string">"option"</span>);</span><br><span class="line">   o.value = i;</span><br><span class="line">   o.text = i;</span><br><span class="line">   sperson.options.add(o);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">createMg</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> o = <span class="built_in">document</span>.getElementById(<span class="string">"migong"</span>);</span><br><span class="line">   <span class="keyword">var</span> oc = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"center"</span>)[<span class="number">0</span>];</span><br><span class="line">   <span class="keyword">if</span>(o) oc.removeChild(o);</span><br><span class="line">   <span class="keyword">var</span> o = <span class="built_in">document</span>.getElementById(<span class="string">"migperson"</span>);</span><br><span class="line">   <span class="keyword">if</span> (o) <span class="built_in">document</span>.body.removeChild(o);</span><br><span class="line">   </span><br><span class="line">    </span><br><span class="line">   <span class="keyword">var</span> strow = <span class="built_in">document</span>.getElementById(<span class="string">"startrow"</span>);</span><br><span class="line">   <span class="keyword">var</span> enrow = <span class="built_in">document</span>.getElementById(<span class="string">"endrow"</span>);</span><br><span class="line">   <span class="keyword">var</span> rowsel = <span class="built_in">document</span>.getElementById(<span class="string">"rowselect"</span>);</span><br><span class="line">   <span class="keyword">var</span> colsel = <span class="built_in">document</span>.getElementById(<span class="string">"colselect"</span>);</span><br><span class="line">   <span class="keyword">var</span> migong = <span class="keyword">new</span> MiGong(<span class="built_in">parseInt</span>(rowsel.value),<span class="built_in">parseInt</span>(colsel.value),</span><br><span class="line">   <span class="built_in">parseInt</span>(strow.value),<span class="built_in">parseInt</span>(enrow.value),<span class="built_in">parseInt</span>(<span class="built_in">document</span>.getElementById(<span class="string">"roadwidth"</span>).value),</span><br><span class="line">   <span class="built_in">parseInt</span>(<span class="built_in">document</span>.getElementById(<span class="string">"wallwidth"</span>).value),<span class="built_in">parseInt</span>(<span class="built_in">document</span>.getElementById(<span class="string">"personwidth"</span>).value));</span><br><span class="line">   </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"> &lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"> </span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>越来越多的平台（微信公众平台，新浪微博，简书，百度打赏等）支持打赏功能，付费阅读时代越来越近，特此增加了打赏功能，支持微信打赏和支付宝打赏。坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010813_1496.png" alt="刘翾 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010819_6378.png" alt="刘翾 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/27/javascript封装判断全数据类型方法, toString方法, 对象的枚举(in, instanceof, hasOwnProperty的用法), arguments类数组属性/" rel="next" title="javascript封装判断全数据类型方法, toString方法, 对象的枚举(in, instanceof, hasOwnProperty的用法), arguments类数组属性">
+                <i class="fa fa-chevron-left"></i> javascript封装判断全数据类型方法, toString方法, 对象的枚举(in, instanceof, hasOwnProperty的用法), arguments类数组属性
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/09/javascript深度拷贝和数组去重代码详解; 数组,类数组,try-catch方法介绍/" rel="prev" title="javascript深度拷贝和数组去重代码详解; 数组,类数组,try-catch方法介绍">
+                javascript深度拷贝和数组去重代码详解; 数组,类数组,try-catch方法介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/face.jpg"
+               alt="刘翾" />
+          <p class="site-author-name" itemprop="name">刘翾</p>
+           
+              <p class="site-description motion-element" itemprop="description">如果有一天我们淹没在人潮里，那是因为没有努力活得丰盛。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#心得与体会"><span class="nav-number">1.</span> <span class="nav-text">心得与体会</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面附上源代码"><span class="nav-number">2.</span> <span class="nav-text">下面附上源代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘翾</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "19900f3c34a444f28a6aaba95b80bcee",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,802 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="翾的blog" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="效果先上效果图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于H5canvas和js的高斯模糊处理">
+<meta property="og:url" content="http://liuzhixuan360.com/2017/04/06/基于H5canvas和js的高斯模糊处理/index.html">
+<meta property="og:site_name" content="刘翾`s Blog">
+<meta property="og:description" content="效果先上效果图">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20170406184603666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-09-07T13:58:36.219Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于H5canvas和js的高斯模糊处理">
+<meta name="twitter:description" content="效果先上效果图">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170406184603666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuzhixuan360.com/2017/04/06/基于H5canvas和js的高斯模糊处理/"/>
+
+
+
+
+
+  <title>基于H5canvas和js的高斯模糊处理 | 刘翾`s Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘翾`s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">刘翾</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2017/04/06/基于H5canvas和js的高斯模糊处理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘翾">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/face.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘翾`s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于H5canvas和js的高斯模糊处理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-06T19:01:00+08:00">
+                2017-04-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/04/06/基于H5canvas和js的高斯模糊处理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h2><p>先上效果图<br><img src="http://img.blog.csdn.net/20170406184603666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvY19raXRl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"><br><a id="more"></a></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>  高斯模糊的原理中，它是根据高斯曲线调节像素色值，它是有选择地模糊图像。说得直白一点，就是高斯模糊能够把某一点周围的像素色值按高斯曲线统计起来，采用数学上加权平均的计算方法得到这条曲线的色值，最后能够留下人物的轮廓，即曲线. 更加具体的解释请移步到 <a href="www.ruanyifeng.com/blog/2012/11/gaussian_blur.html">阮一峰的高斯模糊算法</a>.<br>   本篇blog主要讨论js的高斯函数及其应用.</p>
+<p>   采用了两种分别不同的函数来处里像素位点, 第一种是直接使用二种循环, 时间复杂度为O(xy(2r)^2). 另一种是采用一维公式分别对x, y进行循环处理, 时间复杂度为O(2xy(2r)).</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"林徽因.jpg"</span> <span class="attr">id</span>=<span class="string">"imgSource"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> img = <span class="built_in">document</span>.getElementById(<span class="string">"imgSource"</span>),</span></span><br><span class="line"><span class="javascript">        canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>),</span></span><br><span class="line"><span class="undefined">        width = img.width,</span></span><br><span class="line"><span class="undefined">        height = img.height;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    canvas.width = width;</span></span><br><span class="line"><span class="undefined">    canvas.height = height;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</span></span><br><span class="line"><span class="undefined">    context.drawImage(img, 0, 0);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> canvasData = context.getImageData(<span class="number">0</span>, <span class="number">0</span>, canvas.width, canvas.height);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> tempData = gaussBlur1(canvasData, <span class="number">20</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    context.putImageData(tempData,0,0);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">/**</span></span><br><span class="line"><span class="undefined"> * 此函数为二重循环</span></span><br><span class="line"><span class="undefined"> */</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">gaussBlur</span>(<span class="params">imgData, radius, sigma</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> pixes = imgData.data,</span></span><br><span class="line"><span class="undefined">        width = imgData.width,</span></span><br><span class="line"><span class="undefined">        height = imgData.height;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    radius = radius || 5;</span></span><br><span class="line"><span class="undefined">    sigma = sigma || radius / 3;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> gaussEdge = radius * <span class="number">2</span> + <span class="number">1</span>;    <span class="comment">// 高斯矩阵的边长</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> gaussMatrix = [],</span></span><br><span class="line"><span class="undefined">        gaussSum = 0,</span></span><br><span class="line"><span class="javascript">        a = <span class="number">1</span> / (<span class="number">2</span> * sigma * sigma * <span class="built_in">Math</span>.PI),</span></span><br><span class="line"><span class="javascript">        b = -a * <span class="built_in">Math</span>.PI;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (<span class="keyword">var</span> i=-radius; i&lt;=radius; i++) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span> (<span class="keyword">var</span> j=-radius; j&lt;=radius; j++) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> gxy = a * <span class="built_in">Math</span>.exp((i * i + j * j) * b);</span></span><br><span class="line"><span class="undefined">            gaussMatrix.push(gxy);</span></span><br><span class="line"><span class="javascript">            gaussSum += gxy;    <span class="comment">// 得到高斯矩阵的和，用来归一化</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> gaussNum = (radius + <span class="number">1</span>) * (radius + <span class="number">1</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;gaussNum; i++) &#123;</span></span><br><span class="line"><span class="javascript">        gaussMatrix[i] = gaussMatrix[i] / gaussSum;    <span class="comment">// 除gaussSum是归一化</span></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">//console.log(gaussMatrix);</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 循环计算整个图像每个像素高斯处理之后的值</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (<span class="keyword">var</span> x=<span class="number">0</span>; x&lt;width;x++) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span> (<span class="keyword">var</span> y=<span class="number">0</span>; y&lt;height; y++) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> r = <span class="number">0</span>,</span></span><br><span class="line"><span class="undefined">                g = 0,</span></span><br><span class="line"><span class="undefined">                b = 0;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">//console.log(1);</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">            <span class="comment">// 计算每个点的高斯处理之后的值</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span> (<span class="keyword">var</span> i=-radius; i&lt;=radius; i++) &#123;</span></span><br><span class="line"><span class="javascript">                <span class="comment">// 处理边缘</span></span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> m = handleEdge(i, x, width);</span></span><br><span class="line"><span class="javascript">                <span class="keyword">for</span> (<span class="keyword">var</span> j=-radius; j&lt;=radius; j++) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// 处理边缘</span></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> mm = handleEdge(j, y, height);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> currentPixId = (mm * width + m) * <span class="number">4</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> jj = j + radius;</span></span><br><span class="line"><span class="javascript">                    <span class="keyword">var</span> ii = i + radius;</span></span><br><span class="line"><span class="undefined">                    r += pixes[currentPixId] * gaussMatrix[jj * gaussEdge + ii];</span></span><br><span class="line"><span class="undefined">                    g += pixes[currentPixId + 1] * gaussMatrix[jj * gaussEdge + ii];</span></span><br><span class="line"><span class="undefined">                    b += pixes[currentPixId + 2] * gaussMatrix[jj * gaussEdge + ii];</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> pixId = (y * width + x) * <span class="number">4</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">            pixes[pixId] = ~~r;</span></span><br><span class="line"><span class="undefined">            pixes[pixId + 1] = ~~g;</span></span><br><span class="line"><span class="undefined">            pixes[pixId + 2] = ~~b;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    imgData.data = pixes;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> imgData;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">handleEdge</span>(<span class="params">i, x, w</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span>  m = x + i;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (m &lt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="undefined">        m = -m;</span></span><br><span class="line"><span class="javascript">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (m &gt;= w) &#123;</span></span><br><span class="line"><span class="undefined">        m = w + i - x;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> m;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">/**</span></span><br><span class="line"><span class="undefined"> * 此函数为分别循环</span></span><br><span class="line"><span class="undefined"> */</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">gaussBlur1</span>(<span class="params">imgData,radius, sigma</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> pixes = imgData.data;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> width = imgData.width;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> height = imgData.height;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> gaussMatrix = [],</span></span><br><span class="line"><span class="undefined">        gaussSum = 0,</span></span><br><span class="line"><span class="undefined">        x, y,</span></span><br><span class="line"><span class="undefined">        r, g, b, a,</span></span><br><span class="line"><span class="undefined">        i, j, k, len;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    radius = <span class="built_in">Math</span>.floor(radius) || <span class="number">3</span>;</span></span><br><span class="line"><span class="undefined">    sigma = sigma || radius / 3;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    a = <span class="number">1</span> / (<span class="built_in">Math</span>.sqrt(<span class="number">2</span> * <span class="built_in">Math</span>.PI) * sigma);</span></span><br><span class="line"><span class="undefined">    b = -1 / (2 * sigma * sigma);</span></span><br><span class="line"><span class="javascript">    <span class="comment">//生成高斯矩阵</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (i = <span class="number">0</span>, x = -radius; x &lt;= radius; x++, i++)&#123;</span></span><br><span class="line"><span class="javascript">        g = a * <span class="built_in">Math</span>.exp(b * x * x);</span></span><br><span class="line"><span class="undefined">        gaussMatrix[i] = g;</span></span><br><span class="line"><span class="undefined">        gaussSum += g;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">//归一化, 保证高斯矩阵的值在[0,1]之间</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (i = <span class="number">0</span>, len = gaussMatrix.length; i &lt; len; i++) &#123;</span></span><br><span class="line"><span class="undefined">        gaussMatrix[i] /= gaussSum;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">//x 方向一维高斯运算</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; height; y++) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; width; x++) &#123;</span></span><br><span class="line"><span class="undefined">            r = g = b = a = 0;</span></span><br><span class="line"><span class="undefined">            gaussSum = 0;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span>(j = -radius; j &lt;= radius; j++)&#123;</span></span><br><span class="line"><span class="undefined">                k = x + j;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span>(k &gt;= <span class="number">0</span> &amp;&amp; k &lt; width)&#123;<span class="comment">//确保 k 没超出 x 的范围</span></span></span><br><span class="line"><span class="javascript">                    <span class="comment">//r,g,b,a 四个一组</span></span></span><br><span class="line"><span class="undefined">                    i = (y * width + k) * 4;</span></span><br><span class="line"><span class="undefined">                    r += pixes[i] * gaussMatrix[j + radius];</span></span><br><span class="line"><span class="undefined">                    g += pixes[i + 1] * gaussMatrix[j + radius];</span></span><br><span class="line"><span class="undefined">                    b += pixes[i + 2] * gaussMatrix[j + radius];</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// a += pixes[i + 3] * gaussMatrix[j];</span></span></span><br><span class="line"><span class="undefined">                    gaussSum += gaussMatrix[j + radius];</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">            i = (y * width + x) * 4;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 除以 gaussSum 是为了消除处于边缘的像素, 高斯运算不足的问题</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// console.log(gaussSum)</span></span></span><br><span class="line"><span class="undefined">            pixes[i] = r / gaussSum;</span></span><br><span class="line"><span class="undefined">            pixes[i + 1] = g / gaussSum;</span></span><br><span class="line"><span class="undefined">            pixes[i + 2] = b / gaussSum;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// pixes[i + 3] = a ;</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">//y 方向一维高斯运算</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">for</span> (x = <span class="number">0</span>; x &lt; width; x++) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">for</span> (y = <span class="number">0</span>; y &lt; height; y++) &#123;</span></span><br><span class="line"><span class="undefined">            r = g = b = a = 0;</span></span><br><span class="line"><span class="undefined">            gaussSum = 0;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span>(j = -radius; j &lt;= radius; j++)&#123;</span></span><br><span class="line"><span class="undefined">                k = y + j;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span>(k &gt;= <span class="number">0</span> &amp;&amp; k &lt; height)&#123;<span class="comment">//确保 k 没超出 y 的范围</span></span></span><br><span class="line"><span class="undefined">                    i = (k * width + x) * 4;</span></span><br><span class="line"><span class="undefined">                    r += pixes[i] * gaussMatrix[j + radius];</span></span><br><span class="line"><span class="undefined">                    g += pixes[i + 1] * gaussMatrix[j + radius];</span></span><br><span class="line"><span class="undefined">                    b += pixes[i + 2] * gaussMatrix[j + radius];</span></span><br><span class="line"><span class="javascript">                    <span class="comment">// a += pixes[i + 3] * gaussMatrix[j];</span></span></span><br><span class="line"><span class="undefined">                    gaussSum += gaussMatrix[j + radius];</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">            i = (y * width + x) * 4;</span></span><br><span class="line"><span class="undefined">            pixes[i] = r / gaussSum;</span></span><br><span class="line"><span class="undefined">            pixes[i + 1] = g / gaussSum;</span></span><br><span class="line"><span class="undefined">            pixes[i + 2] = b / gaussSum;</span></span><br><span class="line"><span class="javascript">            <span class="comment">// pixes[i] = r ;</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// pixes[i + 1] = g ;</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// pixes[i + 2] = b ;</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// pixes[i + 3] = a ;</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="comment">//end</span></span></span><br><span class="line"><span class="undefined">    imgData.data = pixes;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> imgData;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>越来越多的平台（微信公众平台，新浪微博，简书，百度打赏等）支持打赏功能，付费阅读时代越来越近，特此增加了打赏功能，支持微信打赏和支付宝打赏。坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010813_1496.png" alt="刘翾 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010819_6378.png" alt="刘翾 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/06/基于H5canvas刮刮乐界面/" rel="next" title="基于H5canvas刮刮乐界面">
+                <i class="fa fa-chevron-left"></i> 基于H5canvas刮刮乐界面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/08/利用H5SVG实现线性动画效果/" rel="prev" title="利用H5SVG实现线性动画效果">
+                利用H5SVG实现线性动画效果 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/face.jpg"
+               alt="刘翾" />
+          <p class="site-author-name" itemprop="name">刘翾</p>
+           
+              <p class="site-description motion-element" itemprop="description">如果有一天我们淹没在人潮里，那是因为没有努力活得丰盛。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#效果"><span class="nav-number">1.</span> <span class="nav-text">效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘翾</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "19900f3c34a444f28a6aaba95b80bcee",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,868 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="前言该篇博客涉及__proto__, prototype属性,  如果不是太了解, 参见下面这篇博客https://blog.csdn.net/c_kite/article/details/78484191 ES3 继承在JavaScript中，所谓的类就是函数，函数就是类。一般情况下，我们在函数的prototype上面定义方法，因为这样所有类的实例都可以公用这些方法；在函数内部（构造函数）中初始">
+<meta name="keywords" content="javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript的ES3, ES5, ES6实现继承方式">
+<meta property="og:url" content="http://liuzhixuan360.com/2018/05/09/JavaScript的ES3, ES5, ES6实现继承方式/index.html">
+<meta property="og:site_name" content="刘翾`s Blog">
+<meta property="og:description" content="前言该篇博客涉及__proto__, prototype属性,  如果不是太了解, 参见下面这篇博客https://blog.csdn.net/c_kite/article/details/78484191 ES3 继承在JavaScript中，所谓的类就是函数，函数就是类。一般情况下，我们在函数的prototype上面定义方法，因为这样所有类的实例都可以公用这些方法；在函数内部（构造函数）中初始">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-10T10:12:21.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript的ES3, ES5, ES6实现继承方式">
+<meta name="twitter:description" content="前言该篇博客涉及__proto__, prototype属性,  如果不是太了解, 参见下面这篇博客https://blog.csdn.net/c_kite/article/details/78484191 ES3 继承在JavaScript中，所谓的类就是函数，函数就是类。一般情况下，我们在函数的prototype上面定义方法，因为这样所有类的实例都可以公用这些方法；在函数内部（构造函数）中初始">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuzhixuan360.com/2018/05/09/JavaScript的ES3, ES5, ES6实现继承方式/"/>
+
+
+
+
+
+  <title>JavaScript的ES3, ES5, ES6实现继承方式 | 刘翾`s Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘翾`s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">刘翾</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2018/05/09/JavaScript的ES3, ES5, ES6实现继承方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘翾">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/face.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘翾`s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript的ES3, ES5, ES6实现继承方式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-09T23:53:00+08:00">
+                2018-05-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2018/05/09/JavaScript的ES3, ES5, ES6实现继承方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>该篇博客涉及<code>__proto__</code>, <code>prototype</code>属性,  如果不是太了解, 参见下面这篇博客<br><a href="https://blog.csdn.net/c_kite/article/details/78484191" target="_blank" rel="noopener">https://blog.csdn.net/c_kite/article/details/78484191</a></p>
+<h1 id="ES3-继承"><a href="#ES3-继承" class="headerlink" title="ES3 继承"></a>ES3 继承</h1><p>在JavaScript中，所谓的类就是函数，函数就是类。一般情况下，我们在函数的prototype上面定义方法，因为这样所有类的实例都可以公用这些方法；在函数内部（构造函数）中初始化属性，这样所有类的实例的属性都是相互隔离的。 我们定义ClassA和ClassB两个类，想让ClassB继承自ClassA。 ClassA代码如下所示：</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function ClassA(name, age) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ClassA.prototype.sayName = function () &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ClassA.prototype.sayAge = function () &#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>ClassA构造函数内部定义了<code>name</code>和<code>age</code>两个属性，并且在其原型上定义了<code>sayName</code>和<code>sayAage</code>两个方法。 ClassB如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function ClassB(name, age, job) &#123;</span><br><span class="line">    ClassA.apply(this, [name, age]);</span><br><span class="line">    this.job = job;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ClassB新增了<code>job</code>属性，我们在其构造函数中执行<code>ClassA.apply(this, [name, age]);</code>，相当于在Java类的构造函数中通过<code>super()</code>调用父类的构造函数以初始化相关属性。 </p>
+<p>此时我们可以通过<code>var b = new ClassB(“sunqun”, 28, “developer”);</code>进行实例化，并可以访问<code>b.name</code>、<code>b.age</code>、<code>b.job</code>三个属性，但此时b还不能访问ClassA中定义的<code>sayName</code>和<code>sayAage</code>两个方法。</p>
+<p> 然后我们新增代码<code>ClassB.prototype = ClassA.prototype;</code>，此时ClassB的代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function ClassB(name, age, job) &#123;</span><br><span class="line">    ClassA.apply(this, [name, age]);</span><br><span class="line">    this.job = job;</span><br><span class="line">&#125;</span><br><span class="line">//新增</span><br><span class="line">ClassB.prototype = ClassA.prototype;</span><br></pre></td></tr></table></figure>
+<p>当执行<code>var b = new ClassB(“sunqun”, 28, “developer”);</code>时，<code>b.__proto__</code>指向的是<code>ClassB.prototype</code>，由于通过新增的代码已经将<code>ClassB.prototype</code>指向了<code>ClassA.prototype</code>，所以此时<code>b.__proto__</code>指向了<code>ClassA.prototype</code>。这样当执行<code>b.sayName()</code>时，会执行<code>b.__proto__.sayName()</code>，即最终执行了<code>ClassA.prototype.sayName()</code>，这样ClassB的实例就能调用ClassA中方法了。 </p>
+<p>此时我们想为ClassB新增加一个<code>sayJob</code>方法用于输出<code>job</code>属性的值，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function ClassB(name, age, job) &#123;</span><br><span class="line">    ClassA.apply(this, [name, age]);</span><br><span class="line">    this.job = job;</span><br><span class="line">&#125;</span><br><span class="line">ClassB.prototype = ClassA.prototype;</span><br><span class="line">//新增</span><br><span class="line">ClassB.prototype.sayJob = function()&#123;</span><br><span class="line">    console.log(this.job);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>此时问题出现了，我们为<code>ClassB.prototype</code>添加<code>sayJob</code>方法时，其实修改了<code>ClassA.prototype</code>，这样会导致ClassA所有的实例也都有了<code>sayJob</code>方法，这显然不是我们期望的。 为了解决这个问题，我们再次修改ClassB的代码，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function ClassB(name, age, job) &#123;</span><br><span class="line">    ClassA.apply(this, [name, age]);</span><br><span class="line">    this.job = job;</span><br><span class="line">&#125;</span><br><span class="line">// ClassB.prototype = ClassA.prototype;</span><br><span class="line">//修改</span><br><span class="line">ClassB.prototype = new ClassA();</span><br><span class="line">ClassB.prototype.constructor = ClassB;</span><br><span class="line">ClassB.prototype.sayJob = function()&#123;</span><br><span class="line">    console.log(this.job);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我们通过执行<code>ClassB.prototype = new ClassA();</code>将ClassA实例化的对象作为ClassB的prototype，这样ClassB仍然能够使用ClassA中定义的方法，但是<code>ClassB.prototype</code>已经和<code>ClassA.prototype</code>完全隔离了。</p>
+<p>我们的目的达到了，我们可以随意向<code>ClassB.prototype</code>添加我们想要的方法了。有个细节需要注意，<code>ClassB.prototype = new ClassA();</code>会导致<code>ClassB.prototype.constructor</code>指向ClassA的实例化对象，为此我们通过<code>ClassB.prototype.constructor = ClassB;</code>解决这个问题。 </p>
+<p>关于此处为什么要设置.constructor可参见这篇博客<br><a href="https://blog.csdn.net/c_kite/article/details/78484191" target="_blank" rel="noopener">https://blog.csdn.net/c_kite/article/details/78484191</a></p>
+<p>一切貌似完美的解决了，但是这种实现还是存在隐患。我们在执行<code>ClassB.prototype = new ClassA();</code>的时候，给ClassA传递的是空参数，但是ClassA的构造函数默认参数是有值的，可能会在构造函数中对传入的参数进行各种处理，传递空参数很有可能导致报错（当然本示例中的ClassA不会）。于是我们再次修改ClassB的代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function ClassB(name, age, job) &#123;</span><br><span class="line">    ClassA.apply(this, [name, age]);</span><br><span class="line">    this.job = job;</span><br><span class="line">&#125;</span><br><span class="line">//修改</span><br><span class="line">function ClassMiddle() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">ClassMiddle.prototype = ClassA.prototype;</span><br><span class="line">ClassB.prototype = new ClassMiddle();</span><br><span class="line">ClassB.prototype.constructor = ClassB;</span><br><span class="line">ClassB.prototype.sayJob = function () &#123;</span><br><span class="line">    console.log(this.job);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这次我们引入了一个不需要形参的函数<code>ClassMiddle</code>作为ClassB和ClassA之间的中间桥梁。 </p>
+<ol>
+<li><code>ClassMiddle.prototype = ClassA.prototype;</code>: 将<code>ClassMiddle.prototype</code>指向<code>ClassA.prototype</code>，这样ClassMiddle可以访问ClassA中定义的方法。 </li>
+<li><code>ClassB.prototype = new ClassMiddle();</code>： 将ClassMiddle的实例化对象赋值给ClassB.prototype，这样就相当于执行了<code>ClassB.prototype.__proto__ = ClassMiddle.prototype;</code>，所以ClassB就能使用ClassMiddle中定义的方法，又因为<code>ClassMiddle.prototype</code>指向了<code>ClassA.prototype</code>，所以<code>ClassB.prototype.__proto__</code>也指向了<code>ClassA.prototype</code>，这样ClassB能使用ClassA中定义的方法。</li>
+</ol>
+<p>以上思路的精妙之处在于ClassMiddle是无参的，它起到了ClassB和ClassA之间的中间桥梁的作用。 现在我们为ClassA添加一些静态属性和方法，ClassA新增如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">//为ClassA添加静态属性</span><br><span class="line">ClassA.staticValue = &quot;static value&quot;;</span><br><span class="line"></span><br><span class="line">//为ClassA添加静态方法</span><br><span class="line">ClassA.getStaticValue = function() &#123;</span><br><span class="line">    return ClassA.staticValue;</span><br><span class="line">&#125;;</span><br><span class="line">ClassA.setStaticValue = function(value) &#123;</span><br><span class="line">    ClassA.staticValue = value;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>静态属性和方法不属于某一个实例，而是属于类本身。ClassA.prototype上面定义的方法是实例方法，不是静态的。静态属性和方法是直接添加在ClassA上的。 为了使ClassB也能继承ClassA的静态属性和方法，我们需要为ClassB添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"></span><br><span class="line">//ClassB继承ClassA的静态属性和方法</span><br><span class="line">for (var p in ClassA) &#123;</span><br><span class="line">    if (ClassA.hasOwnProperty(p)) &#123;</span><br><span class="line">        ClassB[p] = ClassA[p];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们最终可以将上述继承代码的公共部分抽离成一个extendsClass方法，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function extendsClass(Child, Father) &#123;</span><br><span class="line">    //继承父类prototype中定义的实例属性和方法</span><br><span class="line">    function ClassMiddle() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    ClassMiddle.prototype = Father.prototype;</span><br><span class="line">    Child.prototype = new ClassMiddle();</span><br><span class="line">    Child.prototype.constructor = Child;</span><br><span class="line"></span><br><span class="line">    //继承父类的静态属性和方法</span><br><span class="line">    for (var p in Father) &#123;</span><br><span class="line">        if (Father.hasOwnProperty(p)) &#123;</span><br><span class="line">            Child[p] = Father[p];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们只需要执行<code>extendsClass(ClassB, ClassA);</code>就可以完成大部分继承的逻辑。 最终ClassA的完整代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">function ClassA(name, age) &#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ClassA.prototype.sayName = function() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ClassA.prototype.sayAge = function() &#123;</span><br><span class="line">    console.log(this.age);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ClassA.staticValue = &quot;static value&quot;;</span><br><span class="line"></span><br><span class="line">ClassA.getStaticValue = function() &#123;</span><br><span class="line">    return ClassA.staticValue;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ClassA.setStaticValue = function(value) &#123;</span><br><span class="line">    ClassA.staticValue = value;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>ClassB的完整代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function ClassB(name, age, job) &#123;</span><br><span class="line">    ClassA.apply(this, [name, age]);</span><br><span class="line">    this.job = job;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">extendsClass(ClassB, ClassA);</span><br><span class="line"></span><br><span class="line">ClassB.prototype.sayJob = function() &#123;</span><br><span class="line">    console.log(this.job);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="ES5继承"><a href="#ES5继承" class="headerlink" title="ES5继承"></a>ES5继承</h1><p>ES5.1规范中新增了<code>Object.create()</code>方法，该方法会传入一个对象，然后会返回一个对象，返回的对象的原型指向传入的对象，比如执行代码<code>var output = Object.create(input)</code>，相当于执行代码<code>output.__proto__ = input;</code>，output的原型是input。我们可以简化之前的代码，不再需要ClassMiddle，只需要执行<code>ClassB.prototype = Object.create(ClassA.prototype);</code>即可，相当于执行代码<code>ClassB.prototype.__proto__ = ClassA.prototype;</code>。</p>
+<p>而且ES5.1中新增了<code>Object.keys()</code>方法用以获取<strong><em>对象自身</em></strong>的属性数组，我们可以用该方法简化继承父类静态属性和方法的过程。</p>
+<p>根据以上两点，我们修改extendsClass方法如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function extendsClass(Child, Father) &#123;</span><br><span class="line">    //继承父类prototype中定义的实例属性和方法</span><br><span class="line">    Child.prototype = Object.create(Father.prototype);</span><br><span class="line">    Child.prototype.constructor = Child;</span><br><span class="line"></span><br><span class="line">    //继承父类的静态属性和方法</span><br><span class="line">    Object.keys(Father).forEach(function(key) &#123;</span><br><span class="line">        Child[key] = Father[key];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="ES6-继承"><a href="#ES6-继承" class="headerlink" title="ES6 继承"></a>ES6 继承</h1><p>我们之前提到，ES6规范定义了<code>Object.prototype.proto</code>属性，该属性既可读又可写，通过<code>__proto__</code>属性我们可以直接指定对象的原型。于是在ES6中我们将extendsClass修改为如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function extendsClass(Child, Father) &#123;</span><br><span class="line">    //继承父类prototype中定义的实例属性和方法</span><br><span class="line">    Child.prototype.__proto__ = Father.prototype;//暴力直接，利用__proto__属性设置对象的原型</span><br><span class="line"></span><br><span class="line">    //继承父类的静态属性和方法</span><br><span class="line">    Child.__proto__ = Father;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接修改对象的<code>__proto__</code>属性值不是最佳选择，ES6规范中还定义了<code>Object.setPrototypeOf()</code>方法，通过执行<code>Object.setPrototypeOf(b, a)</code>会将a对象作为b对象的原型，即相当于执行了<code>b.__proto__ = a;</code>。为此我们利用该方法再次精简我们的extendsClass方法，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function extendsClass(Child, Father) &#123;</span><br><span class="line">    //继承父类prototype中定义的实例属性和方法</span><br><span class="line">    Object.setPrototypeOf(Child.prototype, Father.prototype);</span><br><span class="line"></span><br><span class="line">    //继承父类的静态属性和方法</span><br><span class="line">    Object.setPrototypeOf(Child, Father);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p><code>Object.setPrototypeOf(Child.prototype, Father.prototype);</code>相当于执行代码<code>Child.prototype.__proto__ = Father.prototype;</code>，使得Child能够继承Father中的实例属性和方法。</p>
+</li>
+<li><p><code>Object.setPrototypeOf(Child, Father);</code>相当于执行代码<code>Child.__proto__ = Father;</code>，使得Child能够继承Father中的静态属性和方法。</p>
+</li>
+</ol>
+<p><strong>由于现代 JavaScript 引擎优化属性访问所带来的特性的关系，更改对象的 <code>[[Prototype]]</code>在各个浏览器和 JavaScript 引擎上都是一个很慢的操作。其在更改继承的性能上的影响是微妙而又广泛的，这不仅仅限于 <code>obj.__proto__ = ...</code> 语句上的时间花费，而且可能会延伸到任何代码，那些可以访问任何<code>[[Prototype]]</code>已被更改的对象的代码。如果你关心性能，你应该避免设置一个对象的 <code>[[Prototype]]</code>。相反，你应该使用 <code>Object.create()</code>来创建带有你想要的<code>[[Prototype]]</code>的新对象。</strong></p>
+<p>ES6中引入了<code>class</code>关键字，可以用<code>class</code>直接定义类，通过<code>extends</code>关键字实现类的继承，还可以通过<code>static</code>关键字定义类的静态方法。</p>
+<p>我们用<code>class</code>等关键字重新实现ClassA和ClassB的代码，如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class ClassA&#123;</span><br><span class="line">    constructor(name, age)&#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sayName()&#123;</span><br><span class="line">        console.log(this.name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sayAge()&#123;</span><br><span class="line">        console.log(this.age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static getStaticValue()&#123;</span><br><span class="line">        return ClassA.staticValue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static setStaticValue(value)&#123;</span><br><span class="line">        ClassA.staticValue = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ClassA.staticValue = &quot;static value&quot;;</span><br><span class="line"></span><br><span class="line">class ClassB extends ClassA&#123;</span><br><span class="line">    constructor(name, age, job)&#123;</span><br><span class="line">        super(name, age);</span><br><span class="line">        this.job = job;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sayJob()&#123;</span><br><span class="line">        console.log(this.job);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ES6中不能通过<code>static</code>定义类的静态属性，我们可以直接通过<code>ClassA.staticValue = &quot;static value&quot;;</code>定义类的静态属性。</p>
+<p>需要注意的是，<code>class</code>关键字只是原型的语法糖，JavaScript继承仍然是基于原型实现的。</p>
+<p>并不是所有的浏览器都支持<code>class</code>关键字，在生产环境中，我们可以编写ES6的代码，然后用Babel或TypeScript将其编译为ES5等主流浏览器支持的语法格式。</p>
+<h2 id="ES6-Class和之前几种继承区别"><a href="#ES6-Class和之前几种继承区别" class="headerlink" title="ES6 Class和之前几种继承区别"></a>ES6 Class和之前几种继承区别</h2><p>一个很重要的区别在于, ES5 的继承，实质是先创造子类的实例对象this，然后再将父类的方法添加到this上面, 例如上面的说的例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function ClassB(name, age, job) &#123;</span><br><span class="line">    ClassA.apply(this, [name, age]);</span><br><span class="line">    this.job = job;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ES6 的继承机制完全不同，实质是先创造父类的实例对象this（所以必须先调用super方法），然后再用子类的构造函数修改this。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li><p>执行<code>var x = new X()</code>;时，浏览器会执行<code>x.__proto__ = X.prototype</code>，会将实例化对象的原型设置为对应的类的<code>prototype</code>对象。</p>
+</li>
+<li><p>实现类继承的关键是<code>Child.prototype.__proto__ = Father.prototype;</code>，这样会将<code>Father.prototype</code>作为<code>Child.prototype</code>的原型。<code>Object.prototype.__proto__</code>属性是在ES6规范中所引入的，为了在ES3和ES5中需要通过各种方式模拟实现对<code>Object.prototype.__proto__</code>进行赋值。</p>
+</li>
+<li><p>通过执行<code>Child.__proto__ = Father;</code>可以实现继承父类的静态属性和方法。</p>
+</li>
+</ol>
+<p>参考链接: </p>
+<p><a href="https://blog.csdn.net/iispring/article/details/62219444" target="_blank" rel="noopener">https://blog.csdn.net/iispring/article/details/62219444</a><br><a href="http://es6.ruanyifeng.com/#docs/class-extends" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/class-extends</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>越来越多的平台（微信公众平台，新浪微博，简书，百度打赏等）支持打赏功能，付费阅读时代越来越近，特此增加了打赏功能，支持微信打赏和支付宝打赏。坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010813_1496.png" alt="刘翾 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010819_6378.png" alt="刘翾 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/08/一张图让你理清javascript中__proto__, prototype, 以及constructor之间的关系/" rel="next" title="一张图让你理清javascript中__proto__, prototype, 以及constructor之间的关系">
+                <i class="fa fa-chevron-left"></i> 一张图让你理清javascript中__proto__, prototype, 以及constructor之间的关系
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/face.jpg"
+               alt="刘翾" />
+          <p class="site-author-name" itemprop="name">刘翾</p>
+           
+              <p class="site-description motion-element" itemprop="description">如果有一天我们淹没在人潮里，那是因为没有努力活得丰盛。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES3-继承"><span class="nav-number">2.</span> <span class="nav-text">ES3 继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES5继承"><span class="nav-number">3.</span> <span class="nav-text">ES5继承</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-继承"><span class="nav-number">4.</span> <span class="nav-text">ES6 继承</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6-Class和之前几种继承区别"><span class="nav-number">4.1.</span> <span class="nav-text">ES6 Class和之前几种继承区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘翾</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "19900f3c34a444f28a6aaba95b80bcee",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,937 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="翾的blog" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="ECMASript是javascript的核心. 但如果要在Web中使用javascript, 那么BOM(浏览器对象模型)则无疑才是真正的核心. BOM提供了很多对象, 用于访问浏览器的功能. 这些功能与任何网页内容无关. 多年来, 缺少事实上的规范导致BOM既有意思又有问题, 因为浏览器提供商会按照各自的想法去扩展它. 于是浏览器之间共有的对象就成为了事实上的标准. 这些对象在浏览器中得以存在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript---BOM">
+<meta property="og:url" content="http://liuzhixuan360.com/2017/02/20/javascript---BOM/index.html">
+<meta property="og:site_name" content="刘翾`s Blog">
+<meta property="og:description" content="ECMASript是javascript的核心. 但如果要在Web中使用javascript, 那么BOM(浏览器对象模型)则无疑才是真正的核心. BOM提供了很多对象, 用于访问浏览器的功能. 这些功能与任何网页内容无关. 多年来, 缺少事实上的规范导致BOM既有意思又有问题, 因为浏览器提供商会按照各自的想法去扩展它. 于是浏览器之间共有的对象就成为了事实上的标准. 这些对象在浏览器中得以存在">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-07T13:59:53.429Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript---BOM">
+<meta name="twitter:description" content="ECMASript是javascript的核心. 但如果要在Web中使用javascript, 那么BOM(浏览器对象模型)则无疑才是真正的核心. BOM提供了很多对象, 用于访问浏览器的功能. 这些功能与任何网页内容无关. 多年来, 缺少事实上的规范导致BOM既有意思又有问题, 因为浏览器提供商会按照各自的想法去扩展它. 于是浏览器之间共有的对象就成为了事实上的标准. 这些对象在浏览器中得以存在">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuzhixuan360.com/2017/02/20/javascript---BOM/"/>
+
+
+
+
+
+  <title>javascript---BOM | 刘翾`s Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘翾`s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">刘翾</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2017/02/20/javascript---BOM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘翾">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/face.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘翾`s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">javascript---BOM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-20T17:27:00+08:00">
+                2017-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2017/02/20/javascript---BOM/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="ECMASript是javascript的核心-但如果要在Web中使用javascript-那么BOM-浏览器对象模型-则无疑才是真正的核心-BOM提供了很多对象-用于访问浏览器的功能-这些功能与任何网页内容无关-多年来-缺少事实上的规范导致BOM既有意思又有问题-因为浏览器提供商会按照各自的想法去扩展它-于是浏览器之间共有的对象就成为了事实上的标准-这些对象在浏览器中得以存在-很大程度上由于它们提供了与浏览器的互操作性-W3C为了把浏览器中javascript最基本的部分标准化-已经将BOM的主要方面纳入了HTML5的规范中"><a href="#ECMASript是javascript的核心-但如果要在Web中使用javascript-那么BOM-浏览器对象模型-则无疑才是真正的核心-BOM提供了很多对象-用于访问浏览器的功能-这些功能与任何网页内容无关-多年来-缺少事实上的规范导致BOM既有意思又有问题-因为浏览器提供商会按照各自的想法去扩展它-于是浏览器之间共有的对象就成为了事实上的标准-这些对象在浏览器中得以存在-很大程度上由于它们提供了与浏览器的互操作性-W3C为了把浏览器中javascript最基本的部分标准化-已经将BOM的主要方面纳入了HTML5的规范中" class="headerlink" title="ECMASript是javascript的核心. 但如果要在Web中使用javascript, 那么BOM(浏览器对象模型)则无疑才是真正的核心. BOM提供了很多对象, 用于访问浏览器的功能. 这些功能与任何网页内容无关. 多年来, 缺少事实上的规范导致BOM既有意思又有问题, 因为浏览器提供商会按照各自的想法去扩展它. 于是浏览器之间共有的对象就成为了事实上的标准. 这些对象在浏览器中得以存在, 很大程度上由于它们提供了与浏览器的互操作性. W3C为了把浏览器中javascript最基本的部分标准化, 已经将BOM的主要方面纳入了HTML5的规范中."></a>ECMASript是javascript的核心. 但如果要在Web中使用javascript, 那么BOM(浏览器对象模型)则无疑才是真正的核心. BOM提供了很多对象, 用于访问浏览器的功能. 这些功能与任何网页内容无关. 多年来, 缺少事实上的规范导致BOM既有意思又有问题, 因为浏览器提供商会按照各自的想法去扩展它. 于是浏览器之间共有的对象就成为了事实上的标准. 这些对象在浏览器中得以存在, 很大程度上由于它们提供了与浏览器的互操作性. W3C为了把浏览器中javascript最基本的部分标准化, 已经将BOM的主要方面纳入了HTML5的规范中.</h3><a id="more"></a>
+<hr>
+<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><h2 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h2><p>BOM的核心对象是window, 它表示浏览器的一个实例. 在浏览器中, window对象有双重角色, 它既是通过javascript访问浏览器窗口的一个接口, 又是ECMAScript规定的Global对象. 这意味着在网页中定义的任何一个对象, 变量和函数. 都以window作为其Global对象, 因此有权访问paeseInt()等方法. </p>
+<h3 id="导航和打开窗口open-方法"><a href="#导航和打开窗口open-方法" class="headerlink" title="导航和打开窗口open() 方法"></a>导航和打开窗口open() 方法</h3><ol>
+<li><strong>定义和用法</strong><br> open() 方法用于打开一个新的浏览器窗口或查找一个已命名的窗口。</li>
+<li><p>语法<br> window.open(URL,name,features,replace)</p>
+<p> |参数|描述|<br> |:—–|:—–|<br> |URL|     一个可选的字符串，声明了要在新窗口中显示的文档的URL。如果省略了这个参数，或者它的值是空字符串，那么新窗口就不会显示任何文档。|<br>|name    |一个可选的字符串，该字符串是一个由逗号分隔的特征列表，其中包括数字、字母和下划线，该字符声明了新窗口的名称。这个名称可以用作标记 &lt; a &gt; 和 &lt; form &gt; 的属性 target 的值。如果该参数指定了一个已经存在的窗口，那么 open() 方法就不再创建一个新窗口，而只是返回对指定窗口的引用。在这种情况下，features 将被忽略。|<br>|features|    一个可选的字符串，声明了新窗口要显示的标准浏览器的特征。如果省略该参数，新窗口将具有所有标准特征。在窗口特征这个表格中，我们对该字符串的格式进行了详细的说明。|<br>|replace|一个可选的布尔值。规定了装载到窗口的 URL 是在窗口的浏览历史中创建一个新条目，还是替换浏览历史中的当前条目。支持下面的值:<br>true - URL 替换浏览历史中的当前条目。<br>false - URL 在浏览历史中创建新的条目。|</p>
+</li>
+</ol>
+<h3 id="窗口关系以及框架"><a href="#窗口关系以及框架" class="headerlink" title="窗口关系以及框架"></a>窗口关系以及框架</h3><p>  如果页面中包含框架, 则每个框架都拥有自己的window对象, 并且保存在frames集合中. 在frames集合中, 可以通过数值索引(从0开始, 从左至右, 从上到下)或者框架名称来访问相应的window对象, 每个window对象都有一个name属性, 其中包含框架的名称. </p>
+<p>更多属性内容请查阅W3Cschool</p>
+<hr>
+<h2 id="Navigator-对象"><a href="#Navigator-对象" class="headerlink" title="Navigator 对象"></a>Navigator 对象</h2><p>Navigator 对象包含有关浏览器的信息。</p>
+<h3 id="Navigator-对象属性"><a href="#Navigator-对象属性" class="headerlink" title="Navigator 对象属性"></a>Navigator 对象属性</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">appCodeName</td>
+<td style="text-align:left">返回浏览器的代码名。</td>
+</tr>
+<tr>
+<td style="text-align:left">appMinorVersion</td>
+<td style="text-align:left">返回浏览器的次级版本。</td>
+</tr>
+<tr>
+<td style="text-align:left">appName</td>
+<td style="text-align:left">返回浏览器的名称。</td>
+</tr>
+<tr>
+<td style="text-align:left">appVersion</td>
+<td style="text-align:left">返回浏览器的平台和版本信息。</td>
+</tr>
+<tr>
+<td style="text-align:left">browserLanguage</td>
+<td style="text-align:left">返回当前浏览器的语言。</td>
+</tr>
+<tr>
+<td style="text-align:left">cookieEnabled</td>
+<td style="text-align:left">返回指明浏览器中是否启用 cookie 的布尔值。</td>
+</tr>
+<tr>
+<td style="text-align:left">cpuClass</td>
+<td style="text-align:left">返回浏览器系统的 CPU 等级。</td>
+</tr>
+<tr>
+<td style="text-align:left">onLine</td>
+<td style="text-align:left">返回指明系统是否处于脱机模式的布尔值。</td>
+</tr>
+<tr>
+<td style="text-align:left">platform</td>
+<td style="text-align:left">返回运行浏览器的操作系统平台。</td>
+</tr>
+<tr>
+<td style="text-align:left">systemLanguage</td>
+<td style="text-align:left">返回 OS 使用的默认语言。</td>
+</tr>
+<tr>
+<td style="text-align:left">userAgent</td>
+<td style="text-align:left">返回由客户机发送服务器的 user-agent 头部的值。</td>
+</tr>
+<tr>
+<td style="text-align:left">userLanguage</td>
+<td style="text-align:left">返回 OS 的自然语言设置。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="History-对象"><a href="#History-对象" class="headerlink" title="History 对象"></a>History 对象</h2><p>History 对象包含用户（在浏览器窗口中）访问过的 URL。<br>History 对象是 window 对象的一部分，可通过 window.history 属性对其进行访问。</p>
+<p>History 对象方法<br>|方法    |描述|<br>|:—-|:—–|<br>|back()    |加载 history 列表中的前一个 URL。|<br>|forward()    |加载 history 列表中的下一个 URL。|<br>|go()    |加载 history 列表中的某个具体页面。|</p>
+<hr>
+<h2 id="Location-对象"><a href="#Location-对象" class="headerlink" title="Location 对象"></a>Location 对象</h2><p>Location 对象包含有关当前 URL 的信息。<br>Location 对象是 Window 对象的一个部分，可通过 window.location 属性来访问。</p>
+<h3 id="Location-对象属性"><a href="#Location-对象属性" class="headerlink" title="Location 对象属性"></a>Location 对象属性</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">hash</td>
+<td style="text-align:left">设置或返回从井号 (#) 开始的 URL（锚）。</td>
+</tr>
+<tr>
+<td style="text-align:left">host</td>
+<td style="text-align:left">设置或返回主机名和当前 URL 的端口号。</td>
+</tr>
+<tr>
+<td style="text-align:left">hostname</td>
+<td style="text-align:left">设置或返回当前 URL 的主机名。</td>
+</tr>
+<tr>
+<td style="text-align:left">href</td>
+<td style="text-align:left">设置或返回完整的 URL。</td>
+</tr>
+<tr>
+<td style="text-align:left">pathname</td>
+<td style="text-align:left">设置或返回当前 URL 的路径部分。</td>
+</tr>
+<tr>
+<td style="text-align:left">port</td>
+<td style="text-align:left">设置或返回当前 URL 的端口号。</td>
+</tr>
+<tr>
+<td style="text-align:left">protocol</td>
+<td style="text-align:left">设置或返回当前 URL 的协议。</td>
+</tr>
+<tr>
+<td style="text-align:left">search</td>
+<td style="text-align:left">设置或返回从问号 (?) 开始的 URL（查询部分）。</td>
+</tr>
+</tbody>
+</table>
+<p>每次修改location的属性(hash除外), 页面都会以新URL重新加载</p>
+<h3 id="Location-对象方法"><a href="#Location-对象方法" class="headerlink" title="Location 对象方法"></a>Location 对象方法</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">属性</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">assign()</td>
+<td style="text-align:left">加载新的文档。</td>
+</tr>
+<tr>
+<td style="text-align:left">reload()</td>
+<td style="text-align:left">重新加载当前文档。</td>
+</tr>
+<tr>
+<td style="text-align:left">replace()</td>
+<td style="text-align:left">用新的文档替换当前文档。</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>越来越多的平台（微信公众平台，新浪微博，简书，百度打赏等）支持打赏功能，付费阅读时代越来越近，特此增加了打赏功能，支持微信打赏和支付宝打赏。坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010813_1496.png" alt="刘翾 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010819_6378.png" alt="刘翾 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/20/javascript-Doctype, img图片预加载, js文档碎片/" rel="next" title="javascript-Doctype, img图片预加载, js文档碎片">
+                <i class="fa fa-chevron-left"></i> javascript-Doctype, img图片预加载, js文档碎片
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/22/Ajax用法详细解析, 实现异步更新页面, 以及'post'和'get'请求属性介绍/" rel="prev" title="Ajax用法详细解析, 实现异步更新页面, 以及'post'和'get'请求属性介绍">
+                Ajax用法详细解析, 实现异步更新页面, 以及'post'和'get'请求属性介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/face.jpg"
+               alt="刘翾" />
+          <p class="site-author-name" itemprop="name">刘翾</p>
+           
+              <p class="site-description motion-element" itemprop="description">如果有一天我们淹没在人潮里，那是因为没有努力活得丰盛。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ECMASript是javascript的核心-但如果要在Web中使用javascript-那么BOM-浏览器对象模型-则无疑才是真正的核心-BOM提供了很多对象-用于访问浏览器的功能-这些功能与任何网页内容无关-多年来-缺少事实上的规范导致BOM既有意思又有问题-因为浏览器提供商会按照各自的想法去扩展它-于是浏览器之间共有的对象就成为了事实上的标准-这些对象在浏览器中得以存在-很大程度上由于它们提供了与浏览器的互操作性-W3C为了把浏览器中javascript最基本的部分标准化-已经将BOM的主要方面纳入了HTML5的规范中"><span class="nav-number">1.</span> <span class="nav-text">ECMASript是javascript的核心. 但如果要在Web中使用javascript, 那么BOM(浏览器对象模型)则无疑才是真正的核心. BOM提供了很多对象, 用于访问浏览器的功能. 这些功能与任何网页内容无关. 多年来, 缺少事实上的规范导致BOM既有意思又有问题, 因为浏览器提供商会按照各自的想法去扩展它. 于是浏览器之间共有的对象就成为了事实上的标准. 这些对象在浏览器中得以存在, 很大程度上由于它们提供了与浏览器的互操作性. W3C为了把浏览器中javascript最基本的部分标准化, 已经将BOM的主要方面纳入了HTML5的规范中.</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BOM"><span class="nav-number"></span> <span class="nav-text">BOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#window对象"><span class="nav-number"></span> <span class="nav-text">window对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#导航和打开窗口open-方法"><span class="nav-number">1.</span> <span class="nav-text">导航和打开窗口open() 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口关系以及框架"><span class="nav-number">2.</span> <span class="nav-text">窗口关系以及框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Navigator-对象"><span class="nav-number"></span> <span class="nav-text">Navigator 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Navigator-对象属性"><span class="nav-number">1.</span> <span class="nav-text">Navigator 对象属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#History-对象"><span class="nav-number"></span> <span class="nav-text">History 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Location-对象"><span class="nav-number"></span> <span class="nav-text">Location 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Location-对象属性"><span class="nav-number">1.</span> <span class="nav-text">Location 对象属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Location-对象方法"><span class="nav-number">2.</span> <span class="nav-text">Location 对象方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘翾</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "19900f3c34a444f28a6aaba95b80bcee",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

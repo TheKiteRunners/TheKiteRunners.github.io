@@ -1,0 +1,1128 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="internet知识," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="为什么2月份会停更一个月的博客呢? … 过年是一个原因, 其次就是改bug, 改bug的过程感觉很恶心, 没有什么技术上的收获, 只有经验上的收获, 例如多自测几套数据, 多测测极限数据的问题, 而这些又没什么好写的, 也就一直没有更新博客. 上班真的很辛苦, 每天感觉挺累的, 书也好久没有看了, 今天恰逢没有新需求, 项目在提测之际来写下一遍转载的文章, 主要记录一下在各处搜索到的关于web缓存">
+<meta name="keywords" content="internet知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web缓存原理分析">
+<meta property="og:url" content="http://liuzhixuan360.com/2018/03/22/web缓存原理分析/index.html">
+<meta property="og:site_name" content="刘翾`s Blog">
+<meta property="og:description" content="为什么2月份会停更一个月的博客呢? … 过年是一个原因, 其次就是改bug, 改bug的过程感觉很恶心, 没有什么技术上的收获, 只有经验上的收获, 例如多自测几套数据, 多测测极限数据的问题, 而这些又没什么好写的, 也就一直没有更新博客. 上班真的很辛苦, 每天感觉挺累的, 书也好久没有看了, 今天恰逢没有新需求, 项目在提测之际来写下一遍转载的文章, 主要记录一下在各处搜索到的关于web缓存">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img-blog.csdn.net/20180322120018291?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://img-blog.csdn.net/20180322120152839?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://img-blog.csdn.net/20180322120839367?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://img-blog.csdn.net/20180322121237852?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://img-blog.csdn.net/20180322134625903?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://img-blog.csdn.net/20180322135650205?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://img-blog.csdn.net/2018032214025936?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://img-blog.csdn.net/20180322141706767?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:image" content="http://img-blog.csdn.net/201803221417356?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta property="og:updated_time" content="2018-03-26T05:39:07.364Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web缓存原理分析">
+<meta name="twitter:description" content="为什么2月份会停更一个月的博客呢? … 过年是一个原因, 其次就是改bug, 改bug的过程感觉很恶心, 没有什么技术上的收获, 只有经验上的收获, 例如多自测几套数据, 多测测极限数据的问题, 而这些又没什么好写的, 也就一直没有更新博客. 上班真的很辛苦, 每天感觉挺累的, 书也好久没有看了, 今天恰逢没有新需求, 项目在提测之际来写下一遍转载的文章, 主要记录一下在各处搜索到的关于web缓存">
+<meta name="twitter:image" content="http://img-blog.csdn.net/20180322120018291?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuzhixuan360.com/2018/03/22/web缓存原理分析/"/>
+
+
+
+
+
+  <title>web缓存原理分析 | 刘翾`s Blog</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">刘翾`s Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">刘翾</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2018/03/22/web缓存原理分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘翾">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/face.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘翾`s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">web缓存原理分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-22T14:29:00+08:00">
+                2018-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/internet知识/" itemprop="url" rel="index">
+                    <span itemprop="name">internet知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2018/03/22/web缓存原理分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o">本文总阅读量</i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>为什么2月份会停更一个月的博客呢? … 过年是一个原因, 其次就是改bug, 改bug的过程感觉很恶心, 没有什么技术上的收获, 只有经验上的收获, 例如多自测几套数据, 多测测极限数据的问题, 而这些又没什么好写的, 也就一直没有更新博客. 上班真的很辛苦, 每天感觉挺累的, 书也好久没有看了, 今天恰逢没有新需求, 项目在提测之际来写下一遍转载的文章, 主要记录一下在各处搜索到的关于web缓存的一些事情.</p>
+<hr>
+<p>这边文章其实写在3月22日之前, 刚参加完腾讯的面试觉得差距真是非常大, 很多内部实现原理之前根本没想学习, 现在发现这是不行的,<br><a href="http://blog.csdn.net/c_kite/article/details/79646035" target="_blank" rel="noopener">http://blog.csdn.net/c_kite/article/details/79646035</a><br>这是面试经历</p>
+<hr>
+<a id="more"></a>
+<h1 id="各种类型的缓存"><a href="#各种类型的缓存" class="headerlink" title="各种类型的缓存"></a>各种类型的缓存</h1><p>缓存是一种保存资源副本并在下次请求时直接使用该副本的技术。当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载。这样带来的好处有：缓解服务器端压力，提升性能(获取资源的耗时更短了)。对于网站来说，缓存是达到高性能的重要组成部分。缓存需要合理配置，因为并不是所有资源都是永久不变的：重要的是对一个资源的缓存应截止到其下一次发生改变（即不能缓存过期的资源）。</p>
+<p><strong>1.数据库数据缓存</strong><br>  Web应用，特别是社交网络服务类型的应用，往往关系比较复杂，数据库表繁多，如果频繁进行数据库查询，很容易导致数据库不堪重荷。为了提供查询的性能，会将查询后的数据放到内存中进行缓存，下次查询时，直接从内存缓存直接返回，提供响应效率。比如常用的缓存方案有memcached,redis等。  </p>
+<p><strong>2.服务器端缓存</strong><br> 代理服务器缓存<br> 代理服务器是浏览器和源服务器之间的中间服务器，浏览器先向这个中间服务器发起Web请求，经过处理后（比如权限验证，缓存匹配等），再将请求转发到源服务器。代理服务器缓存的运作原理跟浏览器的运作原理差不多，只是规模更大。可以把它理解为一个共享缓存，不只为一个用户服务，一般为大量用户提供服务，因此在减少相应时间和带宽使用方面很有效，同一个副本会被重用多次。常见代理服务器缓存解决方案有Squid,Nginx,Apache等。</p>
+<p> <strong><em>CDN缓存</em></strong><br>CDN（Content delivery networks）缓存，也叫网关缓存、反向代理缓存。CDN缓存一般是由网站管理员自己部署，为了让他们的网站更容易扩展并获得更好的性能。浏览器先向CDN网关发起Web请求，网关服务器后面对应着一台或多台负载均衡源服务器，会根据它们的负载请求，动态将请求转发到合适的源服务器上。虽然这种架构负载均衡源服务器之间的缓存没法共享，但却拥有更好的处扩展性。从浏览器角度来看，整个CDN就是一个源服务器，浏览器和服务器之间的缓存机制，在这种架构下同样适用。</p>
+<p><strong>3.浏览器端缓存</strong><br>浏览器缓存根据一套与服务器约定的规则进行工作，在同一个会话过程中会检查一次并确定缓存的副本足够新。如果你浏览过程中，比如前进或后退，访问到同一个图片，这些图片可以从浏览器缓存中调出而即时显现。</p>
+<p><strong>4.Web应用层缓存</strong><br>应用层缓存指的是从代码层面上，通过代码逻辑和缓存策略，实现对数据，页面，图片等资源的缓存，可以根据实际情况选择将数据存在文件系统或者内存中，减少数据库查询或者读写瓶颈，提高响应效率。</p>
+<h1 id="HTTP头信息控制缓存"><a href="#HTTP头信息控制缓存" class="headerlink" title="HTTP头信息控制缓存"></a>HTTP头信息控制缓存</h1><h2 id="通用首部字段"><a href="#通用首部字段" class="headerlink" title="通用首部字段"></a>通用首部字段</h2><p>我们先来瞅一眼http1.1协议报文首部字段中与缓存相关的字段</p>
+<h3 id="1-通用首部字段"><a href="#1-通用首部字段" class="headerlink" title="1.通用首部字段"></a>1.通用首部字段</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">字段名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Cache-Control</td>
+<td style="text-align:left">控制缓存的行为</td>
+</tr>
+<tr>
+<td style="text-align:left">Pragma</td>
+<td style="text-align:left">http1.0的旧社会遗留物, 值为”no-cache”时禁用缓存</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-请求首部字段"><a href="#2-请求首部字段" class="headerlink" title="2.请求首部字段"></a>2.请求首部字段</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">字段名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">if-Match</td>
+<td style="text-align:left">比较ETag是否一致</td>
+</tr>
+<tr>
+<td style="text-align:left">if-None-Match</td>
+<td style="text-align:left">比较ETag是否不一致</td>
+</tr>
+<tr>
+<td style="text-align:left">if-Modified-Since</td>
+<td style="text-align:left">比较资源最后更新的时间是否一致</td>
+</tr>
+<tr>
+<td style="text-align:left">if-Unmodified-Since</td>
+<td style="text-align:left">比较资源最后更新的时间是否不一致</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-响应首部字段"><a href="#3-响应首部字段" class="headerlink" title="3.响应首部字段"></a>3.响应首部字段</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">字段名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ETag</td>
+<td style="text-align:left">资源的匹配信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-实体首部字段"><a href="#4-实体首部字段" class="headerlink" title="4. 实体首部字段"></a>4. 实体首部字段</h3><table>
+<thead>
+<tr>
+<th style="text-align:left">字段名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Expires</td>
+<td style="text-align:left">http1.0的遗留物, 实体主体过期的时间</td>
+</tr>
+<tr>
+<td style="text-align:left">Last-Modified</td>
+<td style="text-align:left">资源最后一次修改的时间</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="http1-0-时代缓存字段详解"><a href="#http1-0-时代缓存字段详解" class="headerlink" title="http1.0 时代缓存字段详解"></a>http1.0 时代缓存字段详解</h2><p>在 http1.0 时代，给客户端设定缓存方式可通过两个字段<code>Pragma</code>和<code>Expires</code>来规范。虽然这两个字段早可抛弃，但http协议做了向下兼容，所以依然可以看到。</p>
+<h3 id="1-Pragma"><a href="#1-Pragma" class="headerlink" title="1.Pragma"></a>1.Pragma</h3><p><code>Pragma</code>:设置页面是否缓存，为<code>Pragma</code>则缓存，<code>no-cache</code>则不缓存</p>
+<p>当该字段值为<code>no-cache</code>的时候，会知会客户端不要对该资源读缓存，即每次都得向服务器发一次请求才行。</p>
+<h3 id="2-Expires"><a href="#2-Expires" class="headerlink" title="2.Expires"></a>2.Expires</h3><p>有了<code>Pragma</code>来禁用缓存，自然也需要有个东西来启用缓存和定义缓存时间，对http1.0而言，<code>Expires</code>就是做这件事的首部字段。 <code>Expires</code>的值对应一个GMT（格林尼治时间），比如Mon, 22 Jul 2002 11:12:01 GMT来告诉浏览器资源缓存过期时间，如果还没过该时间点则不发请求。</p>
+<p>如果<code>Pragma</code>头部和<code>Expires</code>头部同时存在，则起作用的会是<code>Pragma</code>，需要注意的是，响应报文中<code>Expires</code>所定义的缓存时间是相对服务器上的时间而言的，其定义的是资源“失效时刻”，如果客户端上的时间跟服务器上的时间不一致（特别是用户修改了自己电脑的系统时间），那缓存时间可能就没啥意义了。</p>
+<hr>
+<h2 id="http1-1时代缓存字段详解"><a href="#http1-1时代缓存字段详解" class="headerlink" title="http1.1时代缓存字段详解"></a>http1.1时代缓存字段详解</h2><h3 id="1-Cache-Control"><a href="#1-Cache-Control" class="headerlink" title="1.Cache-Control"></a>1.Cache-Control</h3><p>针对上述的<code>Expires</code>时间是相对服务器而言，无法保证和客户端时间统一”的问题，http1.1新增了 <code>Cache-Control</code> 来定义缓存过期时间。注意：若报文中同时出现了 <code>Expires</code> 和 <code>Cache-Control</code>，则以 <code>Cache-Control</code> 为准。</p>
+<p>  也就是说优先级从高到低分别是 <code>Pragma</code> -&gt; <code>Cache-Control</code> -&gt; <code>Expires</code> 。</p>
+<p>  <code>Cache-Control</code>也是一个通用首部字段，这意味着它能分别在请求报文和响应报文中使用。在RFC中规范了 <code>Cache-Control</code> 的格式为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: cache-directive</span><br></pre></td></tr></table></figure>
+<p>作为<strong><em>请求</em></strong>首部时，<code>cache-directive</code> 的可选值有：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">no-cache</td>
+<td style="text-align:left">告知代理服务器不直接使用缓存, 要求向原服务器发起请求</td>
+</tr>
+<tr>
+<td style="text-align:left">no-store</td>
+<td style="text-align:left">所有内容都不会被保存到缓存或Internet临时文件中</td>
+</tr>
+<tr>
+<td style="text-align:left">max-age=delta-seconds</td>
+<td style="text-align:left">告知服务器客户端希望接收一个存在时间(Age)不大于<code>delta-seconds</code>秒的资源</td>
+</tr>
+<tr>
+<td style="text-align:left">max-stale[=delta-seconds]</td>
+<td style="text-align:left">告知(代理)服务器客户端愿意接收一个超过缓存时间的资源, 若有定义<code>delta-seconds</code>则为<code>delta-seconds</code>秒, 若没有则为任意超过的时间</td>
+</tr>
+<tr>
+<td style="text-align:left">min-fresh=delta-seconds</td>
+<td style="text-align:left">告知(代理)服务器客户端希望接收一个在小于<code>delta-seconds</code>秒内被更新过的资源</td>
+</tr>
+<tr>
+<td style="text-align:left">no-transform</td>
+<td style="text-align:left">告知(代理)服务器客户端希望获取实体数据没有被转换(比如压缩)过的资源</td>
+</tr>
+<tr>
+<td style="text-align:left">only-if-cached</td>
+<td style="text-align:left">告知(代理)服务器客户端希望获取缓存的内容(若有),而不用向原服务器发去请求</td>
+</tr>
+<tr>
+<td style="text-align:left">cache-extension</td>
+<td style="text-align:left">自定义扩展值,若服务器不识别该值将被忽略掉</td>
+</tr>
+</tbody>
+</table>
+<p><code>Cache-Control: no-cache</code>：这个很容易让人产生误解，使人误以为是响应不被缓存。<strong>实际上Cache-Control: no-cache是会被缓存的，</strong><br>只不过每次在向客户端（浏览器）提供响应数据时，缓存都要向服务器评估缓存响应的有效性。<br><code>Cache-Control: no-store</code>：这个才是响应不被缓存的意思。</p>
+<p>作为相应头部, <code>cache-directive</code>的可选值: </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">字段名称</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">public</td>
+<td style="text-align:left">表明任何情况下都得缓存该资源(即使是需要http认证的资源)</td>
+</tr>
+<tr>
+<td style="text-align:left">Private[=”field-name”]</td>
+<td style="text-align:left">表明返回报文中全部或部分(若指定了field-name则为field-name的字段数据)仅开放给某些用户(服务器指定的share-user, 如代理服务器)做缓存使用, 其他用户则不能缓存这些数据</td>
+</tr>
+<tr>
+<td style="text-align:left">no-cache</td>
+<td style="text-align:left">不直接使用缓存, 要求向服务器发起(新鲜度校验)请求</td>
+</tr>
+<tr>
+<td style="text-align:left">no-store</td>
+<td style="text-align:left">所有内容都不会被保存到缓存或Internet临时文件中</td>
+</tr>
+<tr>
+<td style="text-align:left">no-transform</td>
+<td style="text-align:left">告知客户端缓存文件时不得对实体数据做任何改变</td>
+</tr>
+<tr>
+<td style="text-align:left">only-if-cached</td>
+<td style="text-align:left">告知(代理)服务器客户端希望获取缓存的内容(若有), 而不用向原服务器发去请求</td>
+</tr>
+<tr>
+<td style="text-align:left">must-revalidate</td>
+<td style="text-align:left">当前资源一定是向原服务器发去验证请求的, 若请求失败会返回504(而非代理服务器上的缓存</td>
+</tr>
+<tr>
+<td style="text-align:left">proxy-revalidate</td>
+<td style="text-align:left">与must-revalidate类似, 但仅能应用于共享缓存(如代理)</td>
+</tr>
+<tr>
+<td style="text-align:left">max-age=delta-seconds</td>
+<td style="text-align:left">告知客户端该资源在delta-seconds秒内是新鲜的, 无需向服务器发送请求</td>
+</tr>
+<tr>
+<td style="text-align:left">s-maxage=delta-seconds</td>
+<td style="text-align:left">同max-age, 但仅应用于共享缓存(如代理)</td>
+</tr>
+<tr>
+<td style="text-align:left">cache-extension</td>
+<td style="text-align:left">自定义扩展值. 若服务器不识别该值将被忽略掉</td>
+</tr>
+</tbody>
+</table>
+<p><code>Cache-Control</code> 允许自由组合可选值，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Cache-Control: max-age=3600, must-revalidate</span><br></pre></td></tr></table></figure>
+<p>它意味着该资源是从原服务器上取得的，且其缓存（新鲜度）的有效时间为一小时，在后续一小时内，用户重新访问该资源则无须发送请求。 </p>
+<p>当然这种组合的方式也会有些限制，比如 <code>no-cache</code> 就不能和 <code>max-age</code>、<code>min-fresh</code>、<code>max-stale</code> 一起搭配使用。</p>
+<h3 id="2-Last-Modified-If-Modified-Since"><a href="#2-Last-Modified-If-Modified-Since" class="headerlink" title="2.Last-Modified/If-Modified-Since"></a>2.Last-Modified/If-Modified-Since</h3><p><code>Last-Modified/If-Modified-Since</code>要配合<code>Cache-Control</code>使用。</p>
+<p><strong>(1) Last-Modified：</strong>标示这个响应资源的最后修改时间。web服务器在响应请求时，告诉浏览器资源的最后修改时间。</p>
+<p><strong>(2) If-Modified-Since：</strong>当资源过期时（使用<code>Cache-Control</code>标识的<code>max-age</code>），发现资源具有<code>Last-Modified</code>声明，则再次向web服务器请求时带上头 <code>If-Modified-Since</code>，表示请求时间。web服务器收到请求后发现有头<code>If-Modified-Since</code> 则与被请求资源的最后修改时间进行比对。若最后修改时间较新，说明资源又被改动过，则响应整片资源内容（写在响应消息包体内），HTTP 200；若最后修改时间较旧，说明资源无新修改，则响应HTTP 304 (无需包体，节省浏览)，告知浏览器继续使用所保存的<code>cache</code>。</p>
+<h3 id="3-Etag-If-None-Match"><a href="#3-Etag-If-None-Match" class="headerlink" title="3.Etag/If-None-Match"></a>3.Etag/If-None-Match</h3><p><code>Etag/If-None-Match</code>也要配合<code>Cache-Control</code>使用。</p>
+<p><strong>(1)Etag:</strong> web服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器觉得）。Apache中，ETag的值，默认是对文件的索引节（INode），大小（Size）和最后修改时间（MTime）进行Hash后得到的。</p>
+<p><strong>(2)If-None-Match：</strong>当资源过期时（使用<code>Cache-Control</code>标识的<code>max-age</code>），发现资源具有<code>Etage</code>声明，则再次向web服务器请求时带上头<code>If-None-Match</code> （Etag的值）。web服务器收到请求后发现有头<code>If-None-Match</code> 则与被请求资源的相应校验串进行比对，决定返回200或304</p>
+<h4 id="4-既生Last-Modified何生Etag？"><a href="#4-既生Last-Modified何生Etag？" class="headerlink" title="4.既生Last-Modified何生Etag？"></a>4.既生Last-Modified何生Etag？</h4><p>你可能会觉得使用<code>Last-Modified</code>已经足以让浏览器知道本地的缓存副本是否足够新，为什么还需要Etag（实体标识）呢？HTTP1.1中<code>Etag</code>的出现主要是为了解决几个<code>Last-Modified</code>比较难解决的问题：</p>
+<p>(1). Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的修改时间</p>
+<p>(2). 如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存</p>
+<p>(3). 有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</p>
+<p><strong>Etag</strong>是服务器自动生成或者由开发者生成的对应资源在服务器端的唯一标识符，能够更加准确的控制缓存。<strong>Last-Modified</strong>与<strong>ETag</strong>是可以一起使用的，服务器会优先验证<strong>ETag</strong>，一致的情况下，才会继续比对<strong>Last-Modified</strong>，最后才决定是否返回304。</p>
+<h4 id="5-不太常用的两个http字段If-Unmodified-Since-If-Match"><a href="#5-不太常用的两个http字段If-Unmodified-Since-If-Match" class="headerlink" title="5.不太常用的两个http字段If-Unmodified-Since/If-Match"></a>5.不太常用的两个http字段If-Unmodified-Since/If-Match</h4><p><strong>(1)If-Unmodified-Since:  Last-Modified-value</strong><br>告诉服务器，若Last-Modified没有匹配上（资源在服务端的最后更新时间改变了），则应当返回412(Precondition Failed) 状态码给客户端。</p>
+<p>当遇到下面情况时，If-Unmodified-Since 字段会被忽略：</p>
+<ol>
+<li>Last-Modified值对上了（资源在服务端没有新的修改）；</li>
+<li>服务端需返回2XX和412之外的状态码；</li>
+<li>传来的指定日期不合法</li>
+</ol>
+<p><strong>(2)If-Match: ETag-value</strong><br>告诉服务器如果没有匹配到ETag，或者收到了“*”值而当前并没有该资源实体，则应当返回412(Precondition Failed) 状态码给客户端。否则服务器直接忽略该字段。</p>
+<hr>
+<h2 id="浏览器缓存流程图"><a href="#浏览器缓存流程图" class="headerlink" title="浏览器缓存流程图"></a>浏览器缓存流程图</h2><p>小结一下, 浏览器第一次请求</p>
+<p><img src="//img-blog.csdn.net/20180322120018291?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="第一次流程图"></p>
+<p>浏览器第二次请求</p>
+<p><img src="//img-blog.csdn.net/20180322120152839?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="第二次流程图"></p>
+<hr>
+<h2 id="如何配置"><a href="#如何配置" class="headerlink" title="如何配置"></a>如何配置</h2><h3 id="1）通过代码的方式，在web服务器返回的响应中添加Expires和Cache-Control-Header；"><a href="#1）通过代码的方式，在web服务器返回的响应中添加Expires和Cache-Control-Header；" class="headerlink" title="1）通过代码的方式，在web服务器返回的响应中添加Expires和Cache-Control Header；"></a>1）通过代码的方式，在web服务器返回的响应中添加Expires和Cache-Control Header；</h3><p>比如在JavaWeb里面，我们可以使用类似下面的代码设置强缓存：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.util.Date date = <span class="keyword">new</span> java.util.Date(); </span><br><span class="line">response.setDateHeader(<span class="string">"Expires"</span>,date.getTime()+<span class="number">20000</span>); <span class="comment">// Expires:过时期限值 </span></span><br><span class="line">response.setHeader(<span class="string">"Cache-Control"</span>, <span class="string">"public"</span>);          <span class="comment">// Cache-Control来控制页面的缓存与否,public:浏览器和缓存服务器都可以缓存页面信息；</span></span><br><span class="line">response.setHeader(<span class="string">"Pragma"</span>, <span class="string">"Pragma"</span>);                 <span class="comment">// Pragma:设置页面是否缓存，为Pragma则缓存，no-cache则不缓存</span></span><br></pre></td></tr></table></figure>
+<p>还可以通过类似下面的java代码设置不启用强缓存：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">response.setHeader( &quot;Pragma&quot;, &quot;no-cache&quot; ); </span><br><span class="line">response.setDateHeader(&quot;Expires&quot;, 0); </span><br><span class="line">response.addHeader( &quot;Cache-Control&quot;, &quot;no-cache&quot; );//浏览器和缓存服务器都不应该缓存页面信息</span><br></pre></td></tr></table></figure>
+<h3 id="2）通过配置web服务器的方式，让web服务器在响应资源的时候统一添加Expires和Cache-Control-Header。"><a href="#2）通过配置web服务器的方式，让web服务器在响应资源的时候统一添加Expires和Cache-Control-Header。" class="headerlink" title="2）通过配置web服务器的方式，让web服务器在响应资源的时候统一添加Expires和Cache-Control Header。"></a>2）通过配置web服务器的方式，让web服务器在响应资源的时候统一添加Expires和Cache-Control Header。</h3><p>tomcat提供了一个ExpiresFilter专门用来配置强缓存</p>
+<p><img src="//img-blog.csdn.net/20180322120839367?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>nginx和apache作为专业的web服务器，都有专门的配置文件，可以配置expires和cache-control，</p>
+<p>Nginx服务器的配置方法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ &#123;</span><br><span class="line">    #过期时间为30天，#图片文件不怎么更新，过期可以设大一点，</span><br><span class="line">    expires 30d;</span><br><span class="line">&#125;</span><br><span class="line">location ~ .*\.(js|css)$ &#123;</span><br><span class="line">    #如果频繁更新，则可以设置得小一点。</span><br><span class="line">    expires 1d; </span><br><span class="line"> </span><br><span class="line">    add_header Cache-Control max-age=86400;</span><br><span class="line">    etag on;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Apache服务器的配置方法为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;Location ~ &quot;\.(js|css|png|jpg|gif|bmp|html)$&quot;&gt;</span><br><span class="line"></span><br><span class="line">     ExpiresActive On</span><br><span class="line"></span><br><span class="line">     ExpiresDefault &quot;access plus 1 hours&quot;</span><br><span class="line"></span><br><span class="line">     Header set Cache-Control max-age=3600</span><br><span class="line"></span><br><span class="line">     Header unset Pragma</span><br><span class="line"></span><br><span class="line">&lt;/Location&gt;</span><br><span class="line"></span><br><span class="line">&lt;Location ~ &quot;\.(do|jsp|aspx|asp|php|json|action|ashx|axd|cgi)$&quot;&gt;</span><br><span class="line"></span><br><span class="line">   Header set Cache-Control no-cache,no-store,max-age=0</span><br><span class="line">   Header unset Expires</span><br><span class="line">   Etag   INode Mtime Size</span><br><span class="line"></span><br><span class="line">&lt;/Location&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-缓存配置的一些注意事项"><a href="#3-缓存配置的一些注意事项" class="headerlink" title="3.缓存配置的一些注意事项"></a>3.缓存配置的一些注意事项</h3><ol>
+<li><p>只有<code>get</code>请求会被缓存，<code>post</code>请求不会</p>
+</li>
+<li><p><code>Etag</code> 在资源分布在多台机器上时，对于同一个资源，不同服务器生成的<code>Etag</code>可能不相同，此时就会导致304协议缓存失效，客户端还是直接从<code>server</code>取资源。可以自己修改服务器端<code>etag</code>的生成方式，根据资源内容生成同样的<code>etag</code>。需要注意的是分布式系统里多台机器间文件的<code>last-modified</code>必须保持一致，以免负载均衡到不同机器导致比对失败，Yahoo建议分布式系统尽量关闭掉<code>Etag</code>(每台机器生成的<code>Etag</code>都会不一样，因为除了 <code>last-modified</code>、文档节点也很难保持一致)</p>
+</li>
+</ol>
+<hr>
+<h2 id="用户行为与缓存"><a href="#用户行为与缓存" class="headerlink" title="用户行为与缓存"></a>用户行为与缓存</h2><p><img src="//img-blog.csdn.net/20180322121237852?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="行为缓存流程图"></p>
+<hr>
+<h2 id="缓存的清除方法"><a href="#缓存的清除方法" class="headerlink" title="缓存的清除方法"></a>缓存的清除方法</h2><p>由于在开发的时候不会专门去配置强缓存，而浏览器又默认会缓存图片，css和js等静态资源，所以开发环境下经常会因为强缓存导致资源没有及时更新而看不到最新的效果，解决这个问题的方法有很多，常用的有以下几种：</p>
+<p>1）直接ctrl+f5，这个办法能解决页面直接引用的资源更新的问题；</p>
+<p>2）使用ctrl+shift+delete清除缓存；</p>
+<p>3）如果用的是chrome，可以F12在network那里把缓存给禁掉（这是个非常有效的方法）：</p>
+<p><img src="//img-blog.csdn.net/20180322134625903?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="例图"></p>
+<p>4）在开发阶段，给资源加上一个动态的参数，如css/index.css?v=0.0001，由于每次资源的修改都要更新引用的位置，同时修改参数的值，所以操作起来不是很方便，一般使用前端的构建工具来修改这个参数</p>
+<h3 id="4-1-原生写法"><a href="#4-1-原生写法" class="headerlink" title="4.1) 原生写法"></a>4.1) 原生写法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function addVersion(asset)&#123;</span><br><span class="line">  asset.forEach(function(item,index) &#123;</span><br><span class="line">    if(item.indexOf(&apos;.js&apos;) != -1) &#123;</span><br><span class="line">      document.write(&apos;&lt;script src=&quot;&apos;+item+&apos;?v=&apos;+ (new Date().getTime()) +&apos;&quot;&gt;&lt;\/script&gt;&apos;);</span><br><span class="line">    &#125;else if(item.indexOf(&apos;.css&apos;) != -1)&#123;</span><br><span class="line">      document.write(&apos;&lt;link rel=&quot;stylesheet&quot; href=&quot;&apos;+item+&apos;?v=&apos;+(new Date().getTime())+&apos;&quot;&gt;&apos;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-采用gulp插件"><a href="#4-2-采用gulp插件" class="headerlink" title="4.2) 采用gulp插件"></a>4.2) 采用gulp插件</h3><h4 id="4-2-1-gulp-rev-append"><a href="#4-2-1-gulp-rev-append" class="headerlink" title="4.2.1) gulp-rev-append"></a>4.2.1) gulp-rev-append</h4><p><img src="//img-blog.csdn.net/20180322135650205?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<h4 id="4-2-2-gulp-rev和gulp-rev-collector也能实现同样的功能"><a href="#4-2-2-gulp-rev和gulp-rev-collector也能实现同样的功能" class="headerlink" title="4.2.2) gulp-rev和gulp-rev-collector也能实现同样的功能"></a>4.2.2) gulp-rev和gulp-rev-collector也能实现同样的功能</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">// 修改html和css文件，给静态文件打戳</span><br><span class="line">gulp.task(&apos;stamp&apos;, function()&#123;</span><br><span class="line">    gulp.src([&apos;rev/*.json&apos;, dest.css + &quot;**/*.css&quot;]).</span><br><span class="line">        pipe(revCollector(&#123;</span><br><span class="line">            replaceReved: true</span><br><span class="line">        &#125;)).</span><br><span class="line">        // 修改为 ?v=stamp 形式</span><br><span class="line">        pipe(replace(/\-([0-9a-z]&#123;8,&#125;)\.(png|jpg|gif|ico)/g, function(a, b, c)&#123;</span><br><span class="line">            return &apos;.&apos; + c + &apos;?v=&apos; + b;</span><br><span class="line">        &#125;)).</span><br><span class="line">        pipe(gulp.dest(dest.css));</span><br><span class="line">    gulp.src([&apos;rev/*.json&apos;, src.html]).</span><br><span class="line">        pipe(revCollector(&#123;</span><br><span class="line">            replaceReved: true</span><br><span class="line">        &#125;)).</span><br><span class="line">        // 修改为 ?v=stamp 形式</span><br><span class="line">        pipe(replace(/\-([0-9a-z\-]&#123;8,&#125;)\.(css|js)/g, function(a, b, c)&#123;</span><br><span class="line"></span><br><span class="line">            return &apos;.&apos; + c + &apos;?v=&apos; + b;</span><br><span class="line">        &#125;)).</span><br><span class="line">        pipe(gulp.dest(dest.html));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="4-3"><a href="#4-3" class="headerlink" title="4.3)"></a>4.3)</h3><p>如果资源引用的页面，被嵌入到了一个iframe里面，可以在iframe的区域右键单击重新加载该页面，以chrome为例：</p>
+<p><img src="//img-blog.csdn.net/2018032214025936?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<h3 id="4-4"><a href="#4-4" class="headerlink" title="4.4)"></a>4.4)</h3><p>如果缓存问题出现在ajax请求中，最有效的解决办法就是ajax的请求地址追加随机数；</p>
+<h3 id="4-5"><a href="#4-5" class="headerlink" title="4.5)"></a>4.5)</h3><p>还有一种情况就是动态设置iframe的src时，有可能也会因为缓存问题，导致看不到最新的效果，这时候在要设置的src后面添加随机数也能解决问题；</p>
+<hr>
+<h2 id="离线缓存"><a href="#离线缓存" class="headerlink" title="离线缓存"></a>离线缓存</h2><p>localstorage和sessionstorage太简单不说了</p>
+<h3 id="设置方法"><a href="#设置方法" class="headerlink" title="设置方法"></a>设置方法</h3><p>1 . 在HTML5的html标签中添加一个 manifest=”XXX.appcache” 属性声明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html manifest=&quot;list.appcache&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>2 . XXX.appcache文件中定义需要缓存的文件清单(里面的资源文件的路径是相对于manifest的路径而言的)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"># VERSION 0.3</span><br><span class="line"># 直接缓存的文件</span><br><span class="line">CACHE:</span><br><span class="line"># 需要在线访问的文件</span><br><span class="line">NETWORK:</span><br><span class="line"># 替代方案</span><br><span class="line">FALLBACK:</span><br></pre></td></tr></table></figure>
+<p><strong>CACHE MANIFEST –(必须) 此标题下列出的文件将在首次下载后进行缓存</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">../addDevice.html</span><br><span class="line">../static/css/reset.css</span><br><span class="line">../static/js/addDevice.js</span><br><span class="line">../static/img/ms1.png</span><br><span class="line">../static/img/clean-face.jpg</span><br></pre></td></tr></table></figure>
+<p><strong>NETWORK—-(可选)</strong></p>
+<p>(1)通配符’*’表示不在CACHE MANIFEST清单里的文件,每次都要重新请求</p>
+<p>*</p>
+<p>(2)或者指定特定文件,比如login.asp不被离线存储，每次都要重新发起请求 </p>
+<p>login.asp</p>
+<p><strong>FALLBACK—-(可选)   断网时访问指定路径时的替换文件</strong></p>
+<p>如断网时访问/html5/ 目录下的所有资源文件，则用 “offline.html” 替代 </p>
+<p>/html5/   /offline.html</p>
+<h3 id="更新原理"><a href="#更新原理" class="headerlink" title="更新原理"></a>更新原理</h3><p>更新了manifest文件，浏览器会自动的重新下载新的manifest文件并把manifest缓存列表中的所有文件重新请求一次（第二次刷新替换本地缓存为最新缓存），而不是单独请求某个特定修改过的资源文件，因为manifest是不知道哪个文件被修改过了的。</p>
+<p>对于全局更新不必要担心，因为没有更新过的资源文件，请求依旧是304响应，只有真正更新过的资源文件才是服务器返回的才是200.</p>
+<p>所以控制离线存储的更新，需要2个步骤，一是更新资源文件，二是更新manifest文件，只要修改manifest文件随意一处，浏览器就会感知manifest文件更新，而我们的资源文件名称通常是固定的，需要更新manifest文件怎么操作呢？一个比较好的方式是更新以# 开头的版本号注释，告诉浏览器这个manifest文件被更新过。</p>
+<p>manifest资源是滞后静默更新的</p>
+<p><img src="//img-blog.csdn.net/20180322141706767?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>第二次刷新界面之后,才能看到更新后的效果</p>
+<p><img src="//img-blog.csdn.net/201803221417356?watermark/2/text/Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/*code1,简单粗暴的*/</span><br><span class="line">    applicationCache.onupdateready = function()&#123;</span><br><span class="line">        applicationCache.swapCache(); //强制替换缓存</span><br><span class="line">        location.reload();            //重新加载页面</span><br><span class="line">    &#125;;</span><br><span class="line">    /*code2，缓存公用方法*/</span><br><span class="line">    // var EventUtil = &#123;</span><br><span class="line">    //     addHandler: function(element, type, handler) &#123;</span><br><span class="line">    //         if (element.addEventListener) &#123;</span><br><span class="line">    //             element.addEventListener(type, handler, false);</span><br><span class="line">    //         &#125; else if (element.attachEvent) &#123;</span><br><span class="line">    //             element.attachEvent(&quot;on&quot; + type, handler);</span><br><span class="line">    //         &#125; else &#123;</span><br><span class="line">    //             element[&quot;on&quot; + type] = handler;</span><br><span class="line">    //         &#125;</span><br><span class="line">    //     &#125;</span><br><span class="line">    // &#125;;</span><br><span class="line">    // EventUtil.addHandler(applicationCache, &quot;updateready&quot;, function() &#123;      //缓存更新并已下载，要在下次进入页面生效</span><br><span class="line">    //     applicationCache.update();  //检查缓存manifest文件是否更新，ps:页面加载默认检查一次。</span><br><span class="line">    //     applicationCache.swapCache();  //交换到新的缓存项中，交换了要下次进入页面才生效</span><br><span class="line">    //     location.reload();              //重新载入页面</span><br><span class="line">    // &#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>applicationCache      提供了如下的事件：</strong></p>
+<p>Event handler             Event handler event type<br>onchecking                 checking<br>onerror                       error<br>onnoupdate                noupdate<br>ondownloading            downloading<br>onprogress                  progress<br>onupdateready            updateready<br>oncached                    cached<br>onobsolete                  obsolete</p>
+<p>提供了如下的API：</p>
+<p>void update();<br>// 更新， 但是这个方法适用于一些长期打开的页面，而不会有刷新动作，比如邮件系统，所以这个就比较适合做自动更新下载</p>
+<p>void abort();<br>// 取消 </p>
+<p>void swapCache();<br>// 替换缓存内容 ，对于manifest文件的改变，通常是下一次的刷新才会触发下载更新，第二次刷新才会切换使用新的缓存文件，通过这个方法，可以强制将缓存替换</p>
+<p><strong>注意事项</strong></p>
+<p>站点中的其他页面即使没有设置manifest属性，请求的资源如果在缓存中也从缓存中访问</p>
+<p>系统会自动缓存引用清单文件的 HTML 文件</p>
+<p>如果manifest文件，或者内部列举的某一个文件不能正常下载，整个更新过程将视为失败，浏览器继续全部使用老的缓存</p>
+<p>在manifest中使用的相对路径，相对参照物为manifest文件</p>
+<p>站点离线存储的容量限制是5M</p>
+<p>manifest文件中CACHE则与NETWORK，FALLBACK的位置顺序没有关系，如果是隐式声明需要在最前面</p>
+<p>manifest中必须一一声明文件名，这很令人头痛</p>
+<p>引用manifest的html必须与manifest文件同源，在同一个域下</p>
+<p>除此之外，还增加了两大问题:</p>
+<p>(1)PV UV的计算难题，由于当前页面被强制加入manifest，那么PV 和UV的统计，成了一个难题，因为请求不再是发送到服务器；</p>
+<p>(2)缓存对于某个使用manifest的文件，其带有的参数可能是随机性的统计参数，如sid=123sss, sid=234fff ，尤其是比如商品详情的id字段等，这样每个页面都自动加入到manifest中，将会带来很大的存储开销，而且是毫无意义的；</p>
+<p>所以伴随而来的，是如何在现有的体系架构下进行数据统计的难题，</p>
+<p>对于第一个问题  常规方案是进入离线存储页面后自动发出ajax请求，以告知服务器统计PV UV；</p>
+<p>对于第二个问题，是将GET请求方式改成POST方式。</p>
+<hr>
+<p>转载:<br>[1]<a href="http://www.zhangxinxu.com/wordpress/2013/05/caching-tutorial-for-web-authors-and-webmasters/" target="_blank" rel="noopener">http://www.zhangxinxu.com/wordpress/2013/05/caching-tutorial-for-web-authors-and-webmasters/</a></p>
+<p>[2]<a href="http://www.codeceo.com/article/http-cache-control.html" target="_blank" rel="noopener">http://www.codeceo.com/article/http-cache-control.html</a></p>
+<p>[3]<a href="http://www.cnblogs.com/Joans/p/3956490.html" target="_blank" rel="noopener">http://www.cnblogs.com/Joans/p/3956490.html</a></p>
+<p>[4]<a href="http://web.jobbole.com/86970/" target="_blank" rel="noopener">http://web.jobbole.com/86970/</a></p>
+<p>[5]<a href="http://www.jianshu.com/p/1a9268594deb" target="_blank" rel="noopener">http://www.jianshu.com/p/1a9268594deb</a></p>
+<p>[6]<a href="http://blog.techbeta.me/2016/02/http-cache/" target="_blank" rel="noopener">http://blog.techbeta.me/2016/02/http-cache/</a></p>
+<p>[7]<a href="http://hahack.com/wiki/sundries-http-web.html" target="_blank" rel="noopener">http://hahack.com/wiki/sundries-http-web.html</a></p>
+<p>[8]<a href="http://www.jianshu.com/p/99dc1f8f62bf" target="_blank" rel="noopener">http://www.jianshu.com/p/99dc1f8f62bf</a></p>
+<p>[9]<a href="https://www.cnblogs.com/wangpenghui522/p/5498427.html" target="_blank" rel="noopener">https://www.cnblogs.com/wangpenghui522/p/5498427.html</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>越来越多的平台（微信公众平台，新浪微博，简书，百度打赏等）支持打赏功能，付费阅读时代越来越近，特此增加了打赏功能，支持微信打赏和支付宝打赏。坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010813_1496.png" alt="刘翾 WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://img.my.csdn.net/uploads/201703/20/1490010819_6378.png" alt="刘翾 Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/internet知识/" rel="tag"># internet知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/21/2018腾讯视频春招前端面试惨痛经历/" rel="next" title="2018腾讯视频春招提前批前端面试">
+                <i class="fa fa-chevron-left"></i> 2018腾讯视频春招提前批前端面试
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/05/HTTP与HTTPS的区别, 以及SSL四次握手过程/" rel="prev" title="HTTP与HTTPS的区别, 以及SSL四次握手过程">
+                HTTP与HTTPS的区别, 以及SSL四次握手过程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/face.jpg"
+               alt="刘翾" />
+          <p class="site-author-name" itemprop="name">刘翾</p>
+           
+              <p class="site-description motion-element" itemprop="description">如果有一天我们淹没在人潮里，那是因为没有努力活得丰盛。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#各种类型的缓存"><span class="nav-number">1.</span> <span class="nav-text">各种类型的缓存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP头信息控制缓存"><span class="nav-number">2.</span> <span class="nav-text">HTTP头信息控制缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#通用首部字段"><span class="nav-number">2.1.</span> <span class="nav-text">通用首部字段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-通用首部字段"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.通用首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-请求首部字段"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.请求首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-响应首部字段"><span class="nav-number">2.1.3.</span> <span class="nav-text">3.响应首部字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-实体首部字段"><span class="nav-number">2.1.4.</span> <span class="nav-text">4. 实体首部字段</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http1-0-时代缓存字段详解"><span class="nav-number">2.2.</span> <span class="nav-text">http1.0 时代缓存字段详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Pragma"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.Pragma</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Expires"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.Expires</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#http1-1时代缓存字段详解"><span class="nav-number">2.3.</span> <span class="nav-text">http1.1时代缓存字段详解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Cache-Control"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.Cache-Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Last-Modified-If-Modified-Since"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.Last-Modified/If-Modified-Since</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Etag-If-None-Match"><span class="nav-number">2.3.3.</span> <span class="nav-text">3.Etag/If-None-Match</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-既生Last-Modified何生Etag？"><span class="nav-number">2.3.3.1.</span> <span class="nav-text">4.既生Last-Modified何生Etag？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-不太常用的两个http字段If-Unmodified-Since-If-Match"><span class="nav-number">2.3.3.2.</span> <span class="nav-text">5.不太常用的两个http字段If-Unmodified-Since/If-Match</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器缓存流程图"><span class="nav-number">2.4.</span> <span class="nav-text">浏览器缓存流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何配置"><span class="nav-number">2.5.</span> <span class="nav-text">如何配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1）通过代码的方式，在web服务器返回的响应中添加Expires和Cache-Control-Header；"><span class="nav-number">2.5.1.</span> <span class="nav-text">1）通过代码的方式，在web服务器返回的响应中添加Expires和Cache-Control Header；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2）通过配置web服务器的方式，让web服务器在响应资源的时候统一添加Expires和Cache-Control-Header。"><span class="nav-number">2.5.2.</span> <span class="nav-text">2）通过配置web服务器的方式，让web服务器在响应资源的时候统一添加Expires和Cache-Control Header。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-缓存配置的一些注意事项"><span class="nav-number">2.5.3.</span> <span class="nav-text">3.缓存配置的一些注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户行为与缓存"><span class="nav-number">2.6.</span> <span class="nav-text">用户行为与缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存的清除方法"><span class="nav-number">2.7.</span> <span class="nav-text">缓存的清除方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-原生写法"><span class="nav-number">2.7.1.</span> <span class="nav-text">4.1) 原生写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-采用gulp插件"><span class="nav-number">2.7.2.</span> <span class="nav-text">4.2) 采用gulp插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-gulp-rev-append"><span class="nav-number">2.7.2.1.</span> <span class="nav-text">4.2.1) gulp-rev-append</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-gulp-rev和gulp-rev-collector也能实现同样的功能"><span class="nav-number">2.7.2.2.</span> <span class="nav-text">4.2.2) gulp-rev和gulp-rev-collector也能实现同样的功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3"><span class="nav-number">2.7.3.</span> <span class="nav-text">4.3)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4"><span class="nav-number">2.7.4.</span> <span class="nav-text">4.4)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5"><span class="nav-number">2.7.5.</span> <span class="nav-text">4.5)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离线缓存"><span class="nav-number">2.8.</span> <span class="nav-text">离线缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置方法"><span class="nav-number">2.8.1.</span> <span class="nav-text">设置方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新原理"><span class="nav-number">2.8.2.</span> <span class="nav-text">更新原理</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘翾</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user">本站访问数</i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "19900f3c34a444f28a6aaba95b80bcee",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
