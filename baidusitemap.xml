@@ -3,9 +3,30 @@
 
 
     
+    
+  <url>
+    <loc>http://liuzhixuan360.com/2018/06/30/WEB%E5%AE%89%E5%85%A8---XSS,%20CSRF,%20JSOP%E5%8A%AB%E6%8C%81%E4%B8%89%E7%A7%8D%E6%BC%8F%E6%B4%9E%E7%AE%80%E4%BB%8B%E4%BB%A5%E5%8F%8A%E9%98%B2%E8%8C%83%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2018-07-04T10:23:41.391Z</lastmod>
+    <data>
+        <display>
+        <title>WEB安全---XSS, CSRF, JSOP劫持三种漏洞简介以及防范方法</title>
+        <pubTime>2018-06-30T09:49:00.000Z</pubTime>
+        
+        <tag>internet知识</tag>
+         
+         
+           
+             
+              <breadCrumb title="internet知识" url="http://liuzhixuan360.com/categories/internet%E7%9F%A5%E8%AF%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
   <url>
     <loc>http://liuzhixuan360.com/2018/05/24/React%E8%99%9A%E6%8B%9FDOM%E5%92%8CDiff%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/</loc>
-    <lastmod>2018-05-23T16:05:12.553Z</lastmod>
+    <lastmod>2018-05-23T16:07:28.982Z</lastmod>
     <data>
         <display>
         <title>React虚拟DOM和Diff算法解析</title>
@@ -260,7 +281,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>http://liuzhixuan360.com/2018/04/06/%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86---TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%92%8C%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%E4%BB%A5%E5%8F%8ASSL%E5%9B%9B%E6%AC%A1%E6%8F%A1%E6%89%8B/</loc>

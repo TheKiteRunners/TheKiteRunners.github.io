@@ -278,6 +278,147 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2018/06/30/WEB安全---XSS, CSRF, JSOP劫持三种漏洞简介以及防范方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘翾">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/face.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="刘翾`s Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/30/WEB安全---XSS, CSRF, JSOP劫持三种漏洞简介以及防范方法/" itemprop="url">WEB安全---XSS, CSRF, JSOP劫持三种漏洞简介以及防范方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-30T17:49:00+08:00">
+                2018-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/internet知识/" itemprop="url" rel="index">
+                    <span itemprop="name">internet知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="XSS-跨站脚本攻击"><a href="#XSS-跨站脚本攻击" class="headerlink" title="XSS ( 跨站脚本攻击 )"></a>XSS ( 跨站脚本攻击 )</h1><p><strong>定义</strong>: 通过恶意攻击者往WEB页面插入恶意JS代码, 当用户浏览, 嵌入的代码会被执行, 达到恶意攻击用户控制浏览器的目的. xss是代码注入的一种.</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="反射型"><a href="#反射型" class="headerlink" title="反射型"></a>反射型</h3><p>攻击者将跨站代码写在链接中, 受害者请求这种连接时, 跨站代码经过服务端反射回来触发, 此类代码不会存储到服务端.</p>
+<h3 id="存储型"><a href="#存储型" class="headerlink" title="存储型"></a>存储型</h3><p>攻击者将恶意数据存储到服务端的数据库中, 服务器脚本从数据库中获取该数据后, 没有进行安全处理即显示在公开页面上, 受害者访问该页面即中招.</p>
+<h3 id="DOM型"><a href="#DOM型" class="headerlink" title="DOM型"></a>DOM型</h3><p>由js脚本动态创建, 输出到页面造成的. 此类型不需要经过服务器.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/30/WEB安全---XSS, CSRF, JSOP劫持三种漏洞简介以及防范方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2018/05/24/React虚拟DOM和Diff算法解析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -828,145 +969,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://liuzhixuan360.com/2018/05/08/一张图让你理清javascript中__proto__, prototype, 以及constructor之间的关系/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="刘翾">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/face.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘翾`s Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/08/一张图让你理清javascript中__proto__, prototype, 以及constructor之间的关系/" itemprop="url">一张图让你理清javascript中__proto__, prototype, 以及constructor之间的关系</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T22:31:00+08:00">
-                2018-05-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="如下图所示"><a href="#如下图所示" class="headerlink" title="如下图所示"></a>如下图所示</h2><p>画的有点不太好看, 但是关系还是很清楚的</p>
-<p><img src="https://img-blog.csdn.net/20180509214829246?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2Nfa2l0ZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/08/一张图让你理清javascript中__proto__, prototype, 以及constructor之间的关系/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1016,7 +1018,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">132</span>
+                <span class="site-state-item-count">133</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
